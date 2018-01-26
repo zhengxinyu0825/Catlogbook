@@ -2,7 +2,6 @@
 
 ![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/catlogbook_logo.png)
 
-
 ## Introduction 
 
 CatLogBook will be a new app and website for cat lovers. It will be available on both the Android and IOS platforms. Through registering a new account, these users can type in basic information about their cats including cat name, type, sex, age, etc. This system has some fundamental functions, such as storing and tracking cat's medical treatment record, writing logs for cats to record daily behaviours and activities, and gain more information and tips on cat caring. In addition, based on the weekly discussion between our project team and the client, we will create some more innovative and pragmatic features to meet our clients requirements, such as sharing experience online with others and getting medical tips or guidance from professional veterinarians. We expect to build a meaningful app that enlighten cat lovers life and record every detail that happens between you and your lovely pets, and also collect more useful data for researchers to do further researches.
@@ -139,7 +138,6 @@ In addition, we are required to do some upgrades. Firstly, users should be able 
 Hence, this project is aiming to build an application that maintains all Doglogbook's features and with customised UI and additional functions.
 
 
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
 ## 2. Overview of System
 
 ### 2.1 Users
@@ -158,7 +156,7 @@ Sophie Master and her teams will be administrators.
 
 #### Completed user stories Check Appendix Section
 
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
+
 ## 3.Evaluation
 ### 3.1 Overview
 #### We conduct three types testing in total including acceptance testing, unit testing and usability testing. In the section below we will talk about each testing in details.
@@ -187,25 +185,25 @@ Sophie Master and her teams will be administrators.
 
 ### 3.3 Unit testing
 #### We conduct the unit testing using karma-jasmine. For the functions that have been implemented in the project, unit tests are designed according to each function. For the function we have tested, we have list them in the following table:
-![4.png](https://bitbucket.org/repo/645Bbzg/images/3349929388-4.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/WX20180126-204614%402x.png)
 
 ### 3.4 Usability testing
 #### We have conducted a survey which interviewed 40 University Of Sydney students(half male and half female). Overall, our application achieved an expected outcome. Most of people are satisfied with our application. Only a few people think our app is not that good since they do not like our interface and they think apps have slow response speed. However, since the survey was conducted after the final delivery, we are lacking time to make changes. Some of the related results are list below(questions about personal details are discarded):
-![5.png](https://bitbucket.org/repo/645Bbzg/images/2540730058-5.png)
-![6.png](https://bitbucket.org/repo/645Bbzg/images/453627586-6.png)
-![7.png](https://bitbucket.org/repo/645Bbzg/images/3074309896-7.png)
-![8.png](https://bitbucket.org/repo/645Bbzg/images/3133415312-8.png)
-![9.png](https://bitbucket.org/repo/645Bbzg/images/2523628756-9.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/WX20180126-204626%402x.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/WX20180126-204639%402x.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/WX20180126-204651%402x.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/WX20180126-204703%402x.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/WX20180126-204713%402x.png)
 
 
 ### 3.5 Conclusion
 ####In every project, it is necessary to test after modifying and adding in new functionality. This is done to ensure the current system can run smoothly and bug-free. For this project, we conduct unit testing through karma, acceptance testing and usability testing through interviewing students. Overall, the test results is expected and we have achieved the target we set at the beginning of the project. The only limitation we have is that all testing run offline and therefore we have no clue about its performance online.
 
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
+
 ## 4.System Structure Overview
 
 ### 4.1 System Architecture 
-![10.png](https://bitbucket.org/repo/645Bbzg/images/1687329637-10.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/WX20180126-204806%402x.png)
 #### Figure 4.1.1 System architecture of the Catlogbook applications.
 #### The above diagram shows the current system architecture. The system can be accessed through web and mobile app. The user can login via the web dashboard or via their mobile app. Server will process the users’ request and retrieve related data from database. Currently, we are working on the front-end which is web and app in the system structure.
 
@@ -213,7 +211,6 @@ Sophie Master and her teams will be administrators.
 We have no access to the database and therefore cannot make any changes.
 
 
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
 ## 5. System Tools
 
 ### 5.1 Ionic (Main framework)
@@ -239,7 +236,7 @@ We have no access to the database and therefore cannot make any changes.
 * UI design: [Visual Studio](https://en.wikipedia.org/wiki/Microsoft_Visual_Studio), [Xcode](https://en.wikipedia.org/wiki/Xcode), [Android Studio](https://en.wikipedia.org/wiki/Android_Studio)
 
 
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
+
 ## 6.Information Search
 
 ### 6.1 Research on software/concepts
@@ -361,10 +358,10 @@ $ionicScrollDelegate.getScrollView();
 #### We used a widely used standard evaluation method to report and evaluate software. A criteria-based assessment gives a measurement of quality in a number of areas. These areas are derived from ISO/IEC 9126-1 Software engineering — Product quality and include usability, sustainability and maintainability.The assessment involves checking whether the software, and the project that develops it, conforms to various characteristics or exhibits various qualities that are expected of sustainable software. The more characteristics that are satisfied, the more sustainable the software.
 
 **6.2.1 Evaluation of ionic architecture**
-![1.png](https://bitbucket.org/repo/645Bbzg/images/842263790-1.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/WX20180126-205129%402x.png)
 
 **6.2.1 Evaluation of Visual Studio Code editor**
-![2.png](https://bitbucket.org/repo/645Bbzg/images/551313059-2.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/WX20180126-205140%402x.png)
 
 ### 6.3 Literature found on the web or digital library
 
@@ -421,7 +418,7 @@ Mobile App Development with Ionic 2: Cross-Platform Apps with Ionic: [link](http
 
 
 
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/underline.png)
 ## 7.Reflection 
 
 ### 7.1 Challenge and risks ###
@@ -494,7 +491,7 @@ We mainly using bitbucket to merge uploading code and tracking any issues.To ens
 
 We mainly use Ionic, angular and HTML to encoding our products. Since we have no experience on ionic project, we study together which make easier to understand the knowledge.
 
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/underline.png)
 ##8 Individual Contribuation ##
 
 
@@ -871,8 +868,8 @@ Monday, 02/11/2017
 ## A5. Week 13 Demo Video ##
 [Week 13 Demo video](https://www.youtube.com/watch?v=s46RVS3U-_0)
 
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/underline.png)
+![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/underline.png)
 ## Reference
 
 #### (Other references cited in the "Information Search" section.)
