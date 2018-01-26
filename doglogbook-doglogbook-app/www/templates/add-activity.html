@@ -1,0 +1,184 @@
+<ion-view class="view-add-activity" view-title="{{ 'AddActivityTitle' | translate }}">
+
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header padding">
+  
+  <form name='form_login' novalidate>
+  <div class="list">
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label requiredField">
+          {{ 'AddActivityDateRegistered' | translate }}*
+      </span>
+      <i class="icon ion-calendar"></i>
+      <input ng-model="vm.formData.dateRegistered" 
+             type="date" 
+             required>
+    </label>   
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label requiredField">
+          {{ 'AddActivityLocation' | translate }}*
+      </span>
+      <select ng-model="vm.formData.locationType"
+              ng-change="vm.locationTypeChange()"
+              ng-options="report as report.name for report in vm.reports track by report.id"
+              required>
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+    <label class="item item-input item-stacked-label"
+          modal-select="" 
+          has-search="true"
+          modal-title="{{ 'AddActivitySelectActivity' | translate }}"
+          cancel-search-button="{{ 'CommonClear' | translate }}"
+          cancel-button="{{ 'CommonCancel' | translate }}"
+          reset-button="{{ 'CommonReset' | translate }}"
+          ng-model="vm.formData.reportEvent" 
+          options="vm.activityEvents">
+      <span class="input-label requiredField">
+          {{ 'AddActivityReportEvent' | translate }}*
+      </span>
+      <input ng-model="vm.formData.reportEventDisplayName"
+             type="text"
+             ng-readonly="true">
+      </input>      
+      <div class="option">
+          <h2>{{option.event.name}}</h2>
+      </div>
+   </label>
+
+    <ion-toggle ng-show="vm.lastEntry"
+                ng-model="vm.lastEntry.useSameEntry"
+                class="item-text-wrap "
+                toggle-class="toggle-positive">
+          Is today’s entry same as previous one?
+    </ion-toggle>
+
+    <div ng-show="vm.lastEntry.useSameEntry == true"
+         class="card padding list">
+        <label   class="item item-input"> 
+          <span class="input-label">
+              Last entry:
+          </span>
+          {{ vm.lastEntry.dateRegistered | date:"d MMM HH:mm" }}
+        </label>
+        <label   class="item item-input"> 
+          <span class="input-label">
+              Duration:
+          </span>
+          {{ vm.getDurationFormat(vm.lastEntry.duration) }}
+        </label>
+        <label   class="item item-input"> 
+          <span class="input-label">
+              Rating:
+          </span>
+          {{ vm.lastEntry.rate.name }}
+        </label>
+  </div>
+
+  <div ng-show="vm.lastEntry == null || (vm.lastEntry && vm.lastEntry.useSameEntry == false)"> 
+
+     <label class="item item-input item-stacked-label">
+        <span class="input-label requiredField">
+            {{ 'AddActivityDurationHours' | translate }}*
+        </span>
+        <div class="range range-positive">
+          <i class="icon ion-ios-stopwatch-outline"></i>
+          <input  type="range" 
+                  ng-model="vm.formData.durationHours" 
+                  name="duration" 
+                  min="0" max="12"
+                  value="0"
+                  required>             
+        </div>
+        {{  vm.formData.durationHours }} hours
+      </label>
+
+     <label class="item item-input item-stacked-label">
+        <span class="input-label requiredField">
+            {{ 'AddActivityDurationMinutes' | translate }}*
+        </span>
+        <div class="range range-positive">
+          <i class="icon ion-ios-stopwatch-outline"></i>
+          <input  type="range" 
+                  ng-model="vm.formData.durationMinutes" 
+                  name="duration" 
+                  min="0" max="59"
+                  value="0"
+                  required>             
+        </div>
+        {{  vm.formData.durationMinutes }} minutes
+      </label>
+
+    <h2 class="item item-text-wrap range-not-applicable ng-binding">
+      {{ 'AddActivityRating' | translate }}*
+    </h2>
+
+    <ion-toggle ng-model="vm.formData.rateNotApplicable"
+                ng-change="vm.noApplicableRangeHandler(vm.formData.rateNotApplicable)"
+                ng-class="{'range-not-applicable': vm.formData.rateNotApplicable == false}"
+                class="item-text-wrap "
+                toggle-class="toggle-positive">
+          {{ 'AddActivityRatingNotApplicable' | translate }}
+    </ion-toggle>
+
+     <label ng-hide="vm.formData.rateNotApplicable == true"
+            class="item item-input item-stacked-label">
+        <div class="range range-positive heatmap-background">
+          <input  type="range" 
+                  ng-model="vm.formData.heatmapValue" 
+                  name="heatmapValue" 
+                  min="0" max="100"
+                  value="0">             
+        </div>
+        <span class="rageMin">
+          {{ vm.rateRangesMin }}
+        </span>
+        <span class="rageMax">
+          {{ vm.rateRangesMax }}
+        </span>
+      </label>
+
+    </div>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label" 
+            translate="AddActivityComment">
+      </span>
+      <input ng-model="vm.formData.comment" type="text">
+    </label>
+
+    <div class="row">
+        <div class="col">
+            <button ui-sref="app.home"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.save(vm.formData)"
+                    ng-disabled='form_login.$invalid'
+                    class="button button-block button-assertive">
+              {{ 'CommonSave' | translate }}
+            </button>
+        </div>
+    </div>
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

@@ -1,0 +1,236 @@
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a ui-sref="app.home">
+        <img class="navbar-brand" src="img/nav/logo-horizontal-xs-275x50.png">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
+      <ul class="nav navbar-nav">
+        <li>
+          <a ui-sref="app.home" ng-click="navCollapsed = !navCollapsed">Home</a>
+        </li>
+
+        <li>
+          <a ui-sref="app.qanda" ng-click="navCollapsed = !navCollapsed">Q & A</a>
+        </li>
+
+        <li>
+          <a ui-sref="app.userguidance" ng-click="navCollapsed = !navCollapsed">User Guidance</a>
+        </li>
+
+        <li>
+          <a ui-sref="app.userguidance" ng-click="navCollapsed = !navCollapsed">User Guidance</a>
+        </li>
+
+
+
+        <li>
+          <a ui-sref="app.contactus" ng-click="navCollapsed = !navCollapsed">Contact Us</a>
+        </li>
+
+
+         <li>
+          <a ui-sref="app.email" ng-click="navCollapsed = !navCollapsed">Email Vet</a>
+        </li>
+
+         <li>
+          <a ui-sref="app.upload" ng-click="navCollapsed = !navCollapsed">Upload Image</a>
+        </li>
+
+        <div ng-show="selectedPet">
+
+        <li>
+          <a ng-click="vm.toState(10,selectedPet);navCollapsed = !navCollapsed">Profile</a>
+        </li>
+
+        <li>
+          <a ng-click="vm.toState(1,selectedPet);navCollapsed = !navCollapsed">Activities</a>
+        </li>
+        <li>
+          <a ng-click="vm.toState(2,selectedPet);navCollapsed = !navCollapsed">Behaviours</a>
+        </li>
+        <li>
+          <a ng-click="vm.toState(9,selectedPet);navCollapsed = !navCollapsed">Feeding</a>
+        </li>
+        <li>
+          <a ng-click="vm.toState(4,selectedPet);navCollapsed = !navCollapsed">Socialisations</a>
+        </li>
+
+        <li>
+          <a ng-click="vm.toState(3,selectedPet);navCollapsed = !navCollapsed">Treatments</a>
+        </li>
+        <li>
+          <a ng-click="vm.toState(7,selectedPet);navCollapsed = !navCollapsed">Symptoms</a>
+        </li>
+        <li>
+          <a ng-click="vm.toState(5,selectedPet);navCollapsed = !navCollapsed">Seizures</a>
+        </li>
+        <li>
+          <a ng-click="vm.toState(6,selectedPet);navCollapsed = !navCollapsed">Respiration Rates</a>
+        </li>
+        <li>
+          <a ng-click="vm.toState(8,selectedPet);navCollapsed = !navCollapsed">Sessions</a>
+        </li>
+
+        </div>
+
+        <li>
+          <a ui-sref="app.permissions" ng-click="navCollapsed = !navCollapsed">Permissions</a>
+        </li>
+
+
+
+        <li>
+          <a ng-click="vm.logout()">Log Out</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li>
+          <a ui-sref="app.home">
+            <img src="img/sidebar/house-outline.svg">Home</img>
+          </a>
+        </li>
+
+        <li>
+          <a ui-sref="app.qanda">
+            <img src="img/sidebar/OpenBook.png">Q & A</img>
+          </a>
+        </li>
+
+
+        <li>
+          <a ui-sref="app.userguidance">
+            <img src="img/sidebar/OpenBook.png">User Guidance</img>
+          </a>
+        </li>
+
+
+
+        <li>
+          <a ui-sref="app.contactus">
+            <img src="img/sidebar/OpenBook.png">Contact Us</img>
+          </a>
+        </li>
+
+
+        <li>
+          <a ui-sref="app.email">
+            <img src="img/sidebar/email.png">Email Vet</img>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="app.upload">
+            <img src="img/sidebar/upload.png">Upload Image</img>
+          </a>
+        </li>
+
+      </ul>
+
+
+
+      <div ng-show="selectedPet">
+
+        <ul class="nav nav-sidebar">
+          <li>
+            <a ng-click="vm.toState(10,selectedPet)">
+              <img src="img/sidebar/training.svg">Profile</img>
+            </a>
+          </li>
+        </ul>
+
+        <h4>Reports</h4>
+        <ul class="nav nav-sidebar">
+          <li>
+            <a ng-click="vm.toState(1,selectedPet)">
+              <img src="img/sidebar/activities.svg">Activities</img>
+            </a>
+          </li>
+          <li>
+            <a ng-click="vm.toState(2,selectedPet)">
+              <img src="img/sidebar/behaviours.svg">Behaviours</img>
+            </a>
+          </li>
+          <li>
+            <a ng-click="vm.toState(9,selectedPet)">
+              <img src="img/sidebar/feeding.svg">Feeding</img>
+            </a>
+          </li>
+          <li>
+            <a ng-click="vm.toState(4,selectedPet)">
+              <img src="img/sidebar/dog.svg">Socialisations</img>
+            </a>
+          </li>
+        </ul>
+        <h4>Health</h4>
+        <ul class="nav nav-sidebar">
+          <li>
+            <a ng-click="vm.toState(3,selectedPet)">
+              <img src="img/sidebar/treatments.svg">Treatments</img>
+            </a>
+          </li>
+          <li>
+            <a ng-click="vm.toState(7,selectedPet)">
+              <img src="img/sidebar/symptoms.svg">Symptoms</img>
+            </a>
+          </li>
+          <li>
+            <a ng-click="vm.toState(5,selectedPet)">
+              <img src="img/sidebar/seizures.svg">Seizures</img>
+            </a>
+          </li>
+          <li>
+            <a ng-click="vm.toState(6,selectedPet)">
+              <img src="img/sidebar/respirationRate.svg">Respiration Rates</img>
+            </a>
+          </li>
+        </ul>
+
+        <!-- <h4>Working Dogs</h4>
+        <ul class="nav nav-sidebar">
+          <li>
+            <a ng-click="vm.toState(8,selectedPet)">
+              <img src="img/sidebar/assessments.svg">Sessions</img>
+            </a>
+          </li>
+        </ul> -->
+
+      </div>
+
+      <h4>Settings</h4>
+      <ul class="nav nav-sidebar">
+        <li>
+          <a ui-sref="app.permissions">
+          <img src="img/sidebar/user.svg">Permissions</a>
+        </li>
+      </ul>
+      <button ng-click="vm.logout()"
+              type="button" class="btn btn-default btn-block">
+          Log Out
+      </button>
+
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+      <div ui-view="mainContent"></div>
+
+    </div>
+  </div>
+</div>

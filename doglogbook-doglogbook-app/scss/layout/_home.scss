@@ -1,0 +1,53 @@
+.view-home {
+
+  h4 {
+    padding: 0 15px;
+  }
+
+  .filter {
+    margin: 0px !important;    
+  }
+
+  .filter-fav {
+    min-width: 30px;
+    width: 30px;
+    border-radius: 8px;
+    padding: 0px;
+    margin: 0px;
+    background: #eee;
+  }
+
+  .filter-search {
+    margin: 0 5px;
+    min-width: 80px;
+  }
+
+  .filter-type {
+    max-width: 120px;
+    min-width: 80px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    display: inline-block;
+    height: 30px;
+    border: none;
+  }
+
+  .wide-item {
+    border-width:0px;
+  }
+
+  .tabs {
+    position: relative;
+    height: 65px;
+    padding: 10px 0px;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D8D8D8;
+  }
+
+  .filter-empty {
+    text-align: center;
+    padding-top: 20px;
+    color: #999;
+  }
+}

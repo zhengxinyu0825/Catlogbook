@@ -1,0 +1,293 @@
+<div class="session-obedience-control-section">
+  <!-- Obedience & Control -->
+    <ion-item class="item item-collapse rounded"
+              ng-click="vm.toggleGroup('AddSessionObedienceControl')"
+              ng-class="{active: vm.isGroupShown('AddSessionObedienceControl')}">
+        <i class="icon" ng-class="vm.isGroupShown('AddSessionObedienceControl') ? 'ion-minus' : 'ion-plus'"></i>
+      &nbsp;
+      {{ 'AddSessionObedienceControl' | translate }}
+    </ion-item>
+    <div ng-show="vm.isGroupShown('AddSessionObedienceControl')">
+
+      <label class="item item-input item-select item-stacked-label">
+        <div class="item-text-wrap">
+            {{ 'AddSessionScoredBy' | translate }}
+        </div>       
+        <select ng-model="vm.formData.scoredBy"
+                ng-options="scoredBy.id as scoredBy.name for scoredBy in vm.scoredByArray track by scoredBy.id">
+            <option value='' translate="CommonSelect"></option>
+        </select>            
+      </label>
+
+
+       <!-- Verbal Command  -->
+      <ion-toggle 
+            ng-model="vm.formData.IF_verbalCommans" 
+            class="item-text-wrap"
+            toggle-class="toggle-positive">
+        {{ 'AddSessionVerbalCommandTitle'| translate }}
+      </ion-toggle>
+
+      <div  ng-show="vm.formData.IF_verbalCommans"
+            class="card">
+          
+         <label  class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionCommandItemDuration' | translate }}
+          </span>
+          <select ng-model="vm.formData.verbalCommandsDuration"
+                  ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+        </label>
+
+        <div class="row">
+          <div class="col">
+
+            <label class="item item-input item-stacked-label"
+                  modal-select="" 
+                  has-search="true"
+                  modal-title="{{ 'HomeActionButtonSelectPet' | translate }}"
+                  cancel-search-button="{{ 'CommonClear' | translate }}"
+                  cancel-button="{{ 'CommonCancel' | translate }}"
+                  reset-button="{{ 'CommonReset' | translate }}"
+                  ng-model="vm.formData.selectedVerbalCommand" 
+                  options="vm.verbalCommands">
+              <span class="input-label">
+                  {{ 'AddSessionCommandItemSelectCommand' | translate }}
+              </span>
+              <input ng-model="vm.formData.selectedVerbalCommand.name" 
+                     translate
+                     translate-attr-placeholder="CommonSelect" 
+                     type="text"
+                     ng-readonly="true">       
+               <div class="option">
+                    <h2>{{option.name}}</h2>
+                </div>
+            </label>
+
+            <button class="button button-block button-assertive button-outline"
+                    ng-disabled='!vm.formData.verbalCommandsDuration || !vm.formData.selectedVerbalCommand'
+                    ng-click="vm.addCommandDetail(vm.formData.selectedVerbalCommand, 1)">
+              {{ 'CommonAdd' | translate }}
+            </button>
+
+            <div  ng-if="vm.formData.verbalCommandsItems && 
+                         vm.formData.verbalCommandsItems.length > 0"
+                  class="list">
+
+              <a class="item item-icon-right"
+                 ng-repeat="commandResult in vm.formData.verbalCommandsItems">
+                 <b>{{ commandResult.Name }}</b>
+                <i  ng-click="vm.modalVerbalCommandRemove(commandResult)"
+                    class="icon ion-android-close"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- Verbal Command  -->
+
+       <!-- Hand Gestural Command  -->
+      <ion-toggle 
+            ng-model="vm.formData.IF_handGesturalCommans" 
+            class="item-text-wrap"
+            toggle-class="toggle-positive">
+        {{ 'AddSessionhandGesturalCommandTitle'| translate }}
+      </ion-toggle>
+
+      <div  ng-show="vm.formData.IF_handGesturalCommans"
+            class="card">
+              
+         <label  class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionCommandItemDuration' | translate }}
+          </span>
+          <select ng-model="vm.formData.handGesturalCommandsDuration"
+                  ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+        </label>
+
+        <div class="row">
+          <div class="col">
+
+            <label class="item item-input item-stacked-label"
+                  modal-select="" 
+                  has-search="true"
+                  modal-title="{{ 'HomeActionButtonSelectPet' | translate }}"
+                  cancel-search-button="{{ 'CommonClear' | translate }}"
+                  cancel-button="{{ 'CommonCancel' | translate }}"
+                  reset-button="{{ 'CommonReset' | translate }}"
+                  ng-model="vm.formData.selectedHandGesturalCommand" 
+                  options="vm.handGesturalCommands">
+              <span class="input-label">
+                  {{ 'AddSessionCommandItemSelectCommand' | translate }}
+              </span>
+              <input ng-model="vm.formData.selectedHandGesturalCommand.name" 
+                     translate
+                     translate-attr-placeholder="CommonSelect" 
+                     type="text"
+                     ng-readonly="true">       
+               <div class="option">
+                    <h2>{{option.name}}</h2>
+                </div>
+            </label>
+
+            <button class="button button-block button-assertive button-outline"
+                    ng-disabled='!vm.formData.handGesturalCommandsDuration || !vm.formData.selectedHandGesturalCommand'
+                    ng-click="vm.addCommandDetail(
+                    vm.formData.selectedHandGesturalCommand, 2)">
+              {{ 'CommonAdd' | translate }}
+            </button>
+
+            <div  ng-if="vm.formData.handGesturalCommandsItems && 
+                         vm.formData.handGesturalCommandsItems.length > 0"
+                  class="list">
+
+              <a class="item item-icon-right"
+                 ng-repeat="commandResult in vm.formData.handGesturalCommandsItems">
+                 <b>{{ commandResult.Name }}</b>
+                <i  ng-click="vm.modalVerbalCommandRemove(commandResult)"
+                    class="icon ion-android-close"></i>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+       <!-- Hand Gestural Command  -->
+
+      <!-- Whistle Laser Commands -->
+      <ion-toggle 
+          ng-model="vm.formData.IF_whistleLaserCommans" 
+          class="item-text-wrap"
+          toggle-class="toggle-positive">
+      {{ 'AddSessionWhistleLaserCommandTitle'| translate }}
+      </ion-toggle>
+
+      <div  ng-show="vm.formData.IF_whistleLaserCommans"
+          class="card">
+
+         <label  class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionCommandItemDuration' | translate }}
+          </span>
+          <select ng-model="vm.formData.whistleLaserCommandsDuration"
+                  ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+        </label>
+
+        <div class="row">
+          <div class="col">
+
+            <label class="item item-input item-stacked-label"
+                  modal-select="" 
+                  has-search="true"
+                  modal-title="{{ 'HomeActionButtonSelectPet' | translate }}"
+                  cancel-search-button="{{ 'CommonClear' | translate }}"
+                  cancel-button="{{ 'CommonCancel' | translate }}"
+                  reset-button="{{ 'CommonReset' | translate }}"
+                  ng-model="vm.formData.selectedWhistleLaserCommand" 
+                  options="vm.whistleLaserCommands">
+              <span class="input-label">
+                  {{ 'AddSessionCommandItemSelectCommand' | translate }}
+              </span>
+              <input ng-model="vm.formData.selectedWhistleLaserCommand.name" 
+                     translate
+                     translate-attr-placeholder="CommonSelect" 
+                     type="text"
+                     ng-readonly="true">       
+               <div class="option">
+                    <h2>{{option.name}}</h2>
+                </div>
+            </label>
+
+            <button class="button button-block button-assertive button-outline"
+                    ng-disabled='!vm.formData.whistleLaserCommandsDuration || !vm.formData.selectedWhistleLaserCommand'
+                    ng-click="vm.addCommandDetail(
+                    vm.formData.selectedWhistleLaserCommand, 3)">
+              {{ 'CommonAdd' | translate }}
+            </button>
+
+            <div  ng-if="vm.formData.whistleLaserCommandsItems && 
+                         vm.formData.whistleLaserCommandsItems.length > 0"
+                  class="list">
+
+              <a class="item item-icon-right"
+                 ng-repeat="commandResult in vm.formData.whistleLaserCommandsItems">
+                 <b>{{ commandResult.Name }}</b>
+                <i  ng-click="vm.modalWhistleLaserCommandRemove(commandResult)"
+                    class="icon ion-android-close"></i>
+              </a>
+            </div>
+
+          </div>
+        </div> 
+   
+      </div>
+      <!-- Whistle Laser Commands -->
+
+      <ion-toggle 
+            ng-model="vm.formData.IF_otherSkillsDevelopment" 
+            class="item-text-wrap"
+            toggle-class="toggle-positive">
+        {{ 'AddSessionOtherSkillsDevelopmentTitle'| translate }}
+      </ion-toggle>
+
+      <div  ng-show="vm.formData.IF_otherSkillsDevelopment"
+            class="card">
+              
+          <label  class="item item-input item-select"> 
+            <span class="input-label">
+                {{ 'AddSessionOtherSkillsDevelopmentDuration' | translate }}
+            </span>
+            <select ng-model="vm.formData.otherSkillsDevelopmentDuration"
+                    ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+                <option value='' translate="CommonSelect"></option>
+            </select>      
+          </label>
+
+          <div ng-repeat="otherSkillsDevelopment in vm.petSkills">
+            <ion-checkbox 
+                ng-model="vm.formData.otherSkillsDevelopmentItems[otherSkillsDevelopment.id]"
+                class="item-text-wrap">
+                {{ otherSkillsDevelopment.name }}
+            </ion-checkbox>
+            <section ng-show="vm.formData.otherSkillsDevelopmentItems[otherSkillsDevelopment.id]">
+
+
+              <label  class="item item-input item-select"> 
+                <span class="input-label">
+                    {{ 'AddSessionOtherSkillsDevelopmentItemDuration' | translate }}
+                </span>
+                <select ng-model="vm.formData.otherSkillsDevelopmentDurations[otherSkillsDevelopment.id]" 
+                        ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+                    <option value='' translate="CommonSelect"></option>
+                </select>      
+              </label>
+
+            </section>
+          </div>     
+      </div>
+
+      <div class="item item-text-wrap">
+      {{ 'AddSessionDevicesMethods' | translate }}
+      </div>     
+
+      <div class="list card">
+        <ion-checkbox 
+            ng-repeat="device in vm.petDeviceMethods"
+            ng-model="vm.formData.petDeviceMethodItems[device.id]"
+            class="item-text-wrap">
+            {{ device.name }}
+        </ion-checkbox>
+      </div>
+
+    </div>
+    <!-- END Obedience & Control -->
+</div>

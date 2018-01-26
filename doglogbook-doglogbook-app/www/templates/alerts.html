@@ -1,0 +1,12 @@
+<div class="view-alert">
+  <ion-slide-box on-slide-changed="slideHasChanged($index)">
+    <ion-slide ng-repeat="alert in vm.petsAlerts">
+
+    <div class="list">
+      <h4>{{alert.title}}</h4>
+      <div ng-bind-html="alert.msg">
+      </div>
+    </div>
+    </ion-slide>
+  </ion-slide-box>  
+</div>

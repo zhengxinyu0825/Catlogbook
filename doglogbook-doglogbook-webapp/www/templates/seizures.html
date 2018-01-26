@@ -1,0 +1,67 @@
+<h1 class="page-header">Seizures</h1>
+
+<p ng-show="vm.results && vm.results.length == 0">
+  No Results
+</p>
+
+<div  ng-show="vm.results && vm.results.length > 0">
+
+  <uib-accordion close-others="oneAtATime">
+    <div  ng-repeat="item in vm.results"
+          uib-accordion-group class="panel">
+
+        <uib-accordion-heading>
+          <b>
+            {{ item.seizureType.name }}  
+          </b>
+          <span class="pull-right">
+            {{  item.dateCreated |  date:"d MMM" : 'UTC'   }}
+          </span>
+        </uib-accordion-heading>
+
+        <div class="item item-text-wrap">
+        <h1 ng-show="item.seizureType">
+          {{ item.seizureType.name }}
+        </h1>
+        <span clss="row" ng-show="item.duration">
+          {{ vm.getDurationFormat(item.duration) }}
+        </span>
+
+        <br>
+        <h3 translate="SeizuresSignsDuring"></h3>
+        <ul class="card list">
+          <li class="item" ng-repeat="sign in item.seizureSigns">
+            {{ sign.seizureSignType.name }}
+          </li>
+        </ul>
+
+        <span class="row" ng-show="item.seizureBodyState">
+          {{ 'SeizuresBodyState' | translate }}
+          {{ item.seizureBodyState.name }}
+        </span>
+
+        <span class="row" ng-show="item.seizureBodyStatePositions">
+          {{ 'SeizuresBodyPosition' | translate }}
+          {{ item.seizureBodyStatePositions.name }}
+        </span>
+  
+
+        <h3 translate="SeizuresSignsAfter"></h3>
+        <ul class="card list">
+          <li class="item" ng-repeat="afterSign in item.seizureAfterSigns">
+            {{ afterSign.seizureAfterSignType.name }}
+          </li>
+        </ul>
+
+        <div class="list-group pull-right">
+          <button ng-click="vm.remove(item.id)"
+                  class="btn btn-default">
+            Remove
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </uib-accordion>
+
+</div>

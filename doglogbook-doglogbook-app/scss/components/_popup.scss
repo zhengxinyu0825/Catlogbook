@@ -1,0 +1,28 @@
+.popup-container .popup {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.popup-head {
+  background: $positive;
+  height: 44px;  
+}
+
+.popup-body {
+  text-align: center;
+}
+
+
+.popup-buttons .button {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -moz-box-flex: 1;
+  -moz-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: block;
+  border-radius: 18px;
+  border-width: 2px;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+}

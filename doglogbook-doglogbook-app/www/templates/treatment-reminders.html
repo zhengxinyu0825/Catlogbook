@@ -1,0 +1,48 @@
+<ion-view class="view-add-treatment" view-title="{{ 'TreatmentReminderTitle' | translate }}">
+
+<ion-header-bar class='bar-positive'>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header extra-padding">
+  
+  <form name='form_login' novalidate>
+  <div class="list">
+
+    <h4>{{ vm.selectedTreatment.treatmentType.name }}</h4>
+
+    <div class="card padding">
+      <b> Note:</b> To keep the app synced don’t change reminder title.
+    </div>
+
+    <button ng-click="vm.addReminder()"
+            class="button button-block button-assertive">
+      {{ 'CommonAdd' | translate }}
+    </button>
+
+
+    <div  ng-if="vm.formData.reminders && 
+                 vm.formData.reminders.length > 0"
+          class="list">
+
+      <a class="item item-icon-right"
+         ng-repeat="reminder in vm.formData.reminders">
+         {{ reminder.displayDate | date:'YYYY-MM-DD'}}
+        <i  ng-click="vm.removeReminder(reminder)"
+            class="icon ion-android-close"></i>
+      </a>
+
+    </div>
+
+    <button ng-click="vm.done()"
+            class="button button-block button-outline">
+      {{ 'CommonDone' | translate }}
+    </button>
+
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

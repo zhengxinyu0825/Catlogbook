@@ -1,0 +1,246 @@
+<div class="session-section-general">
+<!-- GENERAL -->
+
+    <ion-item class="item item-collapse rounded"
+              ng-click="vm.toggleGroup('AddSessionGeneral')"
+              ng-class="{active: vm.isGroupShown('AddSessionGeneral')}">
+        <i class="icon" ng-class="vm.isGroupShown('AddSessionGeneral') ? 'ion-minus' : 'ion-plus'"></i>
+      &nbsp;
+      {{  'AddSessionGeneral' | translate }}
+    </ion-item>
+    <div ng-show="vm.isGroupShown('AddSessionGeneral')">
+
+      <span class="input-label requiredField">
+          {{ 'AddSessionDuration' | translate }}*
+      </span>    
+
+      <div class="list card">
+        
+        <label  class="item item-input item-select"> 
+          <span class="input-label requiredField">
+              {{ 'AddSessionDurationHours' | translate }}
+          </span>
+          <select ng-model="vm.formData.durationHours"
+                  ng-options="v as vm.hourDisplay(v) for v in vm.durationHours"
+                  required>
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+        </label>
+
+        <label  class="item item-input item-select"> 
+          <span class="input-label requiredField">
+              {{ 'AddSessionDurationMinutes' | translate }}
+          </span>
+          <select ng-model="vm.formData.durationMinutes"
+                  ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes"
+                  required>
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+        </label>
+
+      </div>
+
+      <label   class="item item-input item-select"> 
+        <span class="input-label requiredField">
+            {{ 'Location' | translate }}*
+        </span>
+        <select ng-model="vm.formData.locationRelationship"
+                ng-options="rel.id as rel.name for rel in vm.relationshipTypes track by rel.id"
+                required>
+            <option value='' translate="CommonSelect"></option>
+        </select>
+
+      </label>
+
+      <label   class="item item-input item-select"> 
+        <span class="input-label requiredField">
+            {{ 'AddSessionType' | translate }}*
+        </span>
+        <select ng-model="vm.formData.locationTypeId"
+                ng-options="locType.id as locType.name for locType in vm.locationTypes track by locType.id"
+                required>
+            <option value='' translate="CommonSelect"></option>
+        </select>    
+        
+      </label>
+
+      <label   class="item item-input item-select"> 
+        <span class="input-label requiredField">
+            {{ 'AddSessionSubtype' | translate }}*
+        </span>
+        <select ng-model="vm.formData.locationSubTypeId"
+                ng-options="locSubType.id as locSubType.name for locSubType in vm.locationSubTypes track by locSubType.id"
+                required>
+            <option value='' translate="CommonSelect"></option>
+        </select>      
+      </label>
+
+      <h3 class="item item-text-wrap">
+        {{ 'AddSessionSessionConducted' | translate }}
+      </h3>    
+
+      <div class="list card">
+        <label   class="item item-input item-select"> 
+          <span class="input-label requiredField">
+              {{ 'AddSessionSessionConductedOnLead' | translate }}*
+          </span>  
+          <select ng-model="vm.formData.percentageOnLead"
+                  ng-options="v as vm.percentageDisplay(v) for v in vm.OnLeadValues"
+                  required>
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+          
+        </label>
+        <label  ng-disabled="!vm.formData.percentageOnLead"
+                class="item item-input item-select"> 
+          <span class="input-label requiredField">
+              {{ 'AddSessionSessionConductedOffLead' | translate }}*
+          </span>
+          <select ng-model="vm.formData.percentageOffLead"
+                  ng-options="v as vm.percentageDisplay(v) for v in vm.OffLeadValues | filter:vm.filterLeads"
+                  required>
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+          
+        </label>
+      </div>
+
+
+
+      <!-- LIVESTOCK (ONLY) -->
+
+      <div ng-show="vm.formData.petSubTypeId == 2">
+
+        <div class="item item-text-wrap">
+          {{ 'AddSessionGeneralLivestockHerdingWorkTypeItems' | translate }}
+        </div> 
+
+        <div class="list card">
+          <ion-checkbox 
+              ng-repeat="workType in vm.livestockHerdingWorkTypes"
+              ng-model="vm.formData.livestockHerdingWorkTypeItems[workType.id]"
+              class="item-text-wrap">
+              {{ workType.name }}
+          </ion-checkbox>
+        </div>
+
+        <div class="item item-text-wrap">
+          {{ 'AddSessionGeneralWorkWithStockItems' | translate }}
+        </div> 
+
+        <div class="list card">
+          <ion-checkbox 
+              ng-repeat="stockSpecie in vm.stockSpecies"
+              ng-model="vm.formData.workWithStockItems[stockSpecie.id]"
+              class="item-text-wrap">
+              {{ stockSpecie.name }}
+          </ion-checkbox>
+        </div>
+
+        <!-- LIVESTOCK (TRAINING ONLY) -->
+        <div ng-show="vm.formData.sessionTypeId == 1">
+
+          <ion-toggle 
+                ng-model="vm.formData.IF_trialTypes" 
+                class="item-text-wrap"
+                toggle-class="toggle-positive">
+            {{ 'AddSessionGeneralTrialTypesTitle'| translate }}
+          </ion-toggle>
+
+          <div  ng-show="vm.formData.IF_trialTypes"
+                class="card">
+
+
+            <label   class="item item-input item-select"> 
+              <span class="input-label">
+                  {{ 'AddSessionGeneralTrialType' | translate }}
+              </span>
+              <select ng-model="vm.formData.trialTypeId"
+                      ng-options="trialType.id as trialType.name for trialType in vm.trialTypes track by trialType.id">
+                  <option value='' translate="CommonSelect"></option>
+              </select>
+            </label>  
+
+            <label   class="item item-input item-select item-stacked-label"> 
+              <div class="item-text-wrap">
+                  {{ 'AddSessionGeneralTrialQuantity' | translate }}
+              </div>
+              <select ng-model="vm.formData.trialRange"
+                      ng-options="trialRange.id as trialRange.name for trialRange in vm.trialRanges track by trialRange.id">
+                  <option value='' translate="CommonSelect"></option>
+              </select>
+            </label>  
+
+            <label   class="item item-input item-select item-stacked-label"> 
+              <div class="item-text-wrap">
+                  {{ 'AddSessionGeneralHighestCompetitionDivision' | translate }}
+              </div>
+              <select ng-model="vm.formData.highestCompetitionDivision"
+                      ng-options="competitionDivision.id as competitionDivision.name for competitionDivision in vm.competitionDivisions track by competitionDivision.id">
+                  <option value='' translate="CommonSelect"></option>
+              </select>
+            </label> 
+
+            <label   class="item item-input item-select item-stacked-label"> 
+              <div class="item-text-wrap">
+                  {{ 'AddSessionGeneralHighestCompetitionAward' | translate }}
+              </div>
+              <select ng-model="vm.formData.highestCompetitionAward"
+                      ng-options="competitionAward.id as competitionAward.name for competitionAward in vm.competitionAwards track by competitionAward.id">
+                  <option value='' translate="CommonSelect"></option>
+              </select>
+            </label> 
+
+          </div>
+        </div>
+        <!-- END LIVESTOCK (TRAINING ONLY) -->
+
+      </div>
+
+      <!-- END LIVESTOCK (ONLY) -->
+
+
+      <!-- RACINGGREYHOUND (ONLY) -->
+      <div ng-show="vm.formData.petSubTypeId == 4">
+
+          <!-- RACINGGREYHOUND (ASSESSMENT ONLY) -->
+          <div ng-show="vm.formData.sessionTypeId == 2">
+
+            <label class="item item-input">
+              <span class="input-label">
+                {{ 'AddSessionGeneralDistance' | translate }}
+              </span>
+              <input ng-model="vm.formData.distance"
+                     type="number">
+            </label>
+
+            <label   class="item item-input item-select"> 
+              <span class="input-label">
+                  {{ 'AddSessionGeneralDistanceUnit' | translate }}
+              </span>
+              <select ng-model="vm.formData.distanceUnit"
+                      ng-options="unit.id as unit.name for unit in vm.distanceUnits track by unit.id">
+                  <option value='' translate="CommonSelect"></option>
+              </select>
+            </label>  
+
+            <label   class="item item-input item-select"> 
+              <span class="input-label">
+                  {{ 'AddSessionGeneralRunChangeQuality' | translate }}
+              </span>
+              <select ng-model="vm.formData.runChaseQuality"
+                      ng-options="quality.id as quality.name for quality in vm.runChaseQualities track by quality.id">
+                  <option value='' translate="CommonSelect"></option>
+              </select>
+            </label>  
+
+          </div> 
+          <!-- END RACINGGREYHOUND (ASSESSMENT ONLY) -->
+
+      </div>
+      <!-- END RACINGGREYHOUND (ONLY) -->
+
+    </div>
+
+<!-- END GENERAL -->
+</div>    

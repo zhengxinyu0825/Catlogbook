@@ -1,0 +1,78 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content
+      edge-drag-threshold="true"
+      drag-content="false">
+
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title" translate="MenuTitle"></h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close ui-sref="app.home">
+          {{ 'MenuHome' | translate }}
+        </ion-item>          
+
+        <ion-item menu-close ui-sref="app.profile">
+          {{ 'MenuProfile' | translate }}
+        </ion-item>   
+      
+        <ion-item ng-click="vm.menuActionSection = !vm.menuActionSection"
+                  class="item-divider">
+          {{ 'HomeActionsTitle' | translate }}
+        </ion-item> 
+        <div ng-show="vm.menuActionSection">
+          <ion-item menu-close ui-sref="app.activities">
+            {{ 'HomeActionsActivities' | translate }}
+          </ion-item>  
+          <ion-item menu-close ui-sref="app.behaviours">
+            {{ 'HomeActionsBehaviours' | translate }}
+          </ion-item>
+          <ion-item menu-close ui-sref="app.feeds">
+            {{ 'HomeActionsFeeds' | translate }}
+          </ion-item>
+          <ion-item menu-close ui-sref="app.socialisations">
+            {{ 'HomeActionsSocialisations' | translate }}
+          </ion-item>
+        </div>
+
+        <ion-item ng-click="vm.menuHealthSection = !vm.menuHealthSection"
+                  class="item-divider">
+          {{ 'MenuHealthTitle' | translate }}
+        </ion-item> 
+        <div ng-show="vm.menuHealthSection">
+          <ion-item menu-close ui-sref="app.treatments">
+            {{ 'MenuHealthTreatments' | translate }}
+          </ion-item>
+          <ion-item menu-close ui-sref="app.symptoms">
+            {{ 'MenuHealthSymptoms' | translate }}
+          </ion-item>          
+          <ion-item menu-close ui-sref="app.seizures">
+            {{ 'MenuHealthSeizures' | translate }}
+          </ion-item>  
+          <ion-item menu-close ui-sref="app.respirationRates">
+            {{ 'MenuHealthRespirationRate' | translate }}
+          </ion-item>           
+        </div>
+
+        
+        <ion-item class="logout" menu-close ng-click="vm.logout()">
+          {{ 'MenuLogout' | translate }}
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

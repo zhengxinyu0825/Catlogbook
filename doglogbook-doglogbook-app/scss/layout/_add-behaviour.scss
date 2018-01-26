@@ -1,0 +1,16 @@
+.view-add-behaviour {
+
+  section .item {
+    border-bottom-style: dotted;
+  }
+
+  section input {
+    text-align: right;
+  }
+
+  .behaviour {
+    .item {
+      margin:0px;
+    }
+  }
+}

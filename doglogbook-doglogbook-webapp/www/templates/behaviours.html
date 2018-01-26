@@ -1,0 +1,254 @@
+<h1 class="page-header">Behaviours</h1>
+
+<uib-tabset active="activeForm">
+  <uib-tab index="0" heading="History">
+
+
+    <p ng-show="vm.results && vm.results.length == 0">
+      No Results
+    </p>
+
+    <div  ng-show="vm.results && vm.results.length > 0">
+
+      <uib-accordion close-others="oneAtATime">
+        <div  ng-repeat="item in vm.results"
+              uib-accordion-group class="panel">
+
+            <uib-accordion-heading>
+              <b>
+                {{ vm.getTitleDetails(item) }}  
+              </b>
+              <span class="pull-right">
+                {{  item.dateRegistered | date:"d MMM" : 'UTC'  }}
+              </span>
+            </uib-accordion-heading>
+
+           <div class="item item-text-wrap">
+
+                  <div ng-show="item.behaviourType.id == 2">
+                    <!-- Destructive -->
+
+                    <h3 translate="BehavioursDestroyedObjects"></h3>
+                    <ul class="card list">
+                      <li class="item" ng-repeat="dItem in item.destroyedObjectItems">
+                        <b>{{ dItem.destroyedObject.name }}</b>
+                      </li>
+                    </ul>
+
+                    <span class="row" ng-show="item.otherDestroyedObject">
+                      {{ 'BehavioursOtherDestroyedObject' | translate }}
+                      <b>{{ item.otherDestroyedObject }}</b>
+                    </span>
+
+                    <span class="row" ng-show="item.ownerAtHome">
+                      {{ 'BehavioursOwnerAtHome' | translate }}
+                    </span>
+                    
+                  </div>
+
+                  <div ng-show="item.behaviourType.id == 7">
+                    <!-- Senior -->
+
+                    <div class="item">
+                      {{ 'AddBehaviourSeniorPaceUpAndDown' | translate }}
+                      <br>
+                      <b ng-show="item.paceUpAndDown">
+                        {{ 'CommonYes' | translate }}
+                      </b>
+                      <b ng-show="!item.paceUpAndDown">
+                        {{ 'CommonNo' | translate }}
+                      </b>
+                    </div>
+
+                    <div class="item">
+                      {{ 'AddBehaviourSeniorStareBlanklyAtWallsOrFloor' | translate }}
+                      <br>
+                      <b ng-show="item.stareBlanklyAtWallsOrFloor">
+                        {{ 'CommonYes' | translate }}
+                      </b>
+                      <b ng-show="!item.stareBlanklyAtWallsOrFloor">
+                        {{ 'CommonNo' | translate }}
+                      </b>
+                    </div>
+           
+                     <div class="item">
+                      {{ 'AddBehaviourSeniorStuckBehindObjects' | translate }}
+                      <br>
+                      <b ng-show="item.stuckBehindObjects">
+                        {{ 'CommonYes' | translate }}
+                      </b>
+                      <b ng-show="!item.stuckBehindObjects">
+                        {{ 'CommonNo' | translate }}
+                      </b>
+                    </div>
+
+                     <div class="item">
+                      {{ 'AddBehaviourSeniorRecogniseFamiliar' | translate }}
+                      <br>
+                      <b ng-show="item.recogniseFamiliar">
+                        {{ 'CommonYes' | translate }}
+                      </b>
+                      <b ng-show="!item.recogniseFamiliar">
+                        {{ 'CommonNo' | translate }}
+                      </b>
+                    </div>
+
+                     <div class="item">
+                      {{ 'AddBehaviourSeniorWalkWallsOrDoors' | translate }}
+                      <br>
+                      <b ng-show="item.walkWallsOrDoors">
+                        {{ 'CommonYes' | translate }}
+                      </b>
+                      <b ng-show="!item.walkWallsOrDoors">
+                        {{ 'CommonNo' | translate }}
+                      </b>
+                    </div>
+
+                     <div class="item">
+                      {{ 'AddBehaviourSeniorWalkAwayWhileAvoindPatted' | translate }}
+                      <br>
+                      <b ng-show="item.walkAwayWhileAvoindPatted">
+                        {{ 'CommonYes' | translate }}
+                      </b>
+                      <b ng-show="!item.walkAwayWhileAvoindPatted">
+                        {{ 'CommonNo' | translate }}
+                      </b>
+                    </div>
+
+                     <div class="item">
+                      {{ 'AddBehaviourSeniorUrinateOrDefecateInAreaKeptClean' | translate }}
+                      <br>
+                      <b ng-show="item.urinateOrDefecateInAreaKeptClean">
+                        {{ 'CommonYes' | translate }}
+                      </b>
+                      <b ng-show="!item.urinateOrDefecateInAreaKeptClean">
+                        {{ 'CommonNo' | translate }}
+                      </b>
+                    </div>
+
+                     <div class="item">
+                      {{ 'AddBehaviourSeniorDifficultyFindingFoodDroppped' | translate }}
+                      <br>
+                      <b ng-show="item.difficultyFindingFoodDroppped">
+                        {{ 'CommonYes' | translate }}
+                      </b>
+                      <b ng-show="!item.difficultyFindingFoodDroppped">
+                        {{ 'CommonNo' | translate }}
+                      </b>
+                    </div>
+
+                  </div>
+
+                  <div ng-show="item.behaviourType.id == 8">
+
+                     <div class="item" ng-show="item.nearResourceType">
+                      {{ 'AddBehaviourAggressiveNearResource' | translate }}
+                      <br>
+                      <b >
+                        {{ item.nearResourceType.name }}
+                      </b>
+                    </div>
+
+                     <div class="item" ng-show="item.behaviourDirectedToward">
+                      {{ 'AddBehaviourAggressiveDirectedToward' | translate }}
+                      <br>
+                      <b >
+                        {{ item.behaviourDirectedToward.name }}
+                      </b>
+                    </div>
+
+                     <div class="item" ng-show="item.species">
+                      {{ 'AddBehaviourAggressiveAnimalSpecies' | translate }}
+                      <br>
+                      <b >
+                        {{ item.species.name }} - {{ item.species.speciesType.name }}
+                      </b>
+                    </div>
+
+
+                  </div>
+
+
+                  <br>
+                  <h3 translate="BehavioursItems"></h3>
+                  <ul class="card list">
+                    <li ng-show="item.behaviourItems && item.behaviourItems.length == 0"
+                        class="item">
+                      <b translate="CommonMsgNoResults"></b>
+                    </li>
+                  
+                    <li ng-show="item.behaviourItems && item.behaviourItems.length > 0"
+                        class="item" ng-repeat="behaviourItem in item.behaviourItems">
+                      <b>{{ behaviourItem.behaviourItemType.name }}</b>
+                    </li>
+                  </ul>
+
+                  <div class="list-group pull-right">
+                    <button ng-click="vm.remove(item.id)"
+                            class="btn btn-default">
+                      Remove
+                    </button>
+                  </div>
+
+                </div>
+
+        </div>
+      </uib-accordion>
+
+    </div>
+
+
+  </uib-tab>
+  <uib-tab index="1" heading="Trendlines">
+
+
+     <div class="form-group">
+      <label for="search">Type</label>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <select ng-change="vm.eventChange(vm.selectedType)"
+                  class="form-control"
+                  ng-model="vm.selectedType"
+                  ng-options="type as type.name for type in vm.types track by type.id">
+              <option value=''>Select</option>
+          </select>
+        </div>
+      </div>
+    </div>  
+
+    <div ng-show="
+    vm.filteredTypes && 
+    vm.filteredTypes.length == 0">
+      No Results
+    </div>
+
+      
+    <div ng-show="
+    vm.filteredTypes && 
+    vm.filteredTypes.length > 0">
+      
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Behaviours</div>
+      <div class="panel-body">
+
+        <div class="container col-xs-12 col-sm-10 col-md-10 col-lg-10">
+          <canvas id="line"
+              class="chart chart-line" 
+              chart-data="data"
+              chart-labels="labels" 
+              chart-series="series"
+              chart-options="options">
+          </canvas> 
+        </div>
+      </div>
+    </div>
+
+    </div>
+
+  </uib-tab>
+</uib-tabset>
+
+
+<hr>
+

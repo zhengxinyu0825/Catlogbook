@@ -1,0 +1,372 @@
+<div class="session-assessment-development-section">
+    <!-- Assessment & Development Work -->
+    <ion-item class="item item-collapse rounded"
+              ng-click="vm.toggleGroup('AddSessionAssessmentDevelopmentTitle')"
+              ng-class="{active: vm.isGroupShown('AddSessionAssessmentDevelopmentTitle')}">
+        <i class="icon" ng-class="vm.isGroupShown('AddSessionAssessmentDevelopmentTitle') ? 'ion-minus' : 'ion-plus'"></i>
+      &nbsp;
+      {{ 'AddSessionAssessmentDevelopmentTitle' | translate }}
+    </ion-item>
+    <div ng-show="vm.isGroupShown('AddSessionAssessmentDevelopmentTitle')">
+
+      <label  class="item item-input item-select item-stacked-label"> 
+        <div class="item-text-wrap">
+          {{ 'AddSessionAssessmentDevelopmentSessionLevel' | translate }}
+        </div>     
+        <select ng-model="vm.formData.sessionLevelId"
+                ng-options="sessionLevel.id as sessionLevel.name for sessionLevel in vm.sessionLevels track by sessionLevel.id">
+            <option value='' translate="CommonSelect"></option>
+        </select>
+      </label>
+
+      <h3 class="item item-text-wrap">
+        {{ 'AddSessionAssessmentDevelopmentTrainingConductedTitle' | translate }}
+      </h3>    
+
+      <div class="list card">
+        
+        <label  class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionAssessmentDevelopmentWithDistractionsDuration' | translate }}
+          </span>
+          <select ng-model="vm.formData.withDistractionsDuration"
+                  ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+        </label>
+
+        <label  class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionAssessmentDevelopmentWithoutDistractionsDuration' | translate }}
+          </span>
+          <select ng-model="vm.formData.withoutDistractionsDuration"
+                  ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+        </label>
+
+        <label class="item item-input">
+          <span class="input-label">
+            {{ 'AddSessionAssessmentDevelopmentTemperatureValue' | translate }}
+          </span>
+          <input ng-model="vm.formData.temperatureValue"
+                 type="number">
+        </label>
+
+        <label   class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionAssessmentDevelopmentTemperatureUnit' | translate }}
+          </span>
+          <select ng-model="vm.formData.temperatureUnit"
+                  ng-options="t.id as t.name for t in vm.temperatureUnits track by t.id">
+              <option value='' translate="CommonSelect"></option>
+          </select>
+        </label>  
+
+        <label   class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionAssessmentDevelopmentWind' | translate }}
+          </span>
+          <select ng-model="vm.formData.wind"
+                  ng-options="t.id as t.name for t in vm.weatherLevels track by t.id">
+              <option value='' translate="CommonSelect"></option>
+          </select>
+        </label>  
+
+        <label   class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionAssessmentDevelopmentRain' | translate }}
+          </span>
+          <select ng-model="vm.formData.rain"
+                  ng-options="t.id as t.name for t in vm.weatherLevels track by t.id">
+              <option value='' translate="CommonSelect"></option>
+          </select>
+        </label>  
+      </div>
+
+      <!-- TRAINING (ONLY) -->
+
+      <div ng-show="vm.formData.sessionTypeId == 1">
+
+          <h3 class="item item-text-wrap">
+            {{ 'AddSessionTrainingPercentageSpent' | translate }}
+          </h3>    
+          <div class="list card">
+            
+            <label  class="item item-input item-select item-stacked-label"> 
+              <div class="item-text-wrap">
+                {{ 'AddSessionTrainingBuildingAssociationTargetRewardDuration' | translate }}
+              </div>
+              <select ng-model="vm.formData.buildingAssociationTargetRewardDuration"
+                      ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+                  <option value='' translate="CommonSelect"></option>
+              </select>      
+            </label>
+
+            <label  class="item item-input item-select item-stacked-label">
+              <div class="item-text-wrap">
+                {{ 'AddSessionTrainingTeachingAlertBehaviourDuration' | translate }}
+              </div> 
+              <select ng-model="vm.formData.teachingAlertBehaviourDuration"
+                      ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+                  <option value='' translate="CommonSelect"></option>
+              </select>      
+            </label>
+
+
+            <label  class="item item-input item-select item-stacked-label"> 
+              <div class="item-text-wrap">
+                {{ 'AddSessionTrainingTeachingReleaseBehaviourDuration' | translate }}
+              </div> 
+              <select ng-model="vm.formData.teachingReleaseBehaviourDuration"
+                      ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+                  <option value='' translate="CommonSelect"></option>
+              </select>      
+            </label>
+          </div>  
+
+      </div>
+
+      <!-- END TRAINING (ONLY) -->
+
+      <!-- ASSESSMENT (ONLY) -->
+
+      <div ng-show="vm.formData.sessionTypeId == 2">
+
+        <ion-toggle 
+              ng-model="vm.formData.IF_motivationDrive" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddSessionAssessmentDevelopmentMotivationScaleTitle'| translate }}
+        </ion-toggle>
+
+        <div  ng-show="vm.formData.IF_motivationDrive"
+              class="card">
+
+          <label  class="item item-input item-select"> 
+            <div class="item-text-wrap">
+              {{ 'AddSessionAssessmentDevelopmentSessionLevel' | translate }}
+            </div>     
+            <select ng-model="vm.formData.motivationDriveScale"
+                    ng-options="item.id as item.name for item in vm.motivationScales track by item.id">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>
+        </div>
+
+        <ion-toggle 
+              ng-model="vm.formData.IF_boldnessConfidenceScale" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddSessionAssessmentDevelopmentConfidenceScaleTitle'| translate }}
+        </ion-toggle>
+
+
+        <div  ng-show="vm.formData.IF_boldnessConfidenceScale"
+              class="card">
+
+          <label  class="item item-input item-select"> 
+            <div class="item-text-wrap">
+              {{ 'AddSessionAssessmentDevelopmentConfidenceScale' | translate }}
+            </div>     
+            <select ng-model="vm.formData.boldnessConfidenceScale"
+                    ng-options="item.id as item.name for item in vm.confidenceScales track by item.id">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>
+        </div>
+
+      </div>
+
+      <!-- END ASSESSMENT (ONLY) -->
+
+
+
+      <!-- Racing Greyhound (ONLY) -->
+      <div ng-show="vm.formData.petSubTypeId == 4">
+        <h3 class="item item-text-wrap">
+          {{ 'AddSessionAssessmentDevelopmentRacingGreyhoundActivities' | translate }}
+        </h3>  
+        <div class="card">
+          <div class="row">
+            <div class="col">
+
+              <label class="item item-input item-stacked-label"
+                    modal-select="" 
+                    has-search="true"
+                    modal-title="{{ 'AddSessionAssessmentDevelopmentRacingGreyhoundActivitiesTitle' | translate }}"
+                    cancel-search-button="{{ 'CommonClear' | translate }}"
+                    cancel-button="{{ 'CommonCancel' | translate }}"
+                    reset-button="{{ 'CommonReset' | translate }}"
+                    ng-model="vm.formData.selectedRacingGreyhoundActivity" 
+                    options="vm.racingGreyhoundActivities">
+                <span class="input-label">
+                    {{ 'CommonSelect' | translate }}
+                </span>
+                <input ng-model="vm.formData.selectedRacingGreyhoundActivity.name" 
+                       translate
+                       translate-attr-placeholder="CommonSelect" 
+                       type="text"
+                       ng-readonly="true">       
+                 <div class="option">
+                      <h2>{{option.name}}</h2>
+                  </div>
+              </label>
+
+              <button class="button button-block button-assertive button-outline"
+                      ng-disabled='!vm.formData.selectedRacingGreyhoundActivity'
+                      ng-click="vm.addGreyhoundActivityDetail(vm.formData.selectedRacingGreyhoundActivity)">
+                {{ 'CommonAdd' | translate }}
+              </button>
+
+              <div  ng-if="vm.formData.racingGreyhoundActivityItems && 
+                           vm.formData.racingGreyhoundActivityItems.length > 0"
+                    class="list">
+
+                <a class="item item-icon-right"
+                   ng-repeat="commandResult in vm.formData.racingGreyhoundActivityItems">
+                   <b>{{ commandResult.Name }}</b>
+                  <i  ng-click="vm.removeGreyhoundActivity(commandResult)"
+                      class="icon ion-android-close"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END Racing Greyhound (ONLY) -->
+
+
+      <!-- Scent Detection (ONLY) -->
+      <div ng-show="vm.formData.petSubTypeId == 5">
+
+        <h3 class="item item-text-wrap">
+          {{ 'AddSessionAssessmentDevelopmentEquipmentWithDistraction' | translate }}
+        </h3>    
+
+        <div class="card">
+          <div class="row">
+            <div class="col">
+
+              <label class="item item-input item-stacked-label"
+                    modal-select="" 
+                    has-search="true"
+                    modal-title="{{ 'AddSessionAssessmentDevelopmentEquipmentTitle' | translate }}"
+                    cancel-search-button="{{ 'CommonClear' | translate }}"
+                    cancel-button="{{ 'CommonCancel' | translate }}"
+                    reset-button="{{ 'CommonReset' | translate }}"
+                    ng-model="vm.formData.selectedEquipmentWithDistraction" 
+                    options="vm.scentDetectionOdours">
+                <span class="input-label">
+                    {{ 'CommonSelect' | translate }}
+                </span>
+                <input ng-model="vm.formData.selectedEquipmentWithDistraction.name" 
+                       translate
+                       translate-attr-placeholder="CommonSelect" 
+                       type="text"
+                       ng-readonly="true">       
+                 <div class="option">
+                      <h2>{{option.name}}</h2>
+                  </div>
+              </label>
+
+              <button class="button button-block button-assertive button-outline"
+                      ng-disabled='!vm.formData.selectedEquipmentWithDistraction'
+                      ng-click="vm.addEquipment(true,vm.formData.selectedEquipmentWithDistraction)">
+                {{ 'CommonAdd' | translate }}
+              </button>
+
+              <div  ng-if="vm.formData.equipmentWithDistractions && 
+                           vm.formData.equipmentWithDistractions.length > 0"
+                    class="list">
+
+                <a class="item item-icon-right"
+                   ng-repeat="commandResult in vm.formData.equipmentWithDistractions">
+                   <b>{{ commandResult.Name }}</b>
+                  <i  ng-click="vm.removeEquipmentItem(true,commandResult)"
+                      class="icon ion-android-close"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+     
+        <h3 class="item item-text-wrap">
+          {{ 'AddSessionAssessmentDevelopmentEquipmentWithNoDistraction' | translate }}
+        </h3>    
+
+        <div class="card">
+          <div class="row">
+            <div class="col">
+
+              <label class="item item-input item-stacked-label"
+                    modal-select="" 
+                    has-search="true"
+                    modal-title="{{ 'AddSessionAssessmentDevelopmentEquipmentTitle' | translate }}"
+                    cancel-search-button="{{ 'CommonClear' | translate }}"
+                    cancel-button="{{ 'CommonCancel' | translate }}"
+                    reset-button="{{ 'CommonReset' | translate }}"
+                    ng-model="vm.formData.selectedEquipmentWithNoDistraction" 
+                    options="vm.scentDetectionOdours">
+                <span class="input-label">
+                    {{ 'CommonSelect' | translate }}
+                </span>
+                <input ng-model="vm.formData.selectedEquipmentWithNoDistraction.name" 
+                       translate
+                       translate-attr-placeholder="CommonSelect" 
+                       type="text"
+                       ng-readonly="true">       
+                 <div class="option">
+                      <h2>{{option.name}}</h2>
+                  </div>
+              </label>
+
+              <button class="button button-block button-assertive button-outline"
+                      ng-disabled='!vm.formData.selectedEquipmentWithNoDistraction'
+                      ng-click="vm.addEquipment(false,vm.formData.selectedEquipmentWithNoDistraction)">
+                {{ 'CommonAdd' | translate }}
+              </button>
+
+              <div  ng-if="vm.formData.equipmentWithNoDistractions && 
+                           vm.formData.equipmentWithNoDistractions.length > 0"
+                    class="list">
+
+                <a class="item item-icon-right"
+                   ng-repeat="commandResult in vm.formData.equipmentWithNoDistractions">
+                   <b>{{ commandResult.Name }}</b>
+                  <i  ng-click="vm.removeEquipmentItem(false,commandResult)"
+                      class="icon ion-android-close"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>     
+
+
+        <!-- Scent Detection (TRAINING ONLY) -->
+        <div ng-show="vm.formData.sessionTypeId == 1">
+
+           <label  class="item item-input item-select item-stacked-label"> 
+            <div class="item-text-wrap">
+              {{ 'AddSessionAssessmentDevelopmentEquipmentConcentrationConditionDuration' | translate }}
+            </div> 
+            <select ng-model="vm.formData.concentrationConditionDuration"
+                    ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+                <option value='' translate="CommonSelect"></option>
+            </select>      
+          </label>
+
+        </div>
+        <!-- END Scent Detection (TRAINING ONLY) -->
+
+      </div>
+      <!-- END Scent Detection (ONLY) -->
+
+
+    </div>
+    <!-- END Assessment & Development Work -->
+
+</div>

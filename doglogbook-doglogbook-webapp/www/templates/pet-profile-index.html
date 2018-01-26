@@ -1,0 +1,291 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+
+    <uib-tabset active="activeForm">
+
+      <uib-tab index="0" heading="Weight History">
+
+        <div class="list-group pull-right">
+          <select
+                  class="form-control"
+                  ng-model="vm.selectedWeightUnit"
+                  ng-change="vm.weightUnitChange()"
+                  ng-options="weightUnit as weightUnit.name for weightUnit in vm.weightUnits track by weightUnit.id">
+          </select>
+        </div>
+
+        <p ng-show="vm.weightHistories && 
+                    vm.weightHistories.length == 0">
+          No Results
+        </p>
+
+        <div  ng-show="vm.weightHistories && vm.weightHistories.length > 0"
+              class="container col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+          <canvas   id="line" 
+                    class="chart chart-line chart-weight-container" 
+                    chart-data="data"
+                    chart-options="options"
+                    chart-labels="labels"
+                    chart-series="series">
+          </canvas>
+
+        </div>
+      </uib-tab>
+
+      <uib-tab index="1" heading="Weight Comparison">
+      
+        <div  class="row">
+
+          <div class="col-xs-12 col-sm-8 col-md-3 col-lg-4">
+
+             <div class="form-group">
+                <label>Breed</label>
+                <select
+                        class="form-control"
+                        ng-model="vm.selectedCompareBreed"
+                        ng-change="vm.compareBreedChange(vm.selectedCompareBreed)"
+                        ng-options="breed as breed.name for breed in vm.breeds track by breed.id">
+                  <option value=''>All</option>
+                </select>
+              </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+
+             <div class="form-group">
+                <label>Breed Percentage</label>
+                <select
+                        class="form-control"
+                        ng-disabled="!vm.selectedCompareBreed"
+                        ng-model="vm.selectedCompareBreedPercentage"
+                        ng-options="breedPercentage as breedPercentage.name for breedPercentage in vm.breedPercentages track by breedPercentage.id">
+                  <option value=''>All</option>
+                </select>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+
+             <div class="form-group">
+                <label>Age Unit</label>
+                <select
+                        class="form-control"
+                        ng-change="vm.ageTypeChange(vm.selectedCompareAgeType)"
+                        ng-model="vm.selectedCompareAgeType"
+                        ng-options="ageType as ageType.name for ageType in vm.ageTypes track by ageType.id">
+                  <option value=''>All</option>
+                </select>
+            </div>
+
+          </div>
+          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+
+             <div class="form-group">
+                <label>Age Range</label>
+                <select
+                        class="form-control"
+                        ng-disabled="!vm.selectedCompareAgeType"
+                        ng-model="vm.selectedCompareAgeRange"
+                        ng-options="ageRange as ageRange.name for ageRange in vm.ageRanges track by ageRange.id">
+                  <option value=''>All</option>
+                </select>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+
+             <div class="form-group">
+                <label>Sex</label>
+                <select
+                        class="form-control"
+                        ng-model="vm.selectedCompareSex"
+                        ng-options="petSex as petSex.name for petSex in vm.petSexs track by petSex.id">
+                  <option value=''>All</option>
+                </select>
+            </div>
+          </div>
+       </div>
+        <div class="row">
+
+          <div class="list-group pull-right">
+            <button ng-click="vm.compareWeightUnitChange()"
+                    class="form-control btn btn-default">
+              Compare
+            </button>
+          </div>
+
+        </div>
+
+      <hr>
+
+      <div ng-show="vm.comparisonResult">
+
+        <div class="list-group pull-right">
+          <select
+                  class="form-control"
+                  ng-model="vm.selectedCompareWeightUnit"
+                  ng-change="vm.compareWeightUnitChange()"
+                  ng-options="weightUnit as weightUnit.name for weightUnit in vm.weightUnits track by weightUnit.id">
+          </select>
+        </div>
+          
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <canvas id="line"
+            class="chart chart-bar" 
+            chart-data="weightComparisonData"
+            chart-labels="weightComparisonLabels" 
+            chart-series="weightComparisonSeries"
+            chart-colors="weightComparisonColors"
+            chart-options="weightComparisonOptions">
+          </canvas>   
+        </div>
+
+      </div>
+
+      </uib-tab>
+    </uib-tabset>
+
+  </div>
+</div>  
+
+<hr>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+  <h3>Activities ({{vm.activities.length}})</h3>
+
+  <p ng-show="vm.activities && vm.activities.length == 0">
+    No Results
+  </p>
+
+  <div  ng-if="vm.activities && vm.activities.length > 0"
+        class="counters-content">
+    <table  class="table table-bordered">
+      <tbody>
+        <tr ng-repeat="item in vm.activitiesGroups">
+          <td>{{ item[0] }}</td>
+          <th scope="row">{{ item[1] }}</th>        
+        </tr>
+      </tbody>
+    </table>        
+  </div>
+
+  </div>    
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+  <h3>Behaviours ({{vm.behaviours.length}})</h3>
+  <p ng-show="vm.behaviours && vm.behaviours.length == 0">
+    No Results
+  </p>
+
+  <div  ng-if="vm.behaviours && vm.behaviours.length > 0"
+        class="counters-content">
+    <table  class="table table-bordered">
+      <tbody>
+        <tr ng-repeat="item in vm.behavioursGroups">
+          <td>{{ item[0] }}</td>
+          <th scope="row">{{ item[1] }}</th>        
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>    
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+  <h3>Respiration Rates ({{vm.respirationRate.length}})</h3>
+
+  <p ng-show="vm.respirationRate && vm.respirationRate.length == 0">
+    No Results
+  </p>
+
+  </div>    
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+  <h3>Socialisations ({{vm.socialisation.length}})</h3>
+  <p ng-show="vm.socialisation && vm.socialisation.length == 0">
+    No Results
+  </p>
+
+  </div>    
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+  <h3>Treatments ({{vm.treatments.length}})</h3>
+
+  <p ng-show="vm.treatments && vm.treatments.length == 0">
+    No Results
+  </p>
+
+  <div  ng-if="vm.treatments && vm.treatments.length > 0"
+        class="counters-content">
+    <table  class="table table-bordered">
+      <tbody>
+        <tr ng-repeat="item in vm.treatmentsGroups">
+          <td>{{ item[0] }}</td>
+          <th scope="row">{{ item[1] }}</th>        
+        </tr>
+      </tbody>
+    </table>        
+  </div>
+
+  </div>    
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+  <h3>Symptoms ({{vm.symptoms.length}})</h3>
+  <p ng-show="vm.symptoms && vm.symptoms.length == 0">
+    No Results
+  </p>
+
+  <div  ng-if="vm.symptoms && vm.symptoms.length > 0"
+        class="counters-content">
+    <table  class="table table-bordered">
+      <tbody>
+        <tr ng-repeat="item in vm.symptomsGroups">
+          <td>{{ item[0] }}</td>
+          <th scope="row">{{ item[1] }}</th>        
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>    
+</div>
+
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+  <h3>Seizures ({{vm.seizures.length}})</h3>
+
+  <p ng-show="vm.seizures && vm.seizures.length == 0">
+    No Results
+  </p>
+
+  <div ng-if="vm.seizures && vm.seizures.length > 0"
+       class="counters-content">
+    <table  class="table table-bordered">
+      <tbody>
+        <tr ng-repeat="item in vm.seizuresGroups">
+          <td>{{ item[0] }}</td>
+          <th scope="row">{{ item[1] }}</th>        
+        </tr>
+      </tbody>
+    </table>        
+  </div>
+
+  </div>    
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+
+  </div>    
+</div>
+

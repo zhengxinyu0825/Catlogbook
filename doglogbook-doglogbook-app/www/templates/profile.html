@@ -1,0 +1,86 @@
+<ion-view class="view-profile" view-title="{{ 'ProfileTitle' | translate }}">
+
+<div class="bar bar-subheader">
+    <h4>{{ vm.userInfo.firstName }} {{ vm.userInfo.lastName }}</h4>
+</div>
+
+<ion-content scroll="true"
+             class="padding has-subheader">
+
+    <div class="list">
+
+
+    <label   class="item item-input item-select">
+      <span class="input-label requiredField">
+          {{ 'ProfileCountry' | translate }} *
+      </span>
+      <select ng-model="vm.selectedCountry"
+              ng-options="country as country.name for country in vm.countries track by country.id"
+              required>
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'ProfilePostCode' | translate }}
+      </span>
+      <input ng-model="vm.postCode"
+             type="text">
+    </label>
+
+    <h3 class="item item-text-wrap">
+      {{ 'ProfilePeopleIn' | translate }}
+    </h3>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'ProfileNumberChildren' | translate }}
+      </span>
+      <input ng-model="vm.children13"
+             type="number">
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'ProfileNumberTeens' | translate }}
+      </span>
+      <input ng-model="vm.teens"
+             type="number">
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'ProfileNumberAdults' | translate }}
+      </span>
+      <input ng-model="vm.adults"
+             type="number">
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'ProfileNumberSeniors' | translate }}
+      </span>
+      <input ng-model="vm.seniors"
+             type="number">
+    </label>
+
+    <div class="row">
+        <div class="col">
+            <button class="button button-block button-outline"
+                    ui-sref="app.home">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.update()"
+                    ng-disabled='!vm.selectedCountry'
+                    class="button button-block button-assertive">
+              {{ 'CommonUpdate' | translate }}
+            </button>
+        </div>
+    </div>
+    </div>
+
+  </ion-content>
+</ion-view>

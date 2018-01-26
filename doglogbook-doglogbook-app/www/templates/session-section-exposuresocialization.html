@@ -1,0 +1,427 @@
+<div class="session-section-exposuresocialization">
+
+<!-- EXPOSURE & SOCIALIZATION -->
+<ion-item class="item item-collapse rounded"
+          ng-click="vm.toggleGroup('AddSessionExposureSocialization')"
+          ng-class="{active: vm.isGroupShown('AddSessionExposureSocialization')}">
+    <i class="icon" ng-class="vm.isGroupShown('AddSessionExposureSocialization') ? 'ion-minus' : 'ion-plus'"></i>
+  &nbsp;
+  {{ 'AddSessionExposureSocialization' | translate }}
+</ion-item>
+<div ng-show="vm.isGroupShown('AddSessionExposureSocialization')">
+
+  <div class="item item-text-wrap">
+    {{ 'AddSessionPeopleEncountered' | translate }}
+  </div> 
+
+  <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSessionPeopleEncounteredGender' | translate }}
+    </span>
+    <select ng-model="vm.formData.peopleEnconteredGender"
+            ng-options="gender.id as gender.name for gender in vm.humanGenders track by gender.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>      
+  </label>
+
+  <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSessionPeopleEncounteredAgeRange' | translate }}
+    </span>
+    <select ng-model="vm.formData.peopleEnconteredAgeRange"
+            ng-options="ageRange.id as ageRange.name for ageRange in vm.ageRanges track by ageRange.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>      
+  </label>
+
+  <ion-toggle 
+        ng-model="vm.formData.IF_plannedEncounter" 
+        class="item-text-wrap"
+        toggle-class="toggle-positive">
+    {{ 'AddSessionPlannedEncounterTitle'| translate }}
+  </ion-toggle>
+
+  <div  ng-show="vm.formData.IF_plannedEncounter"
+        class="card">
+
+    <div class="item item-text-wrap">
+      {{ 'AddSessionPlannedEncounterSubTitle' | translate }}
+    </div> 
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionPlannedEncounterNumber' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterNumber"
+             type="number">
+    </label>
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSessionPlannedEncounterType' | translate }}
+      </span>
+      <select ng-model="vm.formData.plannedEncounterType"
+              ng-options="rel.id as rel.name for rel in vm.relationshipTypes track by rel.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>      
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSessionPeopleEncounteredGender' | translate }}
+      </span>
+      <select ng-model="vm.formData.plannedEncounterGender"
+              ng-options="gender.id as gender.name for gender in vm.humanGenders track by gender.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>      
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionPlannedEncounterChildren13Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterChildren13Number"
+             type="number">
+    </label>      
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionPlannedEncounterTeens1320Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterTeens1320Number"
+             type="number">
+    </label>  
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionPlannedEncounterAdults2065Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterAdults2065Number"
+             type="number">
+    </label>  
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionPlannedEncounterSeniors65Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterSeniors65Number"
+             type="number">
+    </label>              
+
+    <div class="item item-text-wrap">
+      {{ 'AddSessionUnplannedEncounterSubTitle' | translate }}
+    </div> 
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionUnplannedEncounterNumber' | translate }}
+      </span>
+      <input ng-model="vm.formData.unplannedEncounterNumber"
+             type="number">
+    </label>
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSessionUnplannedEncounterType' | translate }}
+      </span>
+      <select ng-model="vm.formData.unplannedEncounterType"
+              ng-options="rel.id as rel.name for rel in vm.relationshipTypes track by rel.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>      
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSessionPeopleEncounteredGender' | translate }}
+      </span>
+      <select ng-model="vm.formData.unplannedEncounterGender"
+              ng-options="gender.id as gender.name for gender in vm.humanGenders track by gender.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>      
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionUnplannedEncounterChildren13Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.unpPlannedEncounterChildren13Number"
+             type="number">
+    </label>      
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionUnplannedEncounterTeens1320Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.unplannedEncounterTeeens1320Number"
+             type="number">
+    </label>  
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionUnplannedEncounterAdults2065Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.unplannedEncounterAdults2065Number"
+             type="number">
+    </label>  
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionUnplannedEncounterSeniors65Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.unplannedEncounterSeniors65Number"
+             type="number">
+    </label>   
+
+  </div>
+
+  <ion-toggle 
+        ng-model="vm.formData.IF_DogEncounter" 
+        class="item-text-wrap"
+        toggle-class="toggle-positive">
+    {{ 'AddSessionDogEncounterTitle'| translate }}
+  </ion-toggle>
+
+  <div  ng-show="vm.formData.IF_DogEncounter"
+        class="card">
+
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionDogEncounterNumber' | translate }}
+      </span>
+      <input ng-model="vm.formData.dogEncounterNumber"
+             type="number">
+    </label>
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSessionDogEncounterRelationshipType' | translate }}
+      </span>
+      <select ng-model="vm.formData.dogEncounterRelationshipType"
+              ng-options="rel.id as rel.name for rel in vm.relationshipTypes track by rel.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>     
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSessionDogEncounterType' | translate }}
+      </span>
+      <select ng-model="vm.formData.dogEncounterType"
+              ng-options="dogType.id as dogType.name for dogType in vm.dogTypes track by dogType.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>  
+
+     <ion-toggle 
+          ng-model="vm.formData.dogEncounterSameBreed" 
+          class="item-text-wrap"
+          toggle-class="toggle-positive">
+      {{ 'AddSessionDogEncounterSameBreed'| translate }}
+    </ion-toggle>
+
+  </div>
+
+
+  <ion-toggle 
+        ng-model="vm.formData.IF_DistractedByAnimal" 
+        class="item-text-wrap"
+        toggle-class="toggle-positive">
+    {{ 'AddSessionDistractedByAnimalTitle'| translate }}
+  </ion-toggle>
+
+  <div  ng-show="vm.formData.IF_DistractedByAnimal">
+
+    <div class="list">
+      <ion-checkbox 
+          ng-repeat="species in vm.species"
+          ng-model="vm.formData.distractedByAnimalItems[species.id]"
+          class="item-text-wrap">
+          {{ species.name }} - {{ (species.speciesType.name) }}
+      </ion-checkbox>
+    </div>
+
+  </div>
+
+  <div class="item item-text-wrap">
+    {{ 'AddSessionSurfacesTitle' | translate }}
+  </div> 
+
+  <div class="list card">
+    <ion-checkbox 
+        ng-repeat="surface in vm.surfaceObstacles"
+        ng-model="vm.formData.surfacesItems[surface.id]"
+        class="item-text-wrap">
+        {{ surface.name }}
+    </ion-checkbox>
+  </div>
+
+  <div class="item item-text-wrap">
+    {{ 'AddSessionUnplannedEncounterSubTitle' | translate }}
+  </div> 
+
+  <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSessionTransportationType' | translate }}
+    </span>
+    <select ng-model="vm.formData.transportationTypeId"
+            ng-options="transport.id as transport.name for transport in vm.transportationTypes track by transport.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>
+  </label>  
+
+
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">
+        {{ 'AddSessionTransportationDuration' | translate }}
+    </span>
+
+    <div class="range range-positive">
+      <i class="icon ion-ios-stopwatch-outline"></i>
+      <input  type="range" 
+              ng-model="vm.formData.transportationDuration" 
+              name="duration" 
+              min="0" max="{{vm.maxSessionDurationMin}}"
+              value="0">             
+    </div>
+    {{  vm.getDurationFormat(vm.formData.transportationDuration) }}   
+  </label>
+
+  <label class="item item-input">
+    <span class="input-label">
+      {{ 'AddSessionTransportationDistance' | translate }}
+    </span>
+    <input ng-model="vm.formData.transportationDistance"
+           type="number">
+  </label>
+
+  <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSessionTransportationDistanceUnit' | translate }}
+    </span>
+    <select ng-model="vm.formData.transportationDistanceUnit"
+            ng-options="unit.id as unit.name for unit in vm.distanceUnits track by unit.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>
+  </label>  
+
+  <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSessionTransportationTravelQuality' | translate }}
+    </span>
+    <select ng-model="vm.formData.transportationTravelQuality"
+            ng-options="quality.id as quality.name for quality in vm.travelQuality track by quality.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>
+  </label>  
+
+
+  <div class="item item-text-wrap">
+    {{ 'AddSessionSpentTetheredTitle' | translate }}
+  </div> 
+
+
+  <label class="item item-input item-stacked-label">
+    <span class="input-label">
+        {{ 'AddSessionSpentTetheredDuration' | translate }}
+    </span>
+    <div class="range range-positive">
+      <i class="icon ion-ios-stopwatch-outline"></i>
+      <input  type="range" 
+              ng-model="vm.formData.spentTetheredDuration" 
+              name="duration" 
+              min="0" max="{{vm.maxSessionDurationMin}}"
+              value="0">             
+    </div>
+    {{  vm.getDurationFormat(vm.formData.spentTetheredDuration) }}   
+  </label>
+
+  <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSessionSpentTetheredTypeId' | translate }}
+    </span>
+    <select ng-model="vm.formData.spentTetheredTypeId"
+            ng-options="locType.id as locType.name for locType in vm.locationTypes track by locType.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>
+  </label>  
+
+  <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSessionSpentTetheredTravelQuality' | translate }}
+    </span>
+    <select ng-model="vm.formData.spentTetheredTravelQuality"
+            ng-options="quality.id as quality.name for quality in vm.travelQuality track by quality.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>
+  </label>  
+
+
+  <div class="item item-text-wrap">
+    {{ 'AddSessionCreatedItems' | translate }}
+  </div> 
+
+  <div ng-repeat="itemType in vm.transportationTypes">
+    <ion-checkbox 
+        ng-model="vm.formData.createdItems[itemType.id]"
+        class="item-text-wrap">
+        {{ itemType.name }}
+    </ion-checkbox>
+    <section ng-show="vm.formData.createdItems[itemType.id]">
+
+     <label class="item item-input item-stacked-label">
+        <span class="input-label">
+            {{ 'AddSessionCreatedDuration' | translate }}*
+        </span>
+        <div class="range range-positive">
+          <i class="icon ion-ios-stopwatch-outline"></i>
+          <input  type="range" 
+                  ng-model="vm.formData.createdDurations[itemType.id]" 
+                  name="duration" 
+                  min="0" max="{{vm.maxSessionDurationMin}}"
+                  value="0">             
+        </div>
+        {{  vm.getDurationFormat(vm.formData.createdDurations[itemType.id]) }}   
+      </label>
+
+     <label   class="item item-input item-select"> 
+        <span class="input-label">
+            {{ 'AddSessionCreatedType' | translate }}
+        </span>
+        <select ng-model="vm.formData.createdLocations[itemType.id]"
+                ng-options="lType.id as lType.name for lType in vm.locationTypes track by lType.id">
+            <option value='' translate="CommonNone"></option>
+        </select>
+      </label>   
+
+      <label class="item item-input item-select">
+        <span class="input-label">
+         {{ 'AddSessionCreatedTravel' | translate }}
+        </span>
+        <select ng-model="vm.formData.createdQualities[itemType.id]"
+                ng-options="quality.id as quality.name for quality in vm.travelQuality track by quality.id">
+            <option value='' translate="CommonSelect"></option>
+        </select>            
+      </label>
+
+    </section>
+  </div>
+
+  <label class="item item-input item-stacked-label">
+    <div class="item-text-wrap">
+        {{ 'AddSessionObservedTime' | translate }}
+    </div>   
+    <div class="range range-positive">
+      <i class="icon ion-ios-stopwatch-outline"></i>
+      <input  type="range" 
+              ng-model="vm.formData.observedTime" 
+              name="duration" 
+              min="0" max="{{vm.maxSessionDurationMin}}"
+              value="0">             
+    </div>
+    {{  vm.getDurationFormat(vm.formData.observedTime) }}   
+  </label>
+</div>
+<!-- END EXPOSURE & SOCIALIZATION -->
+
+</div>

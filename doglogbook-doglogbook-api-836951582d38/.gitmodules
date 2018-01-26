@@ -1,0 +1,12 @@
+[submodule "lib/doglogbook-db"]
+	path = lib/doglogbook-db
+	url = git@bitbucket.org:doglogbook/doglogbook-db
+[submodule "lib/smartsports.data"]
+	path = lib/smartsports.data
+	url = git@bitbucket.org:doglogbook/smartsports.data
+[submodule "lib/smartsports.mvc"]
+	path = lib/smartsports.mvc
+	url = git@bitbucket.org:doglogbook/smartsports.mvc
+[submodule "lib/stasone-components"]
+	path = lib/stasone-components
+	url = git@bitbucket.org:doglogbook/statsone-components

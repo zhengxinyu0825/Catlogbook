@@ -1,0 +1,49 @@
+<div class="container">
+
+  <form name='form_login' class="form-signin" novalidate>
+
+    <div class="logo">
+      <img ng-src="./img/dlb-logo-v2.png"></img>
+    </div>
+
+
+    <label  for="inputEmail"
+            translate="ProfileEmail"></label>
+
+
+    <input type="email"
+           class="form-control"
+           translate
+           translate-attr-placeholder="ProfileEmail"
+           name='userName'
+           ng-model='vm.formData.userName'
+           required>
+
+
+    <br>
+
+    <label  for="inputPassword"
+            translate="ProfilePassword"></label>
+
+
+
+    <input type="password"
+           class="form-control"
+           translate
+           translate-attr-placeholder="ProfilePassword"
+           name='password'
+           ng-model='vm.formData.password' required>
+
+    <br>
+
+    <button ng-click="vm.login(vm.formData)"
+            ng-disabled='form_login.$invalid'
+            
+            class="btn btn-lg btn-warning btn-block"
+            type="button"
+            style="background-color: #139eeb; ">
+        {{ 'LoginLogin' | translate }}
+    </button>
+  </form>
+
+</div>

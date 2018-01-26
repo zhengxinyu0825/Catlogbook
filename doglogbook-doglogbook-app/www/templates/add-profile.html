@@ -1,0 +1,88 @@
+<ion-view class="view-add-pet" view-title="{{ 'ProfileTitle' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<div class="bar bar-subheader">
+    <h4 translate="ProfileSectionOwner"></h4>
+</div>
+
+<ion-content scroll="true"
+             class="extra-padding has-subheader">
+
+    <div class="list">
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label"
+            translate="ProfileFirstName"></span>
+      <input ng-model="vm.firstName" type="text" required>
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label"
+            translate="ProfileLastName"></span>
+      <input ng-model="vm.lastName" type="text" required>
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label"
+            translate="ProfileEmail"></span>
+      <input ng-model="vm.email" type="email" required>
+    </label>
+
+     <label class="item item-input item-stacked-label">
+        <span class="input-label" 
+              translate="ProfileAge">
+        </span>
+        <input ng-model="vm.age" type="number" required>
+     </label>
+
+     <label class="item item-input item-select">
+        <span class="input-label" 
+              translate="ProfileSex">
+        </span>
+        <select ng-model="vm.sex" required>
+          <option value='0' translate="ProfileSexMale"></option>
+          <option value='1' translate="ProfileSexFemale"></option>
+        </select>
+     </label>
+
+     <label class="item item-input item-stacked-label">
+        <span class="input-label" 
+              translate="ProfilePostCode">
+        </span>
+        <input ng-model="vm.postcode" type="number" required>
+     </label>
+
+     <span class="input-label input-long" 
+          translate="ProfileNumberOfDogs">
+     </span>
+     <label class="item item-input item-stacked-label">
+        <input ng-model="vm.numberOfDogs" type="number" required>
+     </label>
+
+
+
+
+      <div class="row">
+          <div class="col">
+              <button ui-sref="app.home"
+                      class="button button-block button-assertive">
+                {{ 'CommonDone' | translate }}
+              </button>
+          </div>
+      </div>
+
+    </div>
+
+</ion-content>
+
+</ion-view>

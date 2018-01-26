@@ -1,0 +1,21 @@
+// Radio
+.item-radios-inline {
+  display: flex;
+
+  .left {
+    border-top-left-radius: 2em !important;
+    border-bottom-left-radius: 2em !important;
+  }
+  
+  .right {
+    border-top-right-radius: 2em !important;
+    border-bottom-right-radius: 2em !important;
+  }
+
+  .item.item-radio {
+    width: 50%;
+    .item-content {
+      overflow: visible;
+    }
+  }
+}

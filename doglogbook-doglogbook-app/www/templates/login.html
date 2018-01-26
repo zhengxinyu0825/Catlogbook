@@ -1,0 +1,71 @@
+<ion-view class="view-login">
+<ion-content scroll="true" class="extra-padding">
+
+<div class="list">
+
+  <div class="row">
+      <div class="col">
+          <img class="title-logo" ng-src="./img/dlb-logo-v2.png"></img>
+      </div>
+  </div>
+
+
+  <form name='form_login' novalidate>
+    <div class="login-form">
+      
+      <label class="item item-input  item-floating-label">
+        <span class="input-label requiredField" 
+              translate="ProfileEmail"></span>
+        <input type="email" 
+               translate
+               translate-attr-placeholder="ProfileEmail"
+               name='userName' 
+               ng-model='vm.formData.userName'
+               required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span  class="input-label requiredField" 
+               translate="ProfilePassword">   
+        </span>
+        <i     class='icon ion-ios-eye icon-password fade'
+               type="button"
+               ng-click='vm.showPassword(vm.passwordType)' 
+               ng-disabled='vm.formData.password'
+               ng-hide='!vm.formData.password'></i>
+        <input type="{{ vm.passwordType }}" 
+               translate
+               translate-attr-placeholder="ProfilePassword"
+               name='password'
+               ng-model='vm.formData.password' required>
+      </label>
+
+    </div>
+
+    <button class="button button-block button-assertive" 
+            ng-disabled='form_login.$invalid'
+            type="button"
+            ng-click="vm.login(vm.formData)">
+      {{ 'LoginLogin' | translate }}
+    </button>
+
+    <button class="button button-outline button-block button-assertive" 
+            type="button"
+            ui-sref="signup">
+      {{ 'LoginCreateAccount' | translate }}
+    </button>
+
+    <button onclick="window.open('https://doglogbook.com/Account/ForgotPassword', '_system', 'location=no');"
+            class="button button-block button-calm"
+            type="button">
+      {{ 'LoginForgotPassword' | translate }}
+    </button>
+    
+  </form>
+
+</div>
+
+
+</ion-content>
+
+</ion-view>

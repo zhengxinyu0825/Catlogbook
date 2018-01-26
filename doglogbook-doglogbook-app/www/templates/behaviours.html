@@ -1,0 +1,221 @@
+<ion-view class="view-behaviours" view-title="{{ 'BehavioursTitle' | translate }}">
+
+<ion-content scroll="true" class="has-header padding">
+
+  <div class="list">
+
+   <label class="item item-input item-select">
+      <span class="input-label requiredField" 
+            translate="CommonMsgChooseDog">
+      </span>
+      <select ng-model="vm.selectedPet"
+              ng-options="pet as pet.name for pet in vm.pets track by pet.id" 
+              ng-change="vm.petChange(vm.selectedPet)"
+              required>
+        <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <div class="card" ng-repeat="item in vm.results">
+      <div class="item item-text-wrap">
+        <p style="text-align: right;">
+          {{ item.dateCreated | date:"d MMM" : 'UTC' }}</p>
+        <h1 ng-show="item.behaviourType">
+          {{ item.behaviourType.name }}
+        </h1>
+
+        <span class="row" ng-show="item.dateRegistered">
+          {{ 'BehavioursDateRegistered' | translate }}
+          <b>{{ item.dateRegistered | date:"d MMM" : 'UTC' }}</b>
+        </span>
+
+
+        <div ng-show="item.behaviourType.id == 2">
+          <!-- Destructive -->
+
+          <h3 translate="BehavioursDestroyedObjects"></h3>
+          <ul class="card list">
+
+            <li ng-show="item.destroyedObjectItems && item.destroyedObjectItems.length == 0"
+                class="item">
+              <b translate="CommonMsgNoResults"></b>
+            </li>
+
+            <li class="item" 
+                ng-show="item.destroyedObjectItems && item.destroyedObjectItems.length > 0"
+                ng-repeat="dItem in item.destroyedObjectItems">
+              <b>{{ dItem.destroyedObject.name }}</b>
+            </li>
+          </ul>
+
+          <span class="row" ng-show="item.otherDestroyedObject">
+            {{ 'BehavioursOtherDestroyedObject' | translate }}
+            <b>{{ item.otherDestroyedObject }}</b>
+          </span>
+
+          <span class="row" ng-show="item.ownerAtHome">
+            {{ 'BehavioursOwnerAtHome' | translate }}
+          </span>
+          
+        </div>
+
+        <div ng-show="item.behaviourType.id == 7">
+          <!-- Senior -->
+
+          <div class="item">
+            {{ 'AddBehaviourSeniorPaceUpAndDown' | translate }}
+            <br>
+            <b ng-show="item.paceUpAndDown">
+              {{ 'CommonYes' | translate }}
+            </b>
+            <b ng-show="!item.paceUpAndDown">
+              {{ 'CommonNo' | translate }}
+            </b>
+          </div>
+
+          <div class="item">
+            {{ 'AddBehaviourSeniorStareBlanklyAtWallsOrFloor' | translate }}
+            <br>
+            <b ng-show="item.stareBlanklyAtWallsOrFloor">
+              {{ 'CommonYes' | translate }}
+            </b>
+            <b ng-show="!item.stareBlanklyAtWallsOrFloor">
+              {{ 'CommonNo' | translate }}
+            </b>
+          </div>
+ 
+           <div class="item">
+            {{ 'AddBehaviourSeniorStuckBehindObjects' | translate }}
+            <br>
+            <b ng-show="item.stuckBehindObjects">
+              {{ 'CommonYes' | translate }}
+            </b>
+            <b ng-show="!item.stuckBehindObjects">
+              {{ 'CommonNo' | translate }}
+            </b>
+          </div>
+
+           <div class="item">
+            {{ 'AddBehaviourSeniorRecogniseFamiliar' | translate }}
+            <br>
+            <b ng-show="item.recogniseFamiliar">
+              {{ 'CommonYes' | translate }}
+            </b>
+            <b ng-show="!item.recogniseFamiliar">
+              {{ 'CommonNo' | translate }}
+            </b>
+          </div>
+
+           <div class="item">
+            {{ 'AddBehaviourSeniorWalkWallsOrDoors' | translate }}
+            <br>
+            <b ng-show="item.walkWallsOrDoors">
+              {{ 'CommonYes' | translate }}
+            </b>
+            <b ng-show="!item.walkWallsOrDoors">
+              {{ 'CommonNo' | translate }}
+            </b>
+          </div>
+
+           <div class="item">
+            {{ 'AddBehaviourSeniorWalkAwayWhileAvoindPatted' | translate }}
+            <br>
+            <b ng-show="item.walkAwayWhileAvoindPatted">
+              {{ 'CommonYes' | translate }}
+            </b>
+            <b ng-show="!item.walkAwayWhileAvoindPatted">
+              {{ 'CommonNo' | translate }}
+            </b>
+          </div>
+
+           <div class="item">
+            {{ 'AddBehaviourSeniorUrinateOrDefecateInAreaKeptClean' | translate }}
+            <br>
+            <b ng-show="item.urinateOrDefecateInAreaKeptClean">
+              {{ 'CommonYes' | translate }}
+            </b>
+            <b ng-show="!item.urinateOrDefecateInAreaKeptClean">
+              {{ 'CommonNo' | translate }}
+            </b>
+          </div>
+
+           <div class="item">
+            {{ 'AddBehaviourSeniorDifficultyFindingFoodDroppped' | translate }}
+            <br>
+            <b ng-show="item.difficultyFindingFoodDroppped">
+              {{ 'CommonYes' | translate }}
+            </b>
+            <b ng-show="!item.difficultyFindingFoodDroppped">
+              {{ 'CommonNo' | translate }}
+            </b>
+          </div>
+
+        </div>
+
+        <div ng-show="item.behaviourType.id == 8">
+
+           <div class="item" ng-show="item.nearResourceType">
+            {{ 'AddBehaviourAggressiveNearResource' | translate }}
+            <br>
+            <b >
+              {{ item.nearResourceType.name }}
+            </b>
+          </div>
+
+           <div class="item" ng-show="item.behaviourDirectedToward">
+            {{ 'AddBehaviourAggressiveDirectedToward' | translate }}
+            <br>
+            <b >
+              {{ item.behaviourDirectedToward.name }}
+            </b>
+          </div>
+
+           <div class="item" ng-show="item.species">
+            {{ 'AddBehaviourAggressiveAnimalSpecies' | translate }}
+            <br>
+            <b >
+              {{ item.species.name }} - {{ item.species.speciesType.name }}
+            </b>
+          </div>
+
+
+        </div>
+
+
+        <br>
+        <h3 translate="BehavioursItems"></h3>
+        <ul class="card list">
+          <li ng-show="item.behaviourItems && item.behaviourItems.length == 0"
+              class="item">
+            <b translate="CommonMsgNoResults"></b>
+          </li>
+        
+          <li ng-show="item.behaviourItems && item.behaviourItems.length > 0"
+              class="item" ng-repeat="behaviourItem in item.behaviourItems">
+            <b>{{ behaviourItem.behaviourItemType.name }}</b>
+          </li>
+        </ul>
+
+      </div>
+      <div class="item item-divider item-divider-buttons">
+          <button class="button button-outline icon ion-trash-a"
+                  ng-click="vm.remove(item.id)"></button>
+      </div>
+    </div>
+
+    <p  ng-show="!vm.hasResults()"
+        class="filter-empty" 
+        translate="CommonMsgNoResults"></p>
+
+    <div  ng-show="vm.hasResults()"
+          class="filter-empty">
+      <div class="item item-text-wrap">
+        {{ 'CommonMsgOlderInformation' | translate }}
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
+
+</ion-view>

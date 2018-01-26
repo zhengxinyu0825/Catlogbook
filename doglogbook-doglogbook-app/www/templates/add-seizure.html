@@ -1,0 +1,118 @@
+<ion-view class="view-add-seizure" view-title="{{ 'AddSeizureTitle' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header padding">
+  
+  <form name='form_login' novalidate>
+  <div class="list">
+
+   <label class="item item-input item-select">
+      <span class="input-label requiredField">
+          {{ 'AddSeizureType' | translate }}*
+      </span>    
+      <select ng-model="vm.formData.seizureType" 
+              ng-options="seizureType as seizureType.name for seizureType in vm.seizureTypes track by seizureType.id"
+              required>
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+   <label class="item item-input item-stacked-label">
+      <span class="input-label requiredField">
+          {{ 'AddSeizureLength' | translate }}*
+      </span>
+      <div class="range range-positive">
+        <i class="icon ion-ios-stopwatch-outline"></i>
+        <input  type="range" 
+                ng-model="vm.formData.duration" 
+                name="duration" 
+                min="0" max="{{vm.maxSeizureDurationMin}}"
+                value="0"
+                required>             
+      </div>
+      {{  vm.getDurationFormat(vm.formData.duration) }}   
+    </label>
+
+
+    <div class="item item-text-wrap">
+    {{ 'AddSeizureSigns' | translate }}
+    </div> 
+    <div class="list card">   
+      <ion-toggle 
+                  ng-repeat="seizureSignType in vm.seizureSignTypes"
+                  ng-model="vm.formData.seizureSignTypes[seizureSignType.id]"
+                  class="item-text-wrap"
+                  toggle-class="toggle-positive">
+            {{ seizureSignType.name }}
+      </ion-toggle>
+    </div> 
+
+    <label   class="item item-stacked-label item-select item-text-wrap">
+      <div class="item-text-wrap">
+      {{ 'AddSeizureBodyStatePosition' | translate }}
+      </div>      
+      <select ng-model="vm.formData.seizureBodyStatePosition" 
+              ng-options="seizureBodyStatePosition as seizureBodyStatePosition.name for seizureBodyStatePosition in vm.seizureBodyStatePositions track by seizureBodyStatePosition.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <label   class="item item-stacked-label item-select item-text-wrap">
+      <div class="item-text-wrap">
+      {{ 'AddSeizureBodyState' | translate }}
+      </div>      
+      <select ng-model="vm.formData.seizureBodyState" 
+              ng-options="seizureBodyState as seizureBodyState.name for seizureBodyState in vm.seizureBodyStates track by seizureBodyState.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+
+    <div class="item item-text-wrap">
+    {{ 'AddSeizureAfterSigns' | translate }}
+    </div>     
+
+    <div class="list card">
+      <ion-checkbox 
+          ng-repeat="seizureAfterSignType in vm.seizureAfterSignTypes"
+          ng-model="vm.formData.seizureAfterSigns[seizureAfterSignType.id]"
+          ng-change="vm.testCheckboxChange(seizureAfterSignType.id, vm.formData.seizureAfterSigns[seizureAfterSignType.id])"
+          class="item-text-wrap">
+          {{ seizureAfterSignType.name }}
+      </ion-checkbox>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <button ui-sref="app.home"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.save(vm.formData)"
+                    ng-disabled='form_login.$invalid'
+                    class="button button-block button-assertive">
+              {{ 'CommonSave' | translate }}
+            </button>
+        </div>
+    </div>
+
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

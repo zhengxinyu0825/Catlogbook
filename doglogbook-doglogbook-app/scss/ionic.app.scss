@@ -1,0 +1,54 @@
+@charset 'UTF-8';
+
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+$font-family-sans-serif:        "Roboto", sans-serif !default;
+$font-family-light-sans-serif:  "Roboto-Light", sans-serif-light !default;
+
+
+@import 'config',
+        'www/lib/ionic/scss/ionic',
+        
+        // elements
+        'input',  
+        'button',
+
+        // sections
+        'bar',
+        'form',
+        'leftmenu',
+
+        // layout
+        'layout/intro',
+        'layout/home',
+        'layout/pet-home',
+        'layout/login',
+        'layout/profile',
+        'layout/add-pet',
+        'layout/add-activity',
+        'layout/initialactivityrate',
+        'layout/treatments',
+        'layout/add-treatment',
+        'layout/add-behaviour',
+        'layout/add-session',
+        'layout/command-modal',
+        'layout/greyhound-activity-modal',
+        'layout/seizures',
+        'layout/behaviours',
+        'layout/add-socialisation',
+        'layout/alerts',
+        'layout/add-feed',
+        'layout/delete-pet',
+
+
+        // components
+        'components/popup',
+        'components/action-sheet',
+        'components/hscrollcards',
+        'components/timeline',
+        'components/groupedRadio',
+        'components/accordion',
+        'components/progress-wizard',
+        'components/heatmap';
+
+

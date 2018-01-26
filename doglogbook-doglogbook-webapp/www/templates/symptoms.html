@@ -1,0 +1,33 @@
+<h1 class="page-header">Symptoms</h1>
+
+<p ng-show="vm.results && vm.results.length == 0">
+  No Results
+</p>
+
+<div  ng-show="vm.results && vm.results.length > 0">
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Symptom</th>
+        <th>Frequency</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in vm.results">
+        <td>{{ item.dateCreated |  date:"d MMM" : 'UTC'   }}</td>
+        <td>{{ item.symptomType.name }}</td>
+        <td>{{ item.symptomFrequency.name }}</td>
+        <td>
+          <button ng-click="vm.remove(item.id)"
+                  type="button" class="btn  btn-sm btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

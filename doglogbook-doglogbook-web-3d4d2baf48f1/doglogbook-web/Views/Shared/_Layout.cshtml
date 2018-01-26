@@ -1,0 +1,129 @@
+﻿@using System.Configuration
+@{
+    Html.SetI18NPrefix("Views:Shared:Layout:");
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="@Url.Content(Links.Content.img.apple_icon_57x57_png)">
+    <link rel="apple-touch-icon" sizes="60x60" href="@Url.Content(Links.Content.img.apple_icon_60x60_png)">
+    <link rel="apple-touch-icon" sizes="72x72" href="@Url.Content(Links.Content.img.apple_icon_72x72_png)">
+    <link rel="apple-touch-icon" sizes="76x76" href="@Url.Content(Links.Content.img.apple_icon_76x76_png)">
+    <link rel="apple-touch-icon" sizes="114x114" href="@Url.Content(Links.Content.img.apple_icon_114x114_png)">
+    <link rel="apple-touch-icon" sizes="120x120" href="@Url.Content(Links.Content.img.apple_icon_120x120_png)">
+    <link rel="apple-touch-icon" sizes="144x144" href="@Url.Content(Links.Content.img.apple_icon_144x144_png)">
+    <link rel="apple-touch-icon" sizes="152x152" href="@Url.Content(Links.Content.img.apple_icon_152x152_png)">
+    <link rel="apple-touch-icon" sizes="180x180" href="@Url.Content(Links.Content.img.apple_icon_180x180_png)">
+    <link rel="icon" type="image/png" sizes="192x192" href="@Url.Content(Links.Content.img.android_icon_192x192_png)">
+    <link rel="icon" type="image/png" sizes="32x32" href="@Url.Content(Links.Content.img.favicon_32x32_png)">
+    <link rel="icon" type="image/png" sizes="96x96" href="@Url.Content(Links.Content.img.favicon_96x96_png)">
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content(Links.Content.img.favicon_16x16_png)">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="@Url.Content(Links.Content.img.ms_icon_144x144_png)">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>@Html.T("Title", "doglogbook - {subTitle}", args: new {subTitle = (string)ViewBag.Title})</title>
+
+    @Styles.Render(
+        "~/Content/css",
+        "https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+    )
+    @RenderSection("Styles", false)
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="/">
+                    <img class="logoHeader" src="~/Content/img/logo-header.png" alt="doglogbook Home">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                @Html.Partial(MVC.Shared.Views._LoginPartial)
+            </div>
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <!-- Header -->
+    <div class="intro-header">
+        <div class="col-lg-12">
+            <div class="intro-message">
+
+                <div class="logoMain"><img class="logo" src="@Url.Content("~/Content/img/doglogbook-logo.png")" /></div>
+                <hr class="intro-divider">
+                <h4>Your dog’s best friend</h4>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.intro-header -->
+    <!-- Page Content -->
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="/#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="/contact">Contact Us</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="/faq">FAQ</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">
+                        Copyright 2015-2016 – Designed by Smart Sports Solutions – All rights reserved University of Sydney – Version v@(ConfigurationManager.AppSettings["VersionNumber"])
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-50452478-7', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

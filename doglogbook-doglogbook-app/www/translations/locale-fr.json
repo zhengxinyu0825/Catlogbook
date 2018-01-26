@@ -1,0 +1,15 @@
+{
+"CommonYes":"Oui",
+"CommonNo" :"Non",
+"CommonOk" :"OK",
+"CommonCancel" :"Annuler",
+"CommonDone" :"Fini",
+"CommonLoading" :"Chargement",
+"CommonPullToRefresh" :"Rafraîchir - tirer vers le bas",
+"CommonPrevious" :"Précédent",
+"CommonBack" :"Retour",
+"CommonNext" :"Suivant",
+"CommonLogin" :"Connexion",
+
+"SignUpRegister" :"SignUpRegister"
+}

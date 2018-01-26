@@ -1,0 +1,24 @@
+<div class="view-delete-pet">
+
+    <div class="list">
+
+    <h2 class="item item-text-wrap">
+        {{ 'DeletePetQuestion' | translate }}
+    </h2>
+
+
+    <label   class="item item-stacked-label item-select item-text-wrap">
+      <div class="item-text-wrap">
+        {{ 'DeletePetReason' | translate }} *
+      </div>      
+      <select ng-model="vm.selectedDeleteStatus"
+              ng-options="removeStatus as removeStatus.name for removeStatus in vm.removeStatuses track by removeStatus.id"
+              required>
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    </div>
+
+
+</div>

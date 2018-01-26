@@ -1,0 +1,25 @@
+
+.button, .bar .button {
+  border-radius: 18px;
+  border-width: 2px;
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+
+.button.button-calm {
+    border-color: transparent;
+    background-color: transparent;
+    color: $positive;
+}
+
+.button.button-calm.active, .button.button-calm.activated {
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: inherit;
+}
+
+.button.button-calm:hover {
+    color: $positive;
+}

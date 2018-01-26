@@ -1,0 +1,25 @@
+{
+  "name": "doglogbook",
+  "app_id": "6200e92d",
+  "gulpStartupTasks": [
+    "sass",
+    "scripts",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "scss/**/*"
+  ],
+  "browsers": [
+    {
+      "platform": "android",
+      "browser": "crosswalk",
+      "version": "12.41.296.5"
+    }
+  ],
+  "integrations": {
+    "gulp": {}
+  },
+  "type": "ionic1"
+}

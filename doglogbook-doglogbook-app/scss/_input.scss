@@ -1,0 +1,98 @@
+.item {
+  margin: 0px;
+  border-width: 0px;
+  border-bottom: 1px solid #C9C6C6;
+} 
+
+.item-divider-buttons {
+  text-align: right;
+}
+
+.item-input {
+  .ion-calendar {
+    position:absolute;
+    right:5px;
+    bottom:5px;
+    font-size: 20px;
+  }
+  .ion-android-alarm-clock {
+    position:absolute;
+    right:5px;
+    bottom:5px;
+    font-size: 20px;
+  }
+}
+
+.input-label {
+  font-weight: bold;
+}
+
+.item-toggle, .item-toggle.item-complex .item-content {
+  font-weight: bold;
+}
+
+.ion-input-select--large,
+.ion-input-select,
+select {
+  -webkit-appearance:none;
+  background-repeat: no-repeat;
+  background-color: #eee;  
+  border:thin solid #dddddd;
+  font-weight:300;
+  display:inline;
+  vertical-align:middle;
+  color:#333;
+  padding: auto 0;
+  overflow:hidden;
+  box-sizing:border-box;
+
+}
+
+.input-long {
+  white-space: normal;
+    width: 100%;
+    max-width: inherit;
+}
+
+.icon-password {
+  position: absolute;
+  right: 12px;
+  bottom: 5px;
+  font-size: 28px;
+  color: #AAAAAA;
+  cursor: pointer; 
+}
+
+.item-select.inlineContent {
+  border-bottom:0px;
+}
+
+.input-label {
+    font-weight: normal;
+}
+
+.requiredField{
+    font-weight: bold;
+}
+
+.item-toggle, .item-toggle.item-complex .item-content {
+    font-weight: normal;
+}
+
+
+input[disabled], select[disabled], textarea[disabled], input[readonly]:not(.cloned-text-input), textarea[readonly]:not(.cloned-text-input), select[readonly] {
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+.ionic-select-modal {
+  .item {
+      border: 1px solid #DDD;
+      margin: 0px;
+  }
+}
+
+.item-select.item-stacked-label select {
+  padding-top: 20px;
+  font-size: 1em;
+}

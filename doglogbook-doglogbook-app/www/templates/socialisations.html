@@ -1,0 +1,98 @@
+<ion-view class="view-activities" view-title="{{ 'SocialisationsTitle' | translate }}">
+
+<ion-header-bar class='bar-positive'>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header padding">
+
+  <div class="list">
+
+   <label class="item item-input item-select">
+      <span class="input-label requiredField" 
+            translate="CommonMsgChooseDog">
+      </span>
+      <select ng-model="vm.selectedPet"
+              ng-options="pet as pet.name for pet in vm.pets track by pet.id" 
+              ng-change="vm.petChange(vm.selectedPet)"
+              required>
+        <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <div class="card" ng-repeat="item in vm.results">
+      <div class="item item-text-wrap">
+        <p style="text-align: right;">
+          {{ item.dateCreated | date:"d MMM" : 'UTC' }}</p>
+
+
+        <span class="row" ng-show="item.dateRegistered">
+          {{ 'BehavioursDateRegistered' | translate }}
+          <b>{{ item.dateRegistered | date:"d MMM" : 'UTC' }}</b>
+        </span>
+
+        <h3 translate="AddSocialisationDistractedByAnimalTitle"></h3>
+        <ul class="card list">
+
+          <li ng-show="item.distractedByAnimalItems && item.distractedByAnimalItems.length == 0"
+              class="item">
+            <b translate="CommonMsgNoResults"></b>
+          </li>
+
+          <li ng-show="item.distractedByAnimalItems && item.distractedByAnimalItems.length > 0"
+              class="item" ng-repeat="itemAnimal in item.distractedByAnimalItems">
+            <b>{{ itemAnimal.species.name }} - {{ itemAnimal.species.speciesType.name }}</b>
+          </li>
+        </ul>
+
+        <h3 translate="AddSocialisationSound"></h3>
+        <ul class="card list">
+
+          <li ng-show="item.soundItems && item.soundItems.length == 0"
+              class="item">
+            <b translate="CommonMsgNoResults"></b>
+          </li>
+
+          <li ng-show="item.soundItems && item.soundItems.length > 0"
+              class="item" ng-repeat="itemSound in item.soundItems">
+            <b>{{ itemSound.sound.name }}</b>
+          </li>
+        </ul>
+
+        <h3 translate="AddSocialisationLifeExperience"></h3>
+        <ul class="card list">
+
+          <li ng-show="item.lifeExperienceItems && item.lifeExperienceItems.length == 0"
+              class="item">
+            <b translate="CommonMsgNoResults"></b>
+          </li>
+
+          <li ng-show="item.lifeExperienceItems && item.lifeExperienceItems.length > 0"
+              class="item" ng-repeat="itemExperience in item.lifeExperienceItems">
+            <b>{{ itemExperience.lifeExperience.name }}</b>
+          </li>
+        </ul>
+
+      </div>
+      <div class="item item-divider item-divider-buttons">
+          <button class="button button-outline icon ion-trash-a"
+                  ng-click="vm.remove(item.id)"></button>
+      </div>
+    </div>
+
+    <p  ng-show="!vm.hasResults()"
+        class="filter-empty" 
+        translate="CommonMsgNoResults"></p>
+
+    <div  ng-show="vm.hasResults()"
+          class="filter-empty">
+      <div class="item item-text-wrap">
+        {{ 'CommonMsgOlderInformation' | translate }}
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
+
+</ion-view>

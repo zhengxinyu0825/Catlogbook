@@ -1,0 +1,30 @@
+﻿@using doglogbook_web.Models
+@model LoginViewModel
+@{
+    Layout = MVC.Shared.Views._ContainerLayout;
+    Html.SetI18NPrefix("Views:Account:Login:");
+    ViewBag.Title = Html.T("Title", "Account Management");
+}
+
+<div class="col-md-12">
+    <h4>Account Management</h4>
+    <hr />
+    <p>
+        @Html.ActionLink("Register as a new user", MVC.Account.Register())
+    </p>
+    <p>
+        @Html.ActionLink("Forgot your password?", MVC.Account.ForgotPassword())
+    </p>
+    <p>
+        @Html.ActionLink("Resend confirmation", "ResendConfirmationEmail", "Account")
+    </p>
+    <p>
+        @Html.ActionLink("Researchers", "Index", "Research")
+    </p>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
