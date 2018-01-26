@@ -20,14 +20,14 @@ Ionic, Karma, Karma-Jasmine, PhantomJS, Bitbucket
 
  * 1.2 Solution
 
- ### 2. Overview of System**
+ ### 2. Overview of System
 
 * 2.1 Users
 
 * 2.2 Administrators
 
 
- ### 3. Evaluation**
+ ### 3. Evaluation
 
 * 3.1 Overview
 
@@ -39,13 +39,13 @@ Ionic, Karma, Karma-Jasmine, PhantomJS, Bitbucket
 
 * 3.5 Conclusion
 
- ### 4. System Structure Overview**
+ ### 4. System Structure Overview
 
 * 4.1 System Architecture
 
 * 4.2 Database Schema
 
- ### 5. System Tools**
+ ### 5. System Tools
 
 * 5.1 Ionic (Main framework)
 
@@ -58,7 +58,7 @@ Ionic, Karma, Karma-Jasmine, PhantomJS, Bitbucket
 * 5.5 Technology
 
 
- ### 6. Information search**
+ ### 6. Information search
 
 * 6.1 Research on software
 
@@ -68,7 +68,7 @@ Ionic, Karma, Karma-Jasmine, PhantomJS, Bitbucket
 
 
 
- ### 7. Reflection**
+ ### 7. Reflection
 
 * 7.1 Challenge and Risk 
 
@@ -430,7 +430,7 @@ In order to get a better team work, we need to use some work platform system lik
 The database which given by our clients is unmodifiable in the beginning. We cannot store our data in it. To overcome this, we keep contacting with our client for the permission of the database.
 In conclusion, the biggest challenge problem we faced is our level of understanding and experience with ionic project, at the start of the project, none of the team have any prior experience of the technology, we need to do a lot of research and study to go through the base code and modify them.
 
-###7.1.2 Risks
+### 7.1.2 Risks
 A. Misunderstanding of requirement from client/ new requirement from clients/ changing requirement during project.
 
 B. Short timeframe for complex project.
@@ -441,13 +441,13 @@ There might be some new requirements from our clients or misunderstand client’
 We are following the XP role methodology and rotated roles every week. However, the overlap will occur when some of our teammates did same work with others, therefore some part of project cannot be done due to ignoring it. To avoid this problem, we have a meeting on Monday’s lab every week, to assign the correct XP roles and related works to make sure everyone knows their works and role.
 
 
-##7.2 Limitation in terms of functionality 
+## 7.2 Limitation in terms of functionality 
 
 * The Database is not accessible and unmodifiable.
 
 After we built the upload photos and videos features, we noticed that the database which given by our clients is not accessible and modifiable. The data cannot be stored in the database. After we contact with our clients for a number of times. Our client arrange our team to meet with DoglogBook team and give us the permission of DoglogBook’s database to test our functionality. Therefore, the CatLogBook database is still cannot access and store. The only thing we can do for overcoming this issue is that the clients must give us the permission to access the catlogbook database.
 
-##7.3 Limitation in terms of Structure, design, implementation 
+## 7.3 Limitation in terms of Structure, design, implementation 
 
 * Possible limitation on User Interface. 
 
@@ -471,18 +471,18 @@ We have established great communication and team work right from the first week 
 
 Our clients and us have a great communication during this project. The opinions from both sides are interchanging frequently. The good communication between us is helpful for our working.
 
-##7.5 Programming Practice 
+## 7.5 Programming Practice 
 
-###7.5.1 Reflection on XP 
+### 7.5.1 Reflection on XP 
 
 For the time constraint given Extreme Programming appear to be the correct choice of programming methodology to use, though given the scope of our project the full project will require a larger number of developers with a more structured programming methodology, with a smaller team where frequent and concise communication is not an issue Extreme Programming can be very effective which will prevent any lost of information from using the full flexibility of an agile programming methodology.
 
-###7.5.2 Version control, issue tracking, coding style 
+### 7.5.2 Version control, issue tracking, coding style 
 
 We mainly using bitbucket to merge uploading code and tracking any issues.To ensure that both work and information are updated to all members bitbucket are used for version control, the bitbucket expert are mainly focus on merge the code every week to avoid messy code.
 
 
-###7.5.3 Group aspect, products and processes 
+### 7.5.3 Group aspect, products and processes 
 
 We mainly use Ionic, angular and HTML to encoding our products. Since we have no experience on ionic project, we study together which make easier to understand the knowledge.
 
