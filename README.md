@@ -80,11 +80,7 @@ Ionic, Karma, Karma-Jasmine, PhantomJS, Bitbucket
 
 * 7.5 Programming Practices  
 
- ### 8. Individual Contribution **
 
-* 8.1 Work Split
-
-* 8.2 Individual report
 
 
  ## Appendices 
@@ -418,7 +414,7 @@ Mobile App Development with Ionic 2: Cross-Platform Apps with Ionic: [link](http
 
 
 
-![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/underline.png)
+
 ## 7.Reflection 
 
 ### 7.1 Challenge and risks ###
@@ -444,7 +440,6 @@ C. Working with XP role methodology.
 There might be some new requirements from our clients or misunderstand client’s requirement during the project, since the code is such complex for us, if this occur, we need to devote more time into develop the new features. However, the time constraint is not big enough to develop a fully completed applications, therefore, we may not satisfied all the requirements from the client perfectly on time. To avoid this issue, our manager of that weeks will consult with our clients and reach an agreement of the new features and changed features.
 We are following the XP role methodology and rotated roles every week. However, the overlap will occur when some of our teammates did same work with others, therefore some part of project cannot be done due to ignoring it. To avoid this problem, we have a meeting on Monday’s lab every week, to assign the correct XP roles and related works to make sure everyone knows their works and role.
 
-![12.png](https://bitbucket.org/repo/645Bbzg/images/406005410-12.png)
 
 ##7.2 Limitation in terms of functionality ##
 
@@ -491,24 +486,6 @@ We mainly using bitbucket to merge uploading code and tracking any issues.To ens
 
 We mainly use Ionic, angular and HTML to encoding our products. Since we have no experience on ionic project, we study together which make easier to understand the knowledge.
 
-![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/underline.png)
-##8 Individual Contribuation ##
-
-
-## 8.1 Work Split
-
-* [Work Split](https://docs.google.com/document/d/1GQHDJQN-wlSUfJRj1zZAclPkqMsG57mQ8EG5o8tOB0g/edit?usp=sharing)
-
-
-## 8.2 Individual report
-* [Yiding Shi](https://bitbucket.org/QiangZ/catlogbook/wiki/Yiding_Shi%20individual%20report)
-* [Qiang Zeng](https://bitbucket.org/QiangZ/catlogbook/wiki/Qiang_Zeng%20individual%20report)
-* [Shuai Yuan](https://bitbucket.org/QiangZ/catlogbook/wiki/Shuai_Yuan_Individual_Report)
-* [Yuanxi Zeng](https://bitbucket.org/QiangZ/catlogbook/wiki/Yuanxi_Zeng%20individual%20report)
-* [Yi Sun](https://bitbucket.org/QiangZ/catlogbook/wiki/Sun_yi%20individual%20report)
-* [Xinyu Zheng](https://bitbucket.org/QiangZ/catlogbook/wiki/Xinyu_Zheng%20individual%20report)
-
-![line.png](https://bitbucket.org/repo/645Bbzg/images/2669563372-line.png)
 
 ## A1. User stories ##
 
@@ -868,8 +845,6 @@ Monday, 02/11/2017
 ## A5. Week 13 Demo Video ##
 [Week 13 Demo video](https://www.youtube.com/watch?v=s46RVS3U-_0)
 
-![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/underline.png)
-![img](https://github.com/zhengxinyu0825/Catlogbook/blob/master/catlogbook/image/underline.png)
 ## Reference
 
 #### (Other references cited in the "Information Search" section.)
