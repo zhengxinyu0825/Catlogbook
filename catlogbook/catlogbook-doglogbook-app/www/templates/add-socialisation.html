@@ -1,0 +1,399 @@
+<ion-view class="view-add-socialisation" view-title="{{ 'AddSocialisationTitle' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header padding">
+  
+  <form name='form_login' novalidate>
+  <div class="list">
+
+    <h3 class="item item-text-wrap">
+    {{ 'AddSocialisationPeopleEncountered' | translate }}
+    </h3> 
+
+    <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSocialisationPeopleEncounteredGender' | translate }}
+    </span>
+    <select ng-model="vm.formData.peopleEnconteredGender"
+            ng-options="gender.id as gender.name for gender in vm.humanGenders track by gender.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>      
+    </label>
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSocialisationPlannedEncounterType' | translate }}
+      </span>
+      <select ng-model="vm.formData.peopleEnconteredRelationshipType"
+              ng-options="rel.id as rel.name for rel in vm.relationshipTypes track by rel.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>    
+
+    <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSocialisationPeopleEncounteredAgeRange' | translate }}
+    </span>
+    <select ng-model="vm.formData.peopleEnconteredAgeRange"
+            ng-options="ageRange.id as ageRange.name for ageRange in vm.ageRanges track by ageRange.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>      
+    </label>
+
+    <ion-toggle 
+        ng-model="vm.formData.IF_plannedEncounter" 
+        class="item-text-wrap"
+        toggle-class="toggle-positive">
+    {{ 'AddSocialisationPlannedEncounterTitle'| translate }}
+    </ion-toggle>
+
+    <div  ng-show="vm.formData.IF_plannedEncounter"
+        class="card">
+
+    <div class="item item-text-wrap">
+      {{ 'AddSocialisationPlannedEncounterSubTitle' | translate }}
+    </div> 
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationPlannedEncounterNumber' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterNumber"
+             type="number">
+    </label>
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSocialisationPlannedEncounterType' | translate }}
+      </span>
+      <select ng-model="vm.formData.plannedEncounterType"
+              ng-options="rel.id as rel.name for rel in vm.relationshipTypes track by rel.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>      
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSocialisationPeopleEncounteredGender' | translate }}
+      </span>
+      <select ng-model="vm.formData.plannedEncounterGender"
+              ng-options="gender.id as gender.name for gender in vm.humanGenders track by gender.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>      
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationPlannedEncounterChildren13Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterChildren13Number"
+             type="number">
+    </label>      
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationPlannedEncounterTeens1320Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterTeens1320Number"
+             type="number">
+    </label>  
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationPlannedEncounterAdults2065Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterAdults2065Number"
+             type="number">
+    </label>  
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationPlannedEncounterSeniors65Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.plannedEncounterSeniors65Number"
+             type="number">
+    </label>              
+
+    <div class="item item-text-wrap">
+      {{ 'AddSocialisationUnplannedEncounterSubTitle' | translate }}
+    </div> 
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationUnplannedEncounterNumber' | translate }}
+      </span>
+      <input ng-model="vm.formData.unplannedEncounterNumber"
+             type="number">
+    </label>
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSocialisationUnplannedEncounterType' | translate }}
+      </span>
+      <select ng-model="vm.formData.unplannedEncounterType"
+              ng-options="rel.id as rel.name for rel in vm.relationshipTypes track by rel.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>      
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSocialisationPeopleEncounteredGender' | translate }}
+      </span>
+      <select ng-model="vm.formData.unplannedEncounterGender"
+              ng-options="gender.id as gender.name for gender in vm.humanGenders track by gender.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>      
+    </label>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationUnplannedEncounterChildren13Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.unpPlannedEncounterChildren13Number"
+             type="number">
+    </label>      
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationUnplannedEncounterTeens1320Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.unplannedEncounterTeeens1320Number"
+             type="number">
+    </label>  
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationUnplannedEncounterAdults2065Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.unplannedEncounterAdults2065Number"
+             type="number">
+    </label>  
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationUnplannedEncounterSeniors65Number' | translate }}
+      </span>
+      <input ng-model="vm.formData.unplannedEncounterSeniors65Number"
+             type="number">
+    </label>   
+
+    </div>
+
+    <ion-toggle 
+        ng-model="vm.formData.IF_DogEncounter" 
+        class="item-text-wrap"
+        toggle-class="toggle-positive">
+    {{ 'AddSocialisationDogEncounterTitle'| translate }}
+    </ion-toggle>
+
+    <div  ng-show="vm.formData.IF_DogEncounter"
+        class="card">
+
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSocialisationDogEncounterNumber' | translate }}
+      </span>
+      <input ng-model="vm.formData.dogEncounterNumber"
+             type="number">
+    </label>
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSocialisationDogEncounterRelationshipType' | translate }}
+      </span>
+      <select ng-model="vm.formData.dogEncounterRelationshipType"
+              ng-options="rel.id as rel.name for rel in vm.relationshipTypes track by rel.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>     
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSocialisationDogEncounterType' | translate }}
+      </span>
+      <select ng-model="vm.formData.dogEncounterType"
+              ng-options="dogType.id as dogType.name for dogType in vm.dogTypes track by dogType.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>  
+
+     <ion-toggle 
+          ng-model="vm.formData.dogEncounterSameBreed" 
+          class="item-text-wrap"
+          toggle-class="toggle-positive">
+      {{ 'AddSocialisationDogEncounterSameBreed'| translate }}
+    </ion-toggle>
+
+    </div>
+
+
+    <ion-toggle 
+        ng-model="vm.formData.IF_DistractedByAnimal" 
+        class="item-text-wrap"
+        toggle-class="toggle-positive">
+      {{ 'AddSocialisationDistractedByAnimalTitle'| translate }}
+    </ion-toggle>
+
+    <div  ng-show="vm.formData.IF_DistractedByAnimal">
+
+      <div class="list">
+        <ion-checkbox 
+            ng-repeat="species in vm.species"
+            ng-model="vm.formData.distractedByAnimalItems[species.id]"
+            class="item-text-wrap">
+            {{ species.name }} - {{ (species.speciesType.name) }}
+        </ion-checkbox>
+      </div>
+
+    </div>
+
+    <h3 class="item item-text-wrap">
+    {{ 'AddSocialisationSurfacesTitle' | translate }}
+    </h3> 
+
+    <div class="list card">
+      <ion-checkbox 
+          ng-repeat="surface in vm.surfaceObstacles"
+          ng-model="vm.formData.surfacesItems[surface.id]"
+          class="item-text-wrap">
+          {{ surface.name }}
+      </ion-checkbox>
+    </div>
+
+    <h3 class="item item-text-wrap">
+    {{ 'AddSocialisationTransportationTitle' | translate }}
+    </h3> 
+
+    <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSocialisationTransportationType' | translate }}
+    </span>
+    <select ng-model="vm.formData.transportationTypeId"
+            ng-options="transport.id as transport.name for transport in vm.transportationTypes track by transport.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>
+    </label>  
+
+    <label  class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSocialisationTransportationDuration' | translate }}
+      </span>
+      <select ng-model="vm.formData.transportationDuration" 
+              ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+          <option value='' translate="CommonSelect"></option>
+      </select>      
+    </label>
+
+    <label class="item item-input">
+    <span class="input-label">
+      {{ 'AddSocialisationTransportationDistance' | translate }}
+    </span>
+    <input ng-model="vm.formData.transportationDistance"
+           type="number">
+    </label>
+
+    <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSocialisationTransportationDistanceUnit' | translate }}
+    </span>
+    <select ng-model="vm.formData.transportationDistanceUnit"
+            ng-options="unit.id as unit.name for unit in vm.distanceUnits track by unit.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>
+    </label>  
+
+    <label   class="item item-input item-select"> 
+    <span class="input-label">
+        {{ 'AddSocialisationTransportationTravelQuality' | translate }}
+    </span>
+    <select ng-model="vm.formData.transportationTravelQuality"
+            ng-options="quality.id as quality.name for quality in vm.travelQuality track by quality.id">
+        <option value='' translate="CommonSelect"></option>
+    </select>
+    </label>  
+
+
+    <h3 class="item item-text-wrap">
+    {{ 'AddSocialisationSound' | translate }}
+    </h3> 
+
+    <div ng-repeat="sound in vm.sounds">
+      <ion-checkbox 
+          ng-model="vm.formData.soundItems[sound.id]"
+          class="item-text-wrap">
+          {{ sound.name }}
+      </ion-checkbox>
+      <section ng-show="vm.formData.soundItems[sound.id]"
+               class="card">
+
+        <ion-toggle 
+            ng-model="vm.formData.soundIsRealItems[sound.id]"
+            class="item-text-wrap">
+            {{ 'AddSocialisationSoundIsReal' | translate }}
+        </ion-toggle>
+
+        <label  class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSocialisationSoundDuration' | translate }}
+          </span>
+          <select ng-model="vm.formData.soundDurationsItems[sound.id]" 
+                  ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+        </label>
+
+      </section>
+
+    </div> 
+
+
+    <h3 class="item item-text-wrap">
+    {{ 'AddSocialisationLifeExperience' | translate }}
+    </h3> 
+
+    <div class="list card">
+      <ion-checkbox 
+          ng-repeat="lifeExperience in vm.lifeExperiences"
+          ng-model="vm.formData.lifeExperienceItems[lifeExperience.id]"
+          class="item-text-wrap">
+          {{ lifeExperience.name }}
+      </ion-checkbox>
+    </div>
+  
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <button ui-sref="app.home"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.save(vm.formData)"
+                    ng-disabled='form_login.$invalid'
+                    class="button button-block button-assertive">
+              {{ 'CommonSave' | translate }}
+            </button>
+        </div>
+    </div>
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

@@ -1,0 +1,78 @@
+<ion-view class="view-add-session" view-title="{{ 'AddSessionTitle' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<form name='form_login' novalidate>
+
+<ion-content scroll="true" class="has-header extra-padding">
+  <div class="list">
+
+
+    <h3>{{ vm.title }}</h3>
+
+    <session-general-section/>
+      <!-- SubSection LIVESTOCK (ONLY) -->
+    </session-general-section>
+
+    <session-exposure-socialization-section>
+    </session-exposure-socialization-section>
+
+    <session-obedience-control-section>
+    </session-obedience-control-section>
+
+    <!-- Guide Seeing Eye (ONLY) -->
+    <session-guideseeingeye-trainingdetails-section
+      ng-show="vm.formData.petSubTypeId == 1">
+    </session-guideseeingeye-trainingdetails-section>
+
+    <session-training-reinforcement-section>
+    </session-training-reinforcement-section> 
+
+    <session-assessment-development-section>
+      <!-- SubSection TRAINING (ONLY) -->
+      <!-- SubSection ASSESSMENT (ONLY) -->
+      <!-- SubSection Scent Detection (ONLY) -->
+      <!-- SubSection RACING Greyhound (ONLY) -->
+    </session-assessment-development-section>
+
+    <!-- TRAINING (ONLY) -->
+    <session-exercise-section 
+        ng-show="vm.formData.sessionTypeId == 1">
+    </session-exercise-section>
+
+    <session-other-section>
+    </session-other-section>
+
+  </div>
+</ion-content>
+
+<ion-footer-bar>
+
+  <div class="row">
+      <div class="col">
+          <button ui-sref="app.home"
+                  class="button button-block button-outline">
+            {{ 'CommonCancel' | translate }}
+          </button>
+      </div>
+      <div class="col">
+          <button ng-click="vm.save(vm.formData)"
+                  ng-disabled='form_login.$invalid'
+                  class="button button-block button-assertive">
+            {{ 'CommonSave' | translate }}
+          </button>
+      </div>
+  </div> 
+
+</ion-footer-bar>
+</form>
+</ion-view>

@@ -1,0 +1,131 @@
+<ion-view class="view-home" view-title="{{ 'HomeTitle'| translate }}">
+  
+    <div class="list has-header">
+
+    <div class="item item-input-inset filter">  
+
+      <label class="item-input-wrapper filter-search">
+       <i class="icon ion-ios-search placeholder-icon"></i>
+       <input type="text" ng-model="vm.searchBy" placeholder="Search">
+     </label>
+
+     <label class="item-input-wrapperitem-select">
+      <select class="item-input-wrapper filter-type"
+              ng-model="vm.searchByType"
+              ng-options="type as type.name for type in vm.petFilters track by type.id">
+          <option value='' translate="HomeBarAll"></option>
+      </select>
+    </label>
+  </div>
+
+  </div>
+
+  <ion-content scroll="true" class="has-header has-subheader">
+
+    <ion-scroll direction="x" class="item wide-item">
+
+      <div  ng-if="vm.items && vm.items.length == 0"
+            class="add hscroller-card" 
+            ng-click="vm.openAddPetModal()">
+          <img class="hscroller-img add-btn" src="img/pet-avatar.svg">
+          <div class="hscroller-label cat-0">             
+            <b translate="HomeAddPet"></b>        
+          </div>
+      </div>
+
+      <div class="hscroller-card" 
+           ng-if="vm.items && vm.items.length > 0"
+           ng-repeat="item in vm.filteredPets = (vm.items | filter:vm.searchFilter | filter:vm.typeFilter)"
+           ng-click="vm.setActive(item, $index)" 
+           ng-class="{activePanel : vm.activeIndex == $index }" >
+        <img class="hscroller-img" 
+             ng-src="{{item.photoLink}}" 
+             default-src="img/pet-avatar.svg">
+        <div class="hscroller-extra">             
+          <span class="right">{{ vm.getSexType(item.sex) }}</span>             
+          <span class="left">{{ vm.getPetAge(item.dateOfBirth)}}</span>             
+        </div>
+        <div class="hscroller-label cat-{{item.petSubtype.petTypeId}}">             
+          <b>{{item.name}}</b><br>             
+          <span>{{ vm.getBreedNames(item.petBreeds) }}</span>             
+        </div>
+      </div>
+
+    </ion-scroll>
+
+    
+      <p ng-hide="vm.filteredPets.length" 
+         class="filter-empty" 
+         translate="HomeMsgNoFilteredPets"></p>
+         
+    <div class="tabs tabs-icon-top">
+        <a class="tab-item"
+           ng-disabled="!vm.activePet"
+           ng-click="vm.actionMenuActions()">
+          <i  class="icon ion-compose"></i>
+          {{ 'HomeActionButtonActionsTitle' | translate }}
+        </a>
+        <a class="tab-item" href="#"
+            ng-disabled="!vm.activePet">
+          <i  class="icon ion-ios-medical" 
+              ng-click="vm.actionMenuHealth()"></i>
+          {{ 'HomeActionButtonHealth' | translate }}
+        </a>
+        <a class="tab-item" href="#"
+            ng-hide="
+                      !vm.activePet || 
+                      (vm.activePet.petSubtypeId != 1 &&
+                      vm.activePet.petSubtypeId != 2 &&
+                      vm.activePet.petSubtypeId != 3 &&
+                      vm.activePet.petSubtypeId != 4 &&
+                      vm.activePet.petSubtypeId != 5)"
+            ng-click="vm.actionMenuSession()">
+          <i  class="icon ion-clipboard"></i>
+          {{ 'HomeActionButtonActions' | translate }}
+        </a>   
+        <a class="tab-item" href="#">
+          <i  class="icon ion-more"
+              ng-click="vm.actionMenuMore()"></i>
+          {{ 'HomeActionButtonMore' | translate }}
+        </a>
+      </div>
+
+   <h4 translate="HomeLastActivities"></h4>
+
+   <section ng-show="vm.timeline && vm.timeline.length > 0"
+            id="cd-timeline" class="cd-container">
+      <div ng-repeat="activity in vm.timeline">
+        <div class="cd-timeline-block">
+          <div class="cd-timeline-icon text-center">
+            <i  class="ion-compose timelineIcon" 
+                ng-if="(activity.type=='Activity')"></i>
+            <i  class="ion-compose timelineIcon" 
+                ng-if="(activity.type=='Behaviour')"></i>
+            <i  class="ion-ios-medical timelineIcon" 
+                ng-if="activity.type=='Symptom' "></i>
+            <i  class="ion-ios-medical timelineIcon" 
+                ng-if="activity.type=='Treatment'"></i>
+            <i  class="ion-ios-medical timelineIcon" 
+                ng-if="activity.type=='Seizure'"></i>
+            <i  class="ion-ios-medical timelineIcon" 
+                ng-if="activity.type=='RespirationRate'"></i>
+          </div>
+          <!-- cd-timeline-img -->
+          <div class="cd-timeline-content padding">
+            <h5 class="marginBottom0 marginTop0">
+              {{activity.name}}
+            </h5>
+            <p class="marginTop5 cd-author">
+              on {{activity.date | date: "d MMM"}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p  ng-show="vm.timeline && vm.timeline.length == 0"
+        class="filter-empty" 
+        translate="HomeMsgNoTimelineItems"></p>
+
+  </ion-content>
+</ion-view>

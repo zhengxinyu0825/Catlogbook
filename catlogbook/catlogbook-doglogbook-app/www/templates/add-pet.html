@@ -1,0 +1,222 @@
+<ion-view class="view-add-pet" view-title="{{ 'AddPetTitle' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<div class="bar bar-subheader">
+    <h4 translate="AddPetSectionInformation"></h4>
+</div>
+
+<ion-content scroll="true"
+             class="padding has-subheader">
+
+  <section ng-if='vm.page === 1' class='fade-in'>
+
+  <img  class='pet-avatar'
+        ng-src='{{vm.avatar}}'
+        default-src="img/pet-avatar.svg"
+        ng-click="vm.showPictureOptions()"/>
+        
+  <form name='form_login' novalidate>
+    <div class="list">
+
+     <label class="item item-input item-select">
+        <span class="input-label requiredField">
+              {{ 'AddPetType' | translate }}*
+        </span>
+        <select ng-model="vm.petFormData.type" 
+                ng-change="vm.petTypeChange(vm.petFormData.type)"
+                ng-options="type as type.name for type in vm.types track by type.id" required>
+          <option value='' translate="CommonSelect"></option>
+        </select>
+      </label>
+
+     <label   class="item item-input item-select">
+        <span class="input-label requiredField">
+              {{ 'AddPetSubType' | translate }}*
+        </span>
+        <select ng-model="vm.petFormData.subType"
+                ng-options="subtype as subtype.name for subtype in vm.subTypes track by subtype.id" 
+                required>
+          <option value='' translate="CommonSelect"></option>
+        </select>
+     </label>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label requiredField">
+            {{ 'AddPetName' | translate }}*
+      </span>
+      <input ng-model="vm.petFormData.name" type="text" required>
+    </label>
+
+    <div class="card" ng-repeat="petBreed in vm.petFormData.petBreeds">
+      <div class="item item-text-wrap">
+           <label class="item item-input"
+                  modal-select="" 
+                  has-search="true"
+                  modal-title="{{ 'HomeActionButtonSelectPet' | translate }}"
+                  cancel-search-button="{{ 'CommonClear' | translate }}"
+                  cancel-button="{{ 'CommonCancel' | translate }}"
+                  reset-button="{{ 'CommonReset' | translate }}"
+                  ng-model="vm.petFormData.breed[petBreed.order]" 
+                  options="vm.breeds">
+              <span class="input-label">
+                  {{ 'AddPetBreed' | translate }}
+              </span>
+              <input ng-model="vm.petFormData.breed[petBreed.order].name" 
+                     translate
+                     translate-attr-placeholder="CommonSelect" 
+                     type="text"
+                     ng-readonly="true">       
+               <div class="option">
+                    <h2>{{option.name}}</h2>
+                </div>
+           </label>
+           <label   ng-hide="!vm.petFormData.breed[petBreed.order]"
+                    class="item item-input item-select">
+              <span class="input-label">
+                 Percentage
+              </span>
+              <select ng-model="vm.petFormData.breedPercentage[petBreed.order]"
+                      ng-change="vm.breedPercentangeChange(petBreed.order)"
+                      ng-options="percentage as percentage.name for percentage in vm.petBreedsPercentagesfiltered[petBreed.order] track by percentage.id" 
+                      required>
+                  <option value='' translate="CommonSelect"></option>
+              </select>
+           </label>
+      </div>
+    </div>
+
+     <label class="item item-input item-select">
+        <span class="input-label requiredField">
+            {{ 'AddPetSex' | translate }}*
+        </span>
+        <select ng-model="vm.petFormData.sex" 
+                ng-options="sex as sex.name for sex in vm.sexs track by sex.id" 
+                required>
+            <option value='' translate="CommonSelect"></option>
+        </select>
+     </label>
+
+    <ion-toggle ng-model="vm.petFormData.desexed" 
+                toggle-class="toggle-positive">
+          {{ 'AddPetDesexed' | translate }}
+    </ion-toggle>
+
+
+    <label   ng-show="vm.petFormData.desexed == true"
+             class="item item-input item-select">
+      <span  class="input-label"
+             translate="AddPetDesexedAge"></span>
+      <select ng-model="vm.petFormData.ageDesexed" 
+              ng-options="ageDesexed as ageDesexed.name for ageDesexed in vm.ageDesexedList track by ageDesexed.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <label class="item item-input item-stacked-label">
+       <span  class="input-label requiredField">
+          {{ 'AddPetDateOfBirth' | translate }}*
+      </span>
+       <input type="date" 
+              translate
+              translate-attr-placeholder="AddPetDateOfBirth" 
+              name='dateOfBirth' 
+              ng-model='vm.petFormData.dateOfBirth'
+              min='{{ vm.minValidDate }}'
+              required>
+     </label>
+
+    <label   class="item item-input item-select">
+      <span  class="input-label"
+             translate="AddPetAcquiredAge"></span>
+      <select ng-model="vm.petFormData.ageAcquired" 
+              ng-options="ageAcquired as ageAcquired.name for ageAcquired in vm.ageAcquiredList track by ageAcquired.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label" 
+            translate="AddPetMicrochipNumber">
+      </span>
+      <input ng-model="vm.petFormData.microchipNumber" type="text">
+    </label>
+
+    <ion-toggle ng-model="vm.petFormData.insured" 
+                toggle-class="toggle-positive">
+          {{ 'AddPetInsured' | translate }}
+    </ion-toggle>
+
+     <label class="item item-input item-stacked-label">
+        <span class="input-label" 
+              translate="AddPetWeight">
+        </span>
+        <div class="row">
+          <div class="col">
+             <input ng-model="vm.petFormData.weight" 
+                    placeholder=".."
+                    type="number">
+          </div>
+          <div class="col col-75">
+     
+             <label class="item item-select inlineContent">
+                <select ng-model="vm.petFormData.weightUnits" 
+                        ng-options="wUnit as wUnit.name for wUnit in vm.weightUnits track by wUnit.id">
+                    <option value='' translate="CommonSelect"></option>
+                </select>
+             </label>     
+
+          </div>
+        </div>
+     </label>
+
+
+     <div ng-show="vm.selectedPetId"
+          class="row col padding">
+
+        <button class="button button-block button-outline"
+                ng-click="vm.openSeizureBackground()">
+          {{ 'PetHomeMenuSeizureBackground' | translate }}
+        </button>
+     </div>
+
+      <div class="row">
+          <div class="col">
+              <button class="button button-block button-outline"
+                      ui-sref="app.home">
+                {{ 'CommonCancel' | translate }}
+              </button>
+          </div>
+          <div class="col">
+              <button ng-hide="vm.selectedPetId"
+                      ng-click="vm.save(vm.petFormData)"
+                      ng-disabled='form_login.$invalid'
+                      class="button button-block button-assertive">
+                {{ 'CommonSave' | translate }}
+              </button>
+              <button ng-show="vm.selectedPetId"
+                      ng-click="vm.update(vm.petFormData)"
+                      ng-disabled='form_login.$invalid'
+                      class="button button-block button-assertive">
+                {{ 'CommonUpdate' | translate }}
+              </button>
+          </div>
+      </div>
+
+    </div>
+   </form> 
+  </section>
+  
+
+</ion-content>
+
+</ion-view>

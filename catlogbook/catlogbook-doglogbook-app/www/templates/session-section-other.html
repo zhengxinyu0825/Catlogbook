@@ -1,0 +1,34 @@
+<div class="session-section-other">
+<!-- OTHER -->
+
+  <ion-item class="item item-collapse rounded"
+            ng-click="vm.toggleGroup('AddSessionOtherSpentTitle')"
+            ng-class="{active: vm.isGroupShown('AddSessionOtherSpentTitle')}">
+      <i class="icon" ng-class="vm.isGroupShown('AddSessionOtherSpentTitle') ? 'ion-minus' : 'ion-plus'"></i>
+    &nbsp;
+    {{ 'AddSessionOtherSpentTitle' | translate }}
+  </ion-item>
+  <div ng-show="vm.isGroupShown('AddSessionOtherSpentTitle')">
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">
+          {{ 'AddSessionOtherTimeSpentDescription' | translate }}
+        </span>
+        <input ng-model="vm.formData.otherTimeSpentDescription"
+               type="text">
+      </label>
+
+      <label  class="item item-input item-select"> 
+        <div class="item-text-wrap">
+          {{ 'AddSessionOtherTimeSpentDuration' | translate }}
+        </div> 
+        <select ng-model="vm.formData.otherTimeSpentDuration"
+                ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+            <option value='' translate="CommonSelect"></option>
+        </select>      
+      </label>  
+   
+    </div> 
+
+<!-- END OTHER -->
+</div>    

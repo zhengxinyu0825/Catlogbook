@@ -1,0 +1,78 @@
+<ion-view class="view-add-respirationRate" view-title="{{ 'AddRespirationRateTitle' | translate }}">
+
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header extra-padding">
+  
+  <form name='form_login' novalidate>
+  <div class="list">
+
+    <div class="card padding">
+      {{ 'AddRespirationRateBreathNote' | translate }}
+    </div>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label requiredField">
+          {{ 'AddRespirationRateDateRegistered' | translate }}*
+      </span>
+      <i class="icon ion-calendar"></i>
+      <input ng-model="vm.formData.dateRegistered" 
+             type="date" 
+             required>
+    </label>   
+
+   <label class="item item-input item-stacked-label">
+      <span class="input-label requiredField">
+          {{ 'AddRespirationRateBreath' | translate }}*
+      </span>
+      <div class="range range-positive">
+        <i class="icon ion-ios-stopwatch-outline"></i>
+        <input  type="range" 
+                ng-model="vm.formData.breaths" 
+                name="duration" 
+                min="0" max="60"
+                value="0"
+                required>             
+      </div>
+      {{  vm.getBreathsFormat(vm.formData.breaths) }} 
+    </label> 
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label" 
+            translate="AddRespirationRateComment">
+      </span>
+      <input ng-model="vm.formData.comment" type="text">
+    </label>
+
+    <div class="row">
+        <div class="col">
+            <button ui-sref="app.home"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.save(vm.formData)"
+                    ng-disabled='form_login.$invalid'
+                    class="button button-block button-assertive">
+              {{ 'CommonSave' | translate }}
+            </button>
+        </div>
+    </div>
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

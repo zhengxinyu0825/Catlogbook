@@ -1,0 +1,23 @@
+﻿@using System.Collections
+@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = MVC.Shared.Views._ContainerLayout;
+    ViewBag.Title = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+@{
+    var hasErrorMessage = TempData.ContainsKey("Errors");
+    if (hasErrorMessage)
+    {
+        <ul>
+        @foreach (var error in (IEnumerable<string>) TempData["Errors"])
+        {
+            <li>@error</li>
+        }
+        </ul>
+    }
+}

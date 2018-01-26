@@ -1,0 +1,30 @@
+﻿@model doglogbook_web.Models.IndexViewModel
+@{
+    Layout = MVC.Shared.Views._ContainerLayout;
+    Html.SetI18NPrefix("Views:Manage:Index:");
+    ViewBag.Title = Html.T("Title", "Manage");
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", MVC.Manage.ChangePassword())
+            }
+            else
+            {
+                @Html.ActionLink("Create", MVC.Manage.SetPassword())
+            }
+            ]
+        </dd>
+    </dl>
+</div>

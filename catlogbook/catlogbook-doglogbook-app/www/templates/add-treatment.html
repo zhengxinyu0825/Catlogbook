@@ -1,0 +1,124 @@
+<ion-view class="view-add-treatment" view-title="{{ 'AddTreatmentTitle' | translate }}">
+
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header extra-padding">
+  
+  <form name='form_login' novalidate>
+  <div class="list">
+
+     <label class="item item-input item-select">
+        <span class="input-label requiredField">
+              {{ 'AddTreatmentType' | translate }}*
+        </span>
+        <select ng-model="vm.formData.treatmentType"
+                ng-options="type as type.name for type in vm.treatmentTypes track by type.id" 
+                required>
+          <option value='' translate="CommonSelect"></option>
+        </select>
+      </label>
+
+    <label   ng-show="vm.formData.treatmentType && vm.formData.treatmentType.name == 'Other'"
+             class="item item-input item-stacked-label">
+      <span  class="input-label">
+           {{ 'AddTreatmentOtherType' | translate }}
+      </span>
+      <input type="text"
+             name='customType' 
+             ng-model='vm.formData.customType'>
+    </label>
+
+    <div class="trim row">
+        <div class="col">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label requiredField">
+                  {{ 'AddTreatmentDateAdministred' | translate }}*
+            </span>
+            <i class="icon ion-calendar"></i>
+            <input ng-model="vm.formData.dateAdministered" 
+                   type="date" 
+                   required>
+          </label>
+        </div>
+    </div>
+
+
+    <label   class="item item-input item-stacked-label">
+      <span  class="input-label requiredField"
+             placeholder="2">
+           {{ 'AddTreatmentDose' | translate }}*
+      </span>
+      <p translate="AddTreatmentDosePlaceholder"></p>
+      <input type="number"
+             name='dose' 
+             ng-model='vm.formData.dose'
+             required>
+    </label>
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label" 
+            translate="AddTreatmentInstructions">
+      </span>
+      <input ng-model="vm.formData.instructions" type="text">
+    </label>
+
+
+    <div ng-show="vm.selectedTreatment">
+      <div class="row">
+        <div class="col">
+            <button ng-click="vm.updateReminders()"
+                    class="icon ion-android-alarm-clock button button-outline button-block button-assertive">
+              {{ 'AddTreatmentUpdateReminders' | translate }}
+            </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+            <button ng-click="vm.remove()"
+                    class="icon ion-trash-a button button-outline button-block button-assertive">
+              {{ 'CommonRemove' | translate }}
+            </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <button back
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-show="vm.selectedTreatment"
+                    ng-click="vm.update(vm.formData)"
+                    ng-disabled='form_login.$invalid'
+                    class="button button-block button-assertive">
+              {{ 'CommonUpdate' | translate }}
+            </button>            
+
+            <button ng-hide="vm.selectedTreatment"
+                    ng-click="vm.save(vm.formData)"
+                    ng-disabled='form_login.$invalid'
+                    class="button button-block button-assertive">
+              {{ 'CommonSave' | translate }}
+            </button>
+        </div>
+    </div>
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

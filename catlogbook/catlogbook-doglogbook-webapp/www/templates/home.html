@@ -1,0 +1,123 @@
+  <h1 class="page-header">Dashboard</h1>
+
+  <div class="dlb-search">
+    <div class="form-group">
+      <label for="search">Find a cat</label>
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <input class="form-control" type="text" id="search"
+          placeholder=" Cat Name / Microchip # / Owner Name"
+          ng-model="vm.filterQuery">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dog-list">
+    <hr />
+    <div class="row">
+
+      <p ng-hide="vm.filteredPets.length"
+         class="filter-empty"
+         translate="HomeMsgNoFilteredPets"></p>
+
+      <div  ng-if="vm.items && vm.items.length > 0"
+            ng-repeat="item in vm.filteredPets = (vm.items | filter: vm.search)"
+            class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+
+
+        <div class="dog-wrapper" ng-click="vm.toPet(item.id)">
+
+          <p class="dog-microchip-wrapper">
+          <span class="dog-age">{{ vm.getOwnerNames(item.owner) }} </span>
+          <span class="dog-gender">{{ item.microchipNumber }}</span>
+          </p>
+          <img class="dog-img"
+             ng-src="{{item.photoLink}}"
+             default-src="img/pet-avatar.svg">
+          <p><span class="dog-age">{{ vm.getPetAge(item.dateOfBirth)}}</span>
+          <span class="dog-gender">{{ vm.getSexType(item.sex) }}</span></p>
+          <div class="dog-details-wrapper">
+            <span class="dog-name">{{ item.name }}</span>
+            <span class="dog-breed">{{ vm.getBreedNames(item.petBreeds) }}</span>
+          </div>
+
+
+          <div class="row dog-options">
+
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <a ng-click="$event.stopPropagation();vm.toState(1,item)"
+                 tooltip-placement="bottom"
+                 uib-tooltip="Activities">
+                <img  class="dog-option img-responsive"
+                      src="img/mydogs/activities.svg"/>
+              </a>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <a ng-click="$event.stopPropagation();vm.toState(2,item)"
+                 tooltip-placement="bottom"
+                 uib-tooltip="Behaviours">
+                <img  class="dog-option img-responsive"
+                      src="img/mydogs/behaviours.svg"/>
+              </a>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <a ng-click="$event.stopPropagation();vm.toState(3,item)"
+                 tooltip-placement="bottom"
+                 uib-tooltip="Treatments">
+                <img  class="dog-option img-responsive"
+                      src="img/mydogs/treatments.svg"/>
+              </a>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <a ng-click="$event.stopPropagation();vm.toState(4,item)"
+                 tooltip-placement="bottom"
+                 uib-tooltip="Puppy Socialisation">
+                <img  class="dog-option img-responsive"
+                      src="img/mydogs/dog.svg"/>
+              </a>
+            </div>
+
+          </div>
+          <div class="row dog-options">
+
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <a ng-click="$event.stopPropagation();vm.toState(5,item)"
+                 tooltip-placement="bottom"
+                 uib-tooltip="Seizures">
+                <img  class="dog-option img-responsive"
+                      src="img/mydogs/seizures.svg"/>
+              </a>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <a ng-click="$event.stopPropagation();vm.toState(6,item)"
+                 tooltip-placement="bottom"
+                 uib-tooltip="Respiration Rates">
+                <img  class="dog-option img-responsive"
+                      src="img/mydogs/respirationRate.svg"/>
+              </a>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <a ng-click="$event.stopPropagation();vm.toState(7,item)"
+                 tooltip-placement="bottom"
+                 uib-tooltip="Symptoms">
+                <img  class="dog-option img-responsive"
+                      src="img/mydogs/symptoms.svg"/>
+              </a>
+            </div>
+            <!-- <div  class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+              <a ng-click="$event.stopPropagation();vm.toState(8,item)"
+                 tooltip-placement="bottom"
+                 uib-tooltip="Working Dogs">
+                <img  class="dog-option img-responsive"
+                      src="img/mydogs/assessments.svg"/>
+              </a>
+            </div> -->
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>

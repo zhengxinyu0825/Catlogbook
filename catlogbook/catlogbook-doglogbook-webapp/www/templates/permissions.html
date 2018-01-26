@@ -1,0 +1,254 @@
+<h1 class="page-header">Permissions</h1>
+
+<uib-tabset active="activeForm">
+  <uib-tab index="0" heading="Share Cat(s)">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Add another user</div>
+        <div class="panel-body">
+
+
+          <div class="well disclaimer">
+            <b>Note:</b> By adding another registered user (please enter email address to find the relevant account holder), you are sharing data about your cat(s). The added user can see your cat(s) in the app and in the dashboard and will be able to add records, if required.
+          </div>
+
+           <div class="form-group">
+              <label for="search"></label>
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+
+                  <input type="text"
+                         ng-model="vm.userEmail"
+                         placeholder="Email"
+                         class="form-control">
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                  <button ng-click="vm.checkUser(vm.userEmail)"
+                          class="form-control btn btn-default btn-sm">
+                    Check
+                  </button>
+                </div>
+            </div>
+
+          <p ng-show="vm.selectedUser &&
+                      vm.pets &&
+                      vm.pets.length == 0">
+            No Results
+          </p>
+
+          <div  ng-show="vm.selectedUser &&
+                         vm.pets &&
+                         vm.pets.length > 0"
+                class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <hr>
+
+            <div class="list-group">
+
+                <div class="well">
+                  <h4>
+                    {{ vm.getUserFullDesc(vm.selectedUser) }}
+                  </h4>
+                  <p> {{ vm.selectedUser.email }} </p>
+                  <hr>
+                  <select
+                        class="form-control"
+                        ng-model="vm.selectedShareUserType"
+                        ng-options="shareuserType as shareuserType.name for shareuserType in vm.shareUserTypes track by shareuserType.id">
+                    <option value=''>Select Role *</option>
+                  </select>
+                </div>
+
+                <table ng-table="vm.ngTableConfig"
+                       class="table table-condensed table-bordered table-striped">
+                  <colgroup>
+                    <col width="5%"/>
+                    <col width="50%"/>
+                    <col width="45%"/>
+                  </colgroup>
+                  <tr ng-repeat="row in $data">
+                    <td title="''">
+                      <input type="checkbox"
+                             ng-model="vm.newSharePets[row.id]"
+                             ng-change="vm.newSharePetsChange(vm.newSharePets)"/>
+                    </td>
+                    <td title="'Name'">{{row.name}}</td>
+                    <td title="'Breed'">{{ vm.getBreedNames(row.petBreeds) }}</td>
+                  </tr>
+                </table>
+            </div>
+
+          <div class="list-group pull-right">
+            <button ng-disabled="!vm.selectedUser ||
+                                 !vm.selectedShareUserType ||
+                                (vm.newSharePetsFiltered && vm.newSharePetsFiltered.length == 0)"
+                    ng-click="vm.addShareUser(vm.selectedUser)"
+                    class="btn btn-default">
+              Share
+            </button>
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <h4>Existing users</h4>
+
+      <p ng-show="vm.shareUsers &&
+                  vm.shareUsers.length == 0">
+        No Results
+      </p>
+
+      <div  ng-show="vm.shareUsers &&
+                     vm.shareUsers.length > 0"
+            class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
+            style="padding:0px;">
+
+
+          <uib-accordion close-others="oneAtATime">
+            <div  ng-repeat="shareUser in vm.shareUsers"
+                  uib-accordion-group>
+
+            <uib-accordion-heading>
+              <b>
+                {{ vm.getShareUserDetails(shareUser) }}
+              </b>
+              <br>
+              {{ shareUser.shareUser.email }}
+              <span class="pull-right">
+                {{ vm.getShareUserTypeDetails(shareUser)}}
+              </span>
+            </uib-accordion-heading>
+
+            <table ng-table="vm.ngTableUpdateConfigs[shareUser.id]"
+                   class="table table-condensed table-bordered table-striped">
+              <colgroup>
+                <col width="5%"/>
+                <col width="50%"/>
+                <col width="45%"/>
+              </colgroup>
+              <tr ng-repeat="row in $data">
+                <td title="''">
+                  <input type="checkbox"
+                         ng-model="vm.updateSharePets[shareUser.id][row.id]"
+                         ng-change="vm.updateSharePetsChange(shareUser.id, row.id)"/>
+                </td>
+                <td title="'Name'">{{row.name}}</td>
+                <td title="'Breed'">{{ vm.getBreedNames(row.petBreeds) }}</td>
+              </tr>
+            </table>
+
+            <div class="list-group pull-right">
+              <button ng-click="vm.removeShareUser(shareUser)"
+                      class="btn btn-default">
+                Remove User
+              </button>
+              <button ng-click="vm.updateShareUser(shareUser)"
+                      ng-disabled="!shareUser ||
+                                   (vm.updateSharePetsFiltered && vm.updateSharePetsFiltered.length == 0)"
+                      class="btn btn-default">
+                Update List
+              </button>
+
+            </div>
+
+
+            </div>
+
+
+          </uib-accordion>
+
+      </div>
+
+  </uib-tab>
+  <uib-tab index="1" heading="Transfer Ownership">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Find a new owner</div>
+        <div class="panel-body">
+
+          <div class="well disclaimer">
+            This may apply to dogs as they are transferred from breeders or shelters.
+            <br>
+            <b>Note:</b> The new owner must be registered in doglogbook prior to transferring the dog's ownership.
+            Enter the email address of the new owner for your dog(s).
+            Once transfer is completed, you will no longer be able to access this data and records for this dog(s).
+          </div>
+
+           <div class="form-group">
+              <label for="search"></label>
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+
+                  <input type="text"
+                         ng-model="vm.transferUserEmail"
+                         placeholder="Email"
+                         class="form-control">
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                  <button ng-click="vm.checkTransferUser(vm.transferUserEmail)"
+                          class="form-control btn btn-default btn-sm">
+                    Check
+                  </button>
+                </div>
+            </div>
+
+
+          <p ng-show="vm.selectedTransferUser &&
+                      vm.pets &&
+                      vm.pets.length == 0">
+            No Results
+          </p>
+
+          <div  ng-show="vm.selectedTransferUser &&
+                         vm.pets &&
+                         vm.pets.length > 0"
+                class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <hr>
+
+            <div class="list-group">
+
+                <div class="well">
+                  <h4>
+                    {{ vm.getUserFullDesc(vm.selectedTransferUser) }}
+                  </h4>
+                  <p> {{ vm.selectedTransferUser.email }} </p>
+                </div>
+
+                <table ng-table="vm.ngTableTransferConfig"
+                       class="table table-condensed table-bordered table-striped">
+                  <colgroup>
+                    <col width="5%"/>
+                    <col width="50%"/>
+                    <col width="45%"/>
+                  </colgroup>
+                  <tr ng-repeat="row in $data">
+                    <td title="''">
+                      <input type="checkbox"
+                             ng-model="vm.transferSharePets[row.id]"
+                             ng-change="vm.transferSharePetsChange(vm.transferSharePets)"/>
+                    </td>
+                    <td title="'Name'">{{row.name}}</td>
+                    <td title="'Breed'">{{ vm.getBreedNames(row.petBreeds) }}</td>
+                  </tr>
+                </table>
+            </div>
+
+          <div class="list-group pull-right">
+            <button ng-disabled="!vm.selectedTransferUser ||
+                                (vm.transferSharePetsFiltered && vm.transferSharePetsFiltered.length == 0)"
+                    ng-click="vm.transferShareUser(vm.selectedTransferUser)"
+                    class="btn btn-default">
+              Transfer
+            </button>
+          </div>
+
+          </div>
+
+        </div>
+      </div>
+
+  </uib-tab>
+</uib-tabset>

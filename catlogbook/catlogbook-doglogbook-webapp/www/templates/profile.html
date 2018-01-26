@@ -1,0 +1,35 @@
+
+<div class="pet-profile">
+
+<div class="row">
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <img class="avatar"
+       ng-src="{{selectedPet.photoLink}}" 
+       default-src="img/pet-avatar.svg">
+  </div>
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    <div class="details">
+      <h3>{{ selectedPet.name }}</h3>
+      <b>{{ vm.getBreedNames(selectedPet.petBreeds) }}</b>
+      <p>{{ vm.getSexType(selectedPet.sex) }} ({{ vm.getPetAge(selectedPet.dateOfBirth) }})</p>
+    </div>  
+  </div>
+</div>
+
+</div>
+
+<hr>
+
+<!-- Date Period Filter -->
+<div class="row contentFilters">
+  <div class="col">
+    <select   ng-change="vm.datePeriodChange(vm.selectedDatePeriodObj)"
+              class="form-control filter-date"
+              ng-model="vm.selectedDatePeriodObj"
+              ng-options="datePeriod as datePeriod.name for datePeriod in vm.datePeriods track by datePeriod.id">
+    </select>
+  </div>
+</div>
+
+<div ui-view="profileContent"></div>
+

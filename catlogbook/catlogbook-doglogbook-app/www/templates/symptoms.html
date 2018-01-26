@@ -1,0 +1,58 @@
+<ion-view class="view-activities" view-title="{{ 'SymtomsTitle' | translate }}">
+
+<ion-header-bar class='bar-positive'>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header padding">
+
+  <div class="list">
+
+   <label class="item item-input item-select">
+      <span class="input-label requiredField" 
+            translate="CommonMsgChooseDog">
+      </span>
+      <select ng-model="vm.selectedPet"
+              ng-options="pet as pet.name for pet in vm.pets track by pet.id" 
+              ng-change="vm.petChange(vm.selectedPet)"
+              required>
+        <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <div class="card" ng-repeat="item in vm.results">
+      <div class="item item-text-wrap">
+        <p style="text-align: right;">
+          {{ item.dateCreated | date:"d MMM" : 'UTC' }}</p>
+        <b ng-show="item.symptomType">
+          {{ item.symptomType.name }}
+        </b>
+        <h2 ng-show="item.symptomFrequency">
+          {{ item.symptomFrequency.name }}
+        </h2>
+        <p  ng-show="item.comment">
+          {{ item.comment }}
+        </p>
+      </div>
+      <div class="item item-divider item-divider-buttons">
+          <button class="button button-outline icon ion-trash-a"
+                  ng-click="vm.remove(item.id)"></button>
+      </div>
+    </div>
+
+    <p  ng-show="!vm.hasResults()"
+        class="filter-empty" 
+        translate="CommonMsgNoResults"></p>
+
+    <div  ng-show="vm.hasResults()"
+          class="filter-empty">
+      <div class="item item-text-wrap">
+        {{ 'CommonMsgOlderInformation' | translate }}
+      </div>
+    </div>
+
+  </div>
+
+</ion-content>
+
+</ion-view>

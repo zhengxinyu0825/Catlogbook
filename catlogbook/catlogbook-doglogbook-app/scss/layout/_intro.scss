@@ -1,0 +1,22 @@
+$intro-bg: '../img/intro-bg.jpg';
+
+.view-intro {
+
+  .content-intro-bg {
+    background: url($intro-bg) no-repeat center center fixed;
+    background-size: cover;
+  }
+
+  .bar-footer {
+    text-align: center;
+
+    .button {
+      line-height: 0px;
+    }
+    
+    .col:first-child {
+      border-right: 1px solid #FFFFFF;
+    }
+  }
+
+}

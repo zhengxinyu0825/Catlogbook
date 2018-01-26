@@ -1,0 +1,119 @@
+<div class="session-training-reinforcement-section">
+    <!-- Training Reinforcement -->
+    <ion-item class="item item-collapse rounded"
+              ng-click="vm.toggleGroup('AddSessionTrainingReinforcement')"
+              ng-class="{active: vm.isGroupShown('AddSessionTrainingReinforcement')}">
+        <i class="icon" ng-class="vm.isGroupShown('AddSessionTrainingReinforcement') ? 'ion-minus' : 'ion-plus'"></i>
+      &nbsp;
+      {{ 'AddSessionTrainingReinforcement' | translate }}
+    </ion-item>
+    <div ng-show="vm.isGroupShown('AddSessionTrainingReinforcement')">
+
+      <div class="item item-text-wrap">
+      {{ 'AddSessionRewards' | translate }}
+      </div>  
+
+      <div class="list card padding">
+
+        <label class="item item-input item-select">
+          <div class="item-text-wrap">
+              {{ 'AddSessionReward' | translate }}
+          </div>       
+          <select ng-model="vm.formData.selectedReward"
+                  ng-options="reward as reward.name for reward in vm.rewards track by reward.id">
+              <option value='' translate="CommonSelect"></option>
+          </select>            
+        </label>
+
+        <label  class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionRewardPercentage' | translate }}
+          </span>
+          <select ng-model="vm.formData.selectedRewardPertentage"
+                  ng-options="v as vm.percentageDisplay(v) for v in vm.rewardsPercetages | filter:vm.filterRewardsPercentage"
+                  >
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+          
+        </label>
+
+
+      <button ng-disabled="!vm.formData.selectedReward ||
+                           !vm.formData.selectedRewardPertentage"
+              ng-click="vm.addReward( vm.formData.selectedReward,vm.formData.selectedRewardPertentage)"
+              class="button button-outline button-block button-assertive">
+        {{ 'AddSessionRewardAdd' | translate }}
+      </button>      
+
+        <div  ng-if="vm.formData.rewardResults && 
+                     vm.formData.rewardResults.length > 0"
+              class="list">
+
+          <a class="item item-icon-right"
+             ng-repeat="rewardResult in vm.formData.rewardResults">
+             <b>{{ rewardResult.name }}</b> -
+             {{ vm.percentageDisplay(rewardResult.percentage) }}
+            <i  ng-click="vm.removeReward(rewardResult)"
+                class="icon ion-android-close"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="item item-text-wrap">
+      {{ 'AddSessionCorrections' | translate }}
+      </div>  
+
+      <div class="list card padding">
+
+        <label class="item item-input item-select">
+          <div class="item-text-wrap">
+              {{ 'AddSessionCorrection' | translate }}
+          </div>       
+          <select ng-model="vm.formData.selectedCorrection"
+                  ng-options="correction as correction.name for correction in vm.correctionDevices track by correction.id">
+              <option value='' translate="CommonSelect"></option>
+          </select>            
+        </label>
+
+        <label  class="item item-input item-select"> 
+          <span class="input-label">
+              {{ 'AddSessionCorrectionPercentage' | translate }}
+          </span>
+          <select ng-model="vm.formData.selectedCorrectionPertentage"
+                  ng-options="v as vm.percentageDisplay(v) for v in vm.rewardsPercetages | filter:vm.filterCorrectionPercentage"
+                  >
+              <option value='' translate="CommonSelect"></option>
+          </select>      
+          
+        </label>
+
+
+      <button ng-disabled="!vm.formData.selectedCorrection ||
+                           !vm.formData.selectedCorrectionPertentage"
+              ng-click="vm.addCorrection( vm.formData.selectedCorrection,vm.formData.selectedCorrectionPertentage)"
+              class="button button-outline button-block button-assertive">
+        {{ 'AddSessionCorrectionAdd' | translate }}
+      </button>      
+
+        <div  ng-if="vm.formData.correctionResults && 
+                     vm.formData.correctionResults.length > 0"
+              class="list">
+
+          <a class="item item-icon-right"
+             ng-repeat="correctionResult in vm.formData.correctionResults">
+             <b>{{ correctionResult.name }}</b> -
+             {{ vm.percentageDisplay(correctionResult.percentage) }}
+            <i  ng-click="vm.removeCorrection(correctionResult)"
+                class="icon ion-android-close"></i>
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- END Training Reinforcement -->
+</div>

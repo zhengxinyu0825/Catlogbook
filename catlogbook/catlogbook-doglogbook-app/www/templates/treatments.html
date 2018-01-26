@@ -1,0 +1,45 @@
+<ion-view class="view-treatments" view-title="{{ 'TreatmentsTitle' | translate }}">
+
+<ion-header-bar class='bar-positive'>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header padding">
+  
+  <form name='form_login' novalidate>
+  <div class="list">
+
+   <label class="item item-input item-select">
+      <span class="input-label requiredField" 
+            translate="TreatmentsSelectPet">
+      </span>
+      <select ng-model="vm.selectedPet"
+              ng-options="pet as pet.name for pet in vm.pets track by pet.id" 
+              ng-change="vm.petChange(vm.selectedPet)"
+              required>
+        <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <a  ng-repeat="treatment in vm.treatments"
+        ng-click="vm.edit(vm.selectedPet,treatment)"
+        class="item item-icon-left item-icon-right" href="#">
+        <i class="icon ion-clipboard"></i>
+        {{ treatment.treatmentType.name }}
+        <p>{{ treatment.dateAdministered | date:"d MMM" : 'UTC'}}</p>
+        <span ng-show="treatment.reminders > 0"
+              class="icon ion-android-alarm-clock badge badge-assertive"> 
+              {{ treatment.reminders }}
+        </span>
+    </a>
+
+    <p  ng-show="!vm.hasResults()"
+        class="filter-empty" 
+        translate="TreatmentsMsgNoResults"></p>
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

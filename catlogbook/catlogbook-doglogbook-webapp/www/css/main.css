@@ -1,0 +1,301 @@
+body {
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  color: #444444; }
+
+/*LOGIN*/
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto; }
+  .form-signin .logo {
+    text-align: center;
+    padding: 20px; }
+    .form-signin .logo img {
+      width: 250px; }
+
+.nav a {
+  position: relative;
+  display: block;
+  padding: 5px 15px;
+  color: #9d9d9d;
+  text-decoration: none;
+  cursor: pointer; }
+
+.navbar-brand {
+  float: left;
+  height: 50px;
+  padding: 5px;
+  font-size: 18px;
+  line-height: 20px; }
+
+.navbar-inverse .navbar-toggle {
+  border-color: #333;
+  background-color: #333; }
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: #333; }
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+  color: #555;
+  background-color: transparent; }
+
+.navbar-inverse {
+  background-color: #ffffff; }
+
+/* My Dogs */
+.dog-list {
+  margin-bottom: 50px; }
+
+.dog-wrapper {
+  border: 3px solid #ebebeb;
+  padding: 5px;
+  margin-bottom: 25px;
+  cursor: pointer; }
+
+.dog-wrapper .dog-microchip-wrapper {
+  font-size: 14px;
+  margin-bottom: 10px; }
+
+.dog-wrapper .dog-img {
+  background: #ebebeb;
+  max-height: 80px;
+  max-width: 80px;
+  border: 2px solid #ebebeb;
+  margin: auto;
+  display: block;
+  border-radius: 100px; }
+
+.dog-wrapper .dog-age {
+  margin-left: 5px; }
+
+.dog-wrapper .dog-gender {
+  margin-right: 5px;
+  float: right; }
+
+.dog-wrapper .dog-details-wrapper, .dog-wrapper .dog-name, .dog-wrapper .dog-breed {
+  text-align: center;
+  display: block; }
+
+.dog-wrapper .dog-name {
+  font-weight: bold;
+  color: white;
+  font-size: 1em; }
+
+.dog-wrapper .dog-details-wrapper {
+  background: #47505b;
+  color: #aaaaaa;
+  padding: 5px;
+  border-radius: 5px; }
+
+.dog-wrapper .dog-options {
+  margin-top: 15px;
+  padding: 0px 10px; }
+
+.dog-wrapper .dog-options .dog-option {
+  background: #ebebeb;
+  border-radius: 5px;
+  border: 2px solid #47505b;
+  padding: 5px; }
+
+.dog-wrapper .dog-options .dog-option:hover {
+  border: 2px #41c2f3 solid;
+  cursor: pointer; }
+
+.dog-wrapper .dog-options > div {
+  padding: 0 10px 0 10px; }
+
+.dog-wrapper .tooltip-style-inner {
+  background: #41c2f3;
+  color: #232323;
+  font-weight: bold; }
+
+/* Dog Search */
+.dlb-search {
+  background: #ebebeb;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 25px; }
+
+.dlb-search label {
+  padding-left: 15px; }
+
+.tab-content {
+  padding: 20px; }
+
+#loading-bar .bar {
+  -webkit-transition: width 350ms;
+  -moz-transition: width 350ms;
+  -o-transition: width 350ms;
+  transition: width 350ms;
+  background: #41c2f3;
+  position: fixed;
+  z-index: 10002;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-bottom-right-radius: 1px;
+  border-top-right-radius: 1px; }
+
+/* Fancy blur effect */
+#loading-bar .peg {
+  position: absolute;
+  width: 70px;
+  right: 0;
+  top: 0;
+  height: 2px;
+  opacity: .45;
+  -moz-box-shadow: #41c2f3 1px 0 6px 1px;
+  -ms-box-shadow: #41c2f3 1px 0 6px 1px;
+  -webkit-box-shadow: #41c2f3 1px 0 6px 1px;
+  box-shadow: #41c2f3 1px 0 6px 1px;
+  -moz-border-radius: 100%;
+  -webkit-border-radius: 100%;
+  border-radius: 100%; }
+
+/*DASHBOARD*/
+/*
+ * Base structure
+ */
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px; }
+
+.filter-date {
+  float: right;
+  width: 100px; }
+
+.pet-profile {
+  padding: 10px;
+  margin: 0px;
+  background-color: #eee;
+  border-radius: 10px; }
+  .pet-profile img.avatar {
+    background: #ebebeb;
+    border: 2px solid #ebebeb;
+    margin: auto;
+    display: block;
+    border-radius: 100px; }
+  .pet-profile .details {
+    padding-left: 20px; }
+
+.contentFilters {
+  margin: 10px 0px; }
+
+.counters-content {
+  overflow-y: scroll;
+  height: 200px; }
+
+.well {
+  text-align: center; }
+
+.well.disclaimer {
+  text-align: justify; }
+
+/*
+ * Global add-ons
+ */
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee; }
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+  border-bottom: 2px solid #333d49; }
+
+/*
+ * Sidebar
+ */
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 5px 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
+
+.sidebar {
+  background-color: #333d49;
+  color: #c0c0c0;
+  display: none; }
+
+.sidebar a {
+  color: #c0c0c0;
+  text-decoration: none; }
+
+.sidebar h4 {
+  color: #41c2f3; }
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Scrollable contents if viewport is shorter than content. */
+    border-right: 1px solid #eee; } }
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -21px;
+  /* 20px padding + 1px border */
+  margin-bottom: 5px;
+  margin-left: -20px; }
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #c0c0c0; }
+
+.nav-sidebar img {
+  height: 25px;
+  width: 25px;
+  margin-right: 10px; }
+
+.sidebar .nav > li > a:hover, .nav > li > a:focus {
+  background-color: transparent;
+  text-decoration: none;
+  border-left: 4px solid #41c2f3; }
+
+/*
+ * Main content
+ */
+.main {
+  padding: 20px; }
+
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px; }
+  .navbar-nav {
+    display: none; } }
+
+.main .page-header {
+  margin-top: 0; }
+
+/*
+ * Placeholder dashboard ideas
+ */
+.placeholders {
+  margin-bottom: 30px;
+  text-align: center; }
+
+.placeholders h4 {
+  margin-bottom: 0; }
+
+.placeholder {
+  margin-bottom: 20px; }
+
+.placeholder img {
+  display: inline-block;
+  border-radius: 50%; }

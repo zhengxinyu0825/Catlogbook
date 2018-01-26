@@ -1,0 +1,371 @@
+<h1 class="page-header">Activities</h1>
+
+
+<uib-tabset active="activeForm">
+  <uib-tab index="0" heading="History">
+
+    <p ng-show="vm.results && vm.results.length == 0">
+      No Results
+    </p>
+
+    <div  ng-show="vm.results && vm.results.length > 0">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Event</th>
+            <th>Rate</th>
+            <th>Duration</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in vm.results">
+            <td>{{ item.dateRegistered | date:"d MMM" : 'UTC' }}</td>
+            <td>{{ item.reportEvent.report.name }}</td>
+            <td>{{ item.reportEvent.event.name }}</td>
+            <td>{{ item.rate.name }}</td>
+            <td>{{ vm.getDurationFormat(item.duration) }}</td>
+            <td>
+              <button ng-click="vm.remove(item.id)"
+                      type="button" class="btn  btn-sm btn-default" aria-label="Left Align">
+                <span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </uib-tab>
+  <uib-tab index="1" heading="Trendlines">
+
+
+   <div class="form-group">
+    <label for="search">Activities</label>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        <select
+                class="form-control"
+                ng-model="vm.selectedActivity"
+                ng-options="activity as vm.getActivityFullName(activity)  for activity in vm.activityEvents track by activity.id">
+          <option value=''>Select</option>
+        </select>
+      </div>
+      <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <select
+                class="form-control"
+                ng-model="vm.selectedValuesBy"
+                ng-change="vm.avgByChange(vm.selectedAvgBy)"
+                ng-options="valueBy as valueBy.name for valueBy in vm.valuesBy track by valueBy.id">
+        </select>
+      </div>
+      <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <select
+                class="form-control"
+                ng-model="vm.selectedAvgBy"
+                ng-change="vm.avgByChange(vm.selectedAvgBy)"
+                ng-options="avgBy as avgBy.name for avgBy in vm.avgBy track by avgBy.id">
+        </select>
+      </div>
+      <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+        <button ng-click="vm.addCondition(vm.selectedActivity)"
+        class="form-control btn btn-default">
+        Add
+      </button>
+    </div>
+  </div>
+  <div class="row" ng-show="vm.chartConditions && vm.chartConditions.length == 0">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      Set filter parameters
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div ng-show="
+    vm.filteredActivities && 
+    vm.filteredActivities.length == 0">
+    No Results
+</div>
+
+
+<div  style="margin: 20px 0px;"
+      ng-show="vm.filteredActivities && 
+               vm.filteredActivities.length > 0">
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">Activities</div>
+  <div class="panel-body">
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <canvas id="line"
+      class="chart chart-bar" 
+      chart-data="data"
+      chart-labels="labels" 
+      chart-series="series"
+      chart-options="options">
+    </canvas> 
+  </div>
+</div>
+</div>
+
+</div>
+
+<div class="row" ng-show="vm.chartConditions && vm.chartConditions.length > 0">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <table class="table table-bordered table-striped" style="margin: 20px 20px;">
+       <colgroup>
+         <col class="col-xs-10">
+         <col class="col-xs-2">
+       </colgroup>
+       <thead>
+        <tr>
+         <th>Activity</th>
+         <th></th>
+       </tr>
+      </thead>
+      <tbody>
+
+        <tr ng-repeat="cond in vm.chartConditions">
+         <th scope="row">
+            {{ vm.getActivityFullName(cond) }}
+         </th>
+         <td>
+         <button ng-click="vm.removeCondition(cond)"
+                 type="button" 
+                 class="btn btn-default">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+         </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+    <table class="table table-bordered" style="margin: 20px 20px;">
+      <thead>
+        <tr>
+          <th>Value</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>6</th>
+          <td>Strongly likes</td>
+        </tr>
+        <tr>
+          <th>5</th>
+          <td>Likes</td>
+        </tr>
+        <tr>
+          <th>4</th>
+          <td>Neutral</td>
+        </tr>
+        <tr>
+          <th>3</th>
+          <td>Dislikes</td>
+        </tr>
+        <tr>
+          <th>2</th>
+          <td>Strongly dislikes</td>
+        </tr>
+        <tr>
+          <th>1</th>
+          <td>Dislike most</td>
+        </tr>
+        <tr>
+          <th>0</th>
+          <td>Not Applicable</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+</div>  
+
+</uib-tab>
+<uib-tab index="2" heading="Compare">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+       <div class="form-group">
+          <label>Activity *</label>
+          <select
+                  class="form-control"
+                  ng-model="vm.selectedCompareActivity"
+                    ng-options="activity as vm.getActivityFullName(activity)  for activity in vm.activityEvents track by activity.id">
+            <option value=''>Select</option>
+          </select>
+        </div>
+
+    </div>
+  </div>
+  <div  class="row">
+
+    <div class="col-xs-12 col-sm-8 col-md-3 col-lg-4">
+
+       <div class="form-group">
+          <label>Breed</label>
+          <select
+                  class="form-control"
+                  ng-model="vm.selectedCompareBreed"
+                  ng-change="vm.compareBreedChange(vm.selectedCompareBreed)"
+                  ng-options="breed as breed.name for breed in vm.breeds track by breed.id">
+            <option value=''>All</option>
+          </select>
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+
+       <div class="form-group">
+          <label>Breed Percentage</label>
+          <select
+                  class="form-control"
+                  ng-disabled="!vm.selectedCompareBreed"
+                  ng-model="vm.selectedCompareBreedPercentage"
+                  ng-options="breedPercentage as breedPercentage.name for breedPercentage in vm.breedPercentages track by breedPercentage.id">
+            <option value=''>All</option>
+          </select>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+
+       <div class="form-group">
+          <label>Age Unit</label>
+          <select
+                  class="form-control"
+                  ng-change="vm.ageTypeChange(vm.selectedCompareAgeType)"
+                  ng-model="vm.selectedCompareAgeType"
+                  ng-options="ageType as ageType.name for ageType in vm.ageTypes track by ageType.id">
+            <option value=''>All</option>
+          </select>
+      </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+
+       <div class="form-group">
+          <label>Age Range</label>
+          <select
+                  class="form-control"
+                  ng-disabled="!vm.selectedCompareAgeType"
+                  ng-model="vm.selectedCompareAgeRange"
+                  ng-options="ageRange as ageRange.name for ageRange in vm.ageRanges track by ageRange.id">
+            <option value=''>All</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
+
+       <div class="form-group">
+          <label>Sex</label>
+          <select
+                  class="form-control"
+                  ng-model="vm.selectedCompareSex"
+                  ng-options="petSex as petSex.name for petSex in vm.petSexs track by petSex.id">
+            <option value=''>All</option>
+          </select>
+      </div>
+    </div>
+ </div>
+  <div class="row">
+    <div class="list-group pull-right">
+      <button ng-disabled="!vm.selectedCompareActivity"
+              ng-click="vm.compare()"
+              class="form-control btn btn-default">
+        Compare
+      </button>
+    </div>
+  </div>
+
+<hr>
+
+<div ng-show="vm.comparisonResult">
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+        <canvas id="doughnut" 
+                class="chart chart-doughnut"
+                chart-data="compMyDogActivitiesData" 
+                chart-labels="compMyDogActivitieslabels"
+                chart-colors="compMyDogActivitiesColors">
+        </canvas> 
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+        <canvas id="doughnut" 
+                class="chart chart-doughnut"
+                chart-data="compOthersActivitiesData" 
+                chart-labels="compOthersActivitieslabels"
+                chart-colors="compOthersActivitiesColors">
+        </canvas> 
+
+    </div>    
+  </div>
+  <hr>
+  <div class="row">
+     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Value</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>6</th>
+              <td>Strongly likes</td>
+            </tr>
+            <tr>
+              <th>5</th>
+              <td>Likes</td>
+            </tr>
+            <tr>
+              <th>4</th>
+              <td>Neutral</td>
+            </tr>
+            <tr>
+              <th>3</th>
+              <td>Dislikes</td>
+            </tr>
+            <tr>
+              <th>2</th>
+              <td>Strongly dislikes</td>
+            </tr>
+            <tr>
+              <th>1</th>
+              <td>Dislike most</td>
+            </tr>
+            <tr>
+              <th>0</th>
+              <td>Not Applicable</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+  </div>
+
+</div>
+
+</uib-tab>
+
+</uib-tabset>
+
+

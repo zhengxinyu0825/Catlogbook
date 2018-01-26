@@ -1,0 +1,164 @@
+<ion-view class="view-add-feeding" view-title="{{ 'AddFeedingTitle' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header padding">
+  
+  <form name='form_login' novalidate>
+    <div class="list">
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label requiredField">
+          {{ 'AddFeedingType' | translate }} *
+      </span>
+      <select ng-model="vm.selectedFeedingType"
+              ng-change="vm.feedingTypeChange(vm.selectedFeedingType)"
+              ng-options="feedingType as feedingType.name for feedingType in vm.feedingTypes track by feedingType.id"
+              required>
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <div ng-show="vm.selectedFeedingType">
+
+      <h3 class="item item-text-wrap requiredField">
+        {{ 'AddFeedingSelectFeeding' | translate }} *
+      </h3>
+
+      <label  ng-show="vm.foodTypes && vm.foodTypes.length == 0"
+              class="item item-input">
+        <p    class="filter-empty" 
+              translate="CommonMsgNoResults"></p>
+      </label>
+
+      <div  ng-hide="vm.foodTypes && vm.foodTypes.length == 0"
+            class="list">
+        <div ng-repeat="foodType in vm.foodTypes | orderBy:'order'">
+
+          <ion-checkbox 
+              ng-change="vm.foodTypeChecked(foodType, vm.formData.checkboxItems[foodType.id])"
+              ng-model="vm.formData.checkboxItems[foodType.id]"
+              class="item-text-wrap">
+              {{ foodType.name }}
+          </ion-checkbox>
+          <section  ng-show="vm.formData.checkboxItems[foodType.id]"
+                    class="card">
+
+            <label   class="item item-input item-select item-stacked-label"> 
+              <div class="item-text-wrap requiredField">
+                  {{ 'AddFeedingFrequency' | translate }} *
+              </div>
+              <select ng-model="vm.formData.frequencyItems[foodType.id]"
+                      ng-options="frec as frec.name for frec in vm.feedingTypesFrecuencies track by frec.id"
+                      ng-required="vm.formData.checkboxItems[foodType.id]">
+                  <option value='' translate="CommonSelect"></option>
+              </select>
+            </label>  
+
+             <div ng-show="foodType.name.toUpperCase().indexOf('DRY') >=0 || 
+                           foodType.name.toUpperCase().indexOf('WET') >=0 ">
+ 
+              <label ng-show="vm.brands && vm.brands.length > 0"
+                     class="item item-input item-select item-stacked-label"> 
+                <div class="item-text-wrap">
+                    {{ 'AddFeedingBrand' | translate }}
+                </div>
+                <select ng-change="vm.brandChange(foodType,vm.formData.brandItems[foodType.id])"
+                        ng-model="vm.formData.brandItems[foodType.id]"
+                        ng-options="brand as brand.name for brand in vm.brands track by brand.id">
+                    <option value='' translate="CommonSelect"></option>
+                </select>
+              </label>  
+
+              <label ng-show="vm.formData.items[foodType.id].products &&
+                              vm.formData.items[foodType.id].products.length == 0"
+                     class="item item-input"
+                     translate="AddFeedingNoProducts"> 
+              </label>
+
+              <label ng-show="vm.formData.items[foodType.id].products &&
+                              vm.formData.items[foodType.id].products.length > 0"
+                     class="item item-input item-select item-stacked-label"> 
+                <div class="item-text-wrap">
+                   {{ 'AddFeedingProduct' | translate }}
+                </div>
+                 <select  ng-model="vm.formData.productItems[foodType.id]"
+                          ng-options="product as product.name for product in 
+                                      vm.formData.items[foodType.id].products track by product.id">
+                      <option value='' translate="CommonSelect"></option>
+                  </select>
+              </label>    
+
+             </div>       
+
+            <label   class="item item-input item-select"> 
+              <div class="item-text-wrap requiredField">
+                  {{ 'AddFeedingUnit' | translate }} *
+              </div>
+              <select ng-model="vm.formData.feedingUnitsItems[foodType.id]"
+                      ng-options="unit as unit.name for unit in vm.feedingUnits track by unit.id"
+                      ng-required="vm.formData.checkboxItems[foodType.id]">
+                  <option value='' translate="CommonSelect"></option>
+              </select>
+            </label>  
+
+            <label class="item item-input">
+              <span class="input-label requiredField">
+                  {{ 'AddFeedingAmount' | translate }} *
+              </span>
+              <input ng-model="vm.formData.amountItems[foodType.id]"
+                     type="number"
+                     ng-required="vm.formData.checkboxItems[foodType.id]">
+            </label>
+
+             <div ng-show="foodType.name.toUpperCase().indexOf('OTHER') >=0">
+
+              <label class="item item-input">
+                <span class="input-label" 
+                      translate="AddFeedingOther"></span>
+                <input ng-model="vm.formData.otherItems[foodType.id]"
+                       type="text">
+              </label>
+
+             </div>
+
+
+          </section>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <button ui-sref="app.home"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.save(vm.formData)"
+                    ng-disabled='form_login.$invalid'
+                    class="button button-block button-assertive">
+              {{ 'CommonSave' | translate }}
+            </button>
+        </div>
+    </div>
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

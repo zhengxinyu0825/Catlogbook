@@ -1,0 +1,70 @@
+<ion-view class="view-add-pet" view-title="">
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<div class="bar bar-subheader">
+    <h4>{{ vm.section }}</h4>
+</div>
+
+<ion-content scroll="true"
+             class="padding has-subheader">
+  
+  <section class='fade-in'>
+    <div class="list">
+
+     <label class="item item-input item-select">
+        <span class="input-label" 
+              translate="AddPetActivityType">
+        </span>
+        <select ng-model="vm.activityType" 
+                ng-options="activityType as activityType.name 
+                for activityType in vm.activityTypes track by activityType.id" required>
+          <option value='' translate="CommonSelect"></option>
+        </select>
+      </label>
+
+     <label class="item item-input item-select">
+        <span class="input-label" 
+              translate="AddPetActivityType">
+        </span>
+        <select ng-model="vm.activity" 
+                ng-options="activity as activity.name for activity in vm.activities track by activity.id" required>
+          <option value='' translate="CommonSelect"></option>
+        </select>
+      </label>
+
+      <button class="button button-outline button-block button-assertive">
+        {{ 'CommonAdd' | translate }}
+      </button>
+
+    </div>
+
+    <div class="list activityList">
+      <div class="item item-divider">
+        Activities
+      </div>
+
+      <a class="item item-avatar item-icon-right"
+         ng-repeat="activity in vm.activities" href="#">
+        <img  ng-src='{{activity.icon}}'
+              default-src="img/add.svg"/>
+        {{ activity.name }}
+        <i class="icon ion-android-close"></i>
+      </a>
+
+    </div>
+
+  </section>
+
+</ion-content>
+
+</ion-view>

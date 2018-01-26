@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+input[type=text], select, textarea {
+
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    resize: vertical;
+}
+
+input[type=submit] {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 20px;
+    margin-left: 200px;
+    background-color: #48aee7;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container {
+    margin-right: 40px;
+    margin-left: 40px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+</head>
+<body>
+<br><br>
+<h1 style="text-align:center";>Contact Us</h1>
+<br>
+<div class="container">
+  <form action="/action_page.php">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="pnumber">Phone Number</label>
+    <input type="text" id="pnumber" name="phonenumber" placeholder="Your phone number..">
+
+    <label for="Email">Email Address</label>
+    <input type="text" id="Email" name="emailaddress" placeholder="Your Email address..">
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">Australia</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+      <option value="uk">UK</option>
+      <option value="china">China</option>
+
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:400px"></textarea>
+    <p style="color:#48aee7; font-size:14px;">We cannot comment on the care and behaviour of individual cats. We advise you to discuss your cat’s needs directly with your veterinarian who can receive your cat’s data if you nominate them through the Permissions feature in the online catlogbook dashboard.</p>
+
+    <input style="font-size:18px; text-align:center" align="middle" type="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+</html>

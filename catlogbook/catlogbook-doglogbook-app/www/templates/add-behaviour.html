@@ -1,0 +1,317 @@
+<ion-view class="view-add-behaviour" view-title="{{ 'AddBehaviourTitle' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header padding">
+  
+  <form name='form_login' novalidate>
+  <div class="list">
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label requiredField">
+          {{ 'AddBehaviourDateRegistered' | translate }}*
+      </span>
+      <i class="icon ion-calendar"></i>
+      <input ng-model="vm.formData.dateRegistered" 
+             type="date" 
+             required>
+    </label>    
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label requiredField">
+          {{ 'AddBehaviourType' | translate }}*
+      </span>
+      <select ng-model="vm.formData.behaviourType"
+              ng-change="vm.behaviourTypeChange(vm.formData.behaviourType)"
+              ng-options="type as type.name for type in vm.types track by type.id"
+              required>
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <div   ng-show="vm.formData.behaviourType.id == 2"
+           class="card behaviour">
+      <div class="item item-divider">
+        {{ 'AddBehaviourDestructiveDetails' | translate }}
+      </div>
+      <div class="item item-text-wrap">
+
+        <ion-toggle 
+              ng-model="vm.formData.destructive.ownerAtHome" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+                   {{ 'AddBehaviourDestructiveOwnerAtHome'| translate }}
+        </ion-toggle>  
+        <div class="item item-text-wrap">
+        {{ 'AddBehaviourDestructiveDestroyedObjects' | translate }}
+        </div>     
+        <div class="list card">
+          <ion-checkbox 
+              ng-repeat="destroyedObject in vm.destroyedObjects"
+              ng-model="vm.formData.destructive.destroyedObjects[destroyedObject.id]"
+              class="item-text-wrap">
+              {{ destroyedObject.name }}
+          </ion-checkbox>
+        </div>
+        <label class="item item-input">
+          <span class="input-label" 
+                translate="AddBehaviourDestructiveOtherDestroyedObject">
+          </span>
+          <input ng-model="vm.formData.destructive.otherDestroyedObject"
+                 type="text">
+        </label>        
+      </div>
+    </div>
+
+    <div   ng-show="vm.formData.behaviourType.id == 7"
+           class="card behaviour">
+      <div class="item item-divider">
+        {{ 'AddBehaviourSeniorDetails' | translate }}
+      </div>
+      <div class="item item-text-wrap">
+
+        <ion-toggle 
+              ng-model="vm.formData.senior.paceUpAndDown" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddBehaviourSeniorPaceUpAndDown'| translate }}
+        </ion-toggle>
+
+        <ion-toggle 
+              ng-model="vm.formData.senior.stareBlanklyAtWallsOrFloor" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddBehaviourSeniorStareBlanklyAtWallsOrFloor'| translate }}
+        </ion-toggle>
+
+        <ion-toggle 
+              ng-model="vm.formData.senior.stuckBehindObjects" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddBehaviourSeniorStuckBehindObjects'| translate }}
+        </ion-toggle>
+
+        <ion-toggle 
+              ng-model="vm.formData.senior.recogniseFamiliar" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddBehaviourSeniorRecogniseFamiliar'| translate }}
+        </ion-toggle>
+
+        <ion-toggle 
+              ng-model="vm.formData.senior.walkWallsOrDoors" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddBehaviourSeniorWalkWallsOrDoors'| translate }}
+        </ion-toggle>
+
+        <ion-toggle 
+              ng-model="vm.formData.senior.walkAwayWhileAvoindPatted" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddBehaviourSeniorWalkAwayWhileAvoindPatted'| translate }}
+        </ion-toggle>
+
+        <ion-toggle 
+              ng-model="vm.formData.senior.urinateOrDefecateInAreaKeptClean" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddBehaviourSeniorUrinateOrDefecateInAreaKeptClean'| translate }}
+        </ion-toggle>
+
+        <ion-toggle 
+              ng-model="vm.formData.senior.difficultyFindingFoodDroppped" 
+              class="item-text-wrap"
+              toggle-class="toggle-positive">
+          {{ 'AddBehaviourSeniorDifficultyFindingFoodDroppped'| translate }}
+        </ion-toggle>
+
+      </div>
+    </div>
+
+    <div   ng-show="vm.formData.behaviourType.id == 8"
+           class="card behaviour">
+      <div class="item item-divider">
+        {{ 'AddBehaviourAggressiveDetails' | translate }}
+      </div>
+      <div class="item item-text-wrap">
+
+          <label class="item item-input item-select">
+            <span class="input-label" 
+                  translate="AddBehaviourAggressiveNearResource">
+            </span>
+            <select ng-model="vm.formData.aggresive.nearResourceTypeId"
+                    ng-options="type.id as type.name for type in vm.nearResourceTypes track by type.id">
+                <option value='' translate="CommonNone"></option>
+            </select>
+          </label>
+
+          <label class="item item-input item-select">
+            <span class="input-label requiredField">
+              {{ 'AddBehaviourAggressiveDirectedToward' | translate }}*
+            </span>
+            <select ng-model="vm.formData.aggresive.behaviourDirectedTowardId"
+                    ng-options="type.id as type.name for type in vm.directedTowards track by type.id"
+                    ng-change="vm.behaviourDirectedTowardChange(vm.formData.aggresive.behaviourDirectedTowardType)"
+                    ng-required="vm.formData.behaviourType.id == 8">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>          
+
+          <label class="item item-input item-select">
+            <span class="input-label requiredField">
+              {{ 'AddBehaviourAggressiveDirectedTowardType' | translate }}*
+            </span>
+            <select ng-model="vm.formData.aggresive.behaviourDirectedTowardType"
+                    ng-options="type.id as type.name for type in vm.directedTowardTypes track by type.id"
+                    ng-required="vm.formData.behaviourType.id == 8">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label> 
+
+          <!-- Person -->
+          <label  ng-show="vm.formData.aggresive.behaviourDirectedTowardId == 1"
+                  class="item item-input item-select">
+            <span class="input-label">
+                {{ 'AddBehaviourAggressiveHumanGender' | translate }}
+            </span>
+            <select ng-model="vm.formData.aggresive.humanGender"
+                    ng-options="gender.id as gender.name for gender in vm.humanGenders track by gender.id">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>  
+
+          <!-- Dog -->
+          <label  ng-show="vm.formData.aggresive.behaviourDirectedTowardId == 2"
+                  class="item item-input item-select">
+            <span class="input-label">
+                {{ 'AddBehaviourAggressiveHumanGender' | translate }}
+            </span>
+            <select ng-model="vm.formData.aggresive.dogType"
+                    ng-options="dogType.id as dogType.name for dogType in vm.dogTypes track by dogType.id">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>  
+
+          <!-- Other Animal -->
+          <label  ng-show="vm.formData.aggresive.behaviourDirectedTowardId == 3"
+                  class="item item-input item-select">
+            <span class="input-label">
+                {{ 'AddBehaviourAggressiveAnimalSpecies' | translate }}
+            </span>
+            <select ng-model="vm.formData.aggresive.speciesId"
+                    ng-options="s.id as vm.showSpeciesName(s) for s in vm.species track by s.id">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>  
+
+      </div>
+    </div>
+
+    <div   ng-show="vm.formData.behaviourType.id == 9"
+           class="card behaviour">
+      <div class="item item-divider">
+        {{ 'AddBehaviourFearRelatedDetails' | translate }}
+      </div>
+      <div class="item item-text-wrap">
+          <label class="item item-input item-select">
+            <span class="input-label">
+                {{ 'AddBehaviourFearRelatedDuring' | translate }}
+            </span>
+            <select ng-model="vm.formData.fearrelated.behaviourDuringTypeId"
+                    ng-options="type.id as type.name for type in vm.behaviourDuringTypes track by type.id">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>  
+      </div>
+    </div>
+
+    <div class="item item-text-wrap requiredField">
+      <b>{{ 'AddBehaviourBehaviourList' | translate }}</b>
+    </div>     
+
+    <label  ng-show="vm.itemTypes && vm.itemTypes.length == 0"
+            class="item item-input">
+      <p    class="filter-empty" 
+            translate="AddBehaviourMsgItemsTypesNoResults"></p>
+    </label>  
+
+    <div  ng-hide="vm.itemTypes && vm.itemTypes.length == 0"
+          class="list">
+      <div ng-repeat="itemType in vm.itemTypes">
+
+        <ion-checkbox 
+            ng-model="vm.formData.behaviourItems[itemType.id]"
+            class="item-text-wrap">
+            {{ itemType.name }}
+        </ion-checkbox>
+        <section  ng-show="vm.formData.behaviourItems[itemType.id]"
+              class="card">
+          <label class="item item-input item-select">
+            <span class="input-label requiredField">
+              {{ 'AddBehaviourObservationType' | translate }}*
+            </span>
+            <select ng-model="vm.formData.behaviourObservations[itemType.id]"
+                    ng-options="oType as oType.name for oType in vm.observationTypes track by oType.id"
+                    ng-required="vm.formData.behaviourItems[itemType.id]">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>          
+          <label class="item item-input item-select">
+            <span class="input-label requiredField">
+                {{ 'AddBehaviourLocationType' | translate }}*
+            </span>
+            <select ng-model="vm.formData.behaviourLocations[itemType.id]"
+                    ng-options="lType as lType.name for lType in vm.locationTypes track by lType.id"
+                    ng-required="vm.formData.behaviourItems[itemType.id]">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">
+                {{ 'AddBehaviourComment' | translate }}        
+            </span>
+            <input ng-model="vm.formData.behaviourComments[itemType.id]"
+                   type="text">
+          </label>
+        </section>
+
+      </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+            <button ui-sref="app.home"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.save(vm.formData)"
+                    ng-disabled='form_login.$invalid'
+                    class="button button-block button-assertive">
+              {{ 'CommonSave' | translate }}
+            </button>
+        </div>
+    </div>
+
+    </section>
+
+
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

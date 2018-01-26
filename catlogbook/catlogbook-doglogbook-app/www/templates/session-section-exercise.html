@@ -1,0 +1,42 @@
+<div>
+<ion-item class="item item-collapse rounded"
+            ng-click="vm.toggleGroup('AddSessionExerciseTitle')"
+            ng-class="{active: vm.isGroupShown('AddSessionExerciseTitle')}">
+      <i class="icon" ng-class="vm.isGroupShown('AddSessionExerciseTitle') ? 'ion-minus' : 'ion-plus'"></i>
+    &nbsp;
+    {{ 'AddSessionExerciseTitle' | translate }}
+  </ion-item>
+  <div ng-show="vm.isGroupShown('AddSessionExerciseTitle')">
+
+    <div class="list card">
+      
+      <div ng-repeat="exerciseItem in vm.exercisePhysicalConditions">
+        <ion-checkbox 
+            ng-model="vm.formData.exerciseItems[exerciseItem.id]"
+            class="item-text-wrap">
+            {{ exerciseItem.name }}
+        </ion-checkbox>
+        <section ng-show="vm.formData.exerciseItems[exerciseItem.id]">
+
+
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">
+                {{ 'AddSessionexerciseItemItemDuration' | translate }}
+            </span>
+
+            <div class="range range-positive">
+              <i class="icon ion-ios-stopwatch-outline"></i>
+              <input  type="range" 
+                      ng-model="vm.formData.exerciseDurations[exerciseItem.id]" 
+                      name="duration" 
+                      min="0" max="{{vm.maxSessionDurationMin}}"
+                      value="0">             
+            </div>
+            {{  vm.getDurationFormat(vm.formData.exerciseDurations[exerciseItem.id]) }}   
+          </label>
+
+        </section>
+      </div>
+    </div>
+  </div>
+</div> 

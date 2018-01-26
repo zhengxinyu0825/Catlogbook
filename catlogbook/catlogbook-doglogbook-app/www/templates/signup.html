@@ -1,0 +1,81 @@
+<ion-view class="view-signup" title="">
+
+<ion-nav-bar class="bar-stable">
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+</ion-nav-bar>
+
+<ion-content scroll="true" has-header class="extra-padding">
+
+<form name='form_login' novalidate>
+  <div class="list">
+
+    <h3 translate="SignUpTitle"></h3>  
+
+    <label class="item item-input item-floating-label">
+      <span  class="input-label"
+             translate="ProfileFirstName"></span>
+      <input type="text" 
+             translate
+             translate-attr-placeholder="ProfileFirstName"
+             name='firstName' 
+             ng-model='vm.formData.firstName'
+             required>
+    </label>
+
+
+    <label class="item item-input item-floating-label">
+      <span  class="input-label"
+             translate="ProfileLastName"></span>
+      <input type="text"
+             translate 
+             translate-attr-placeholder="ProfileLastName"
+             name='lastName' 
+             ng-model='vm.formData.lastName'
+             required>
+    </label>
+
+
+    <label class="item item-input item-floating-label">
+      <span  class="input-label"
+             translate="ProfileEmail"></span>
+      <input type="email" 
+             translate
+             translate-attr-placeholder="ProfileEmail" 
+             name='email' 
+             ng-model='vm.formData.email'
+             required>
+    </label>
+
+
+    <label class="item item-input item-floating-label">
+      <span  class="input-label"
+             translate="ProfilePassword"></span>
+      <i     class='icon ion-ios-eye icon-password fade'
+             type="button"
+             ng-click='vm.showPassword(vm.passwordType)' 
+             ng-disabled='vm.formData.password'
+             ng-hide='!vm.formData.password'></i>
+      <input type="{{ vm.passwordType }}" 
+             translate 
+             translate-attr-placeholder="ProfilePassword" 
+             name='password'
+             ng-model='vm.formData.password' 
+             required>
+    </label>
+
+
+    <button class="button button-block button-assertive"
+            ng-disabled='form_login.$invalid'
+            ng-click="vm.send(vm.formData)">
+      {{ 'SignUpRegister' | translate }}
+    </button>
+
+    <p translate="SignUpMsgActivation"></p> 
+
+  </div>
+  </form>
+
+</ion-content>
+
+</ion-view>

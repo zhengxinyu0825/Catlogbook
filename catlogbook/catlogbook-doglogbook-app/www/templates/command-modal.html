@@ -1,0 +1,77 @@
+<ion-view class="view-command-modal" view-title="{{ 'AddSessionCommandItemDetails' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header extra-padding">
+  
+  <form name='command_modal_form' novalidate>
+  <div class="list">
+
+    <h3> {{ vm.formData.selectedCommand.name }}</h3>
+  
+   <label class="item item-input item-select">
+      <span class="input-label requiredField">
+          {{ 'AddSessionCommandItemFrecuency' | translate }}*
+      </span>
+      <select ng-model="vm.formData.selectedCommand.frecuency"
+              ng-options="frecuency.id as frecuency.name for frecuency in vm.commandFrecuencies track by frecuency.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    <label  class="item item-input item-select"> 
+      <span class="input-label requiredField">
+          {{ 'AddSessionCommandItemDuration' | translate }}*
+      </span>
+      <select ng-model="vm.formData.selectedCommand.duration"
+              ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+          <option value='' translate="CommonSelect"></option>
+      </select>      
+    </label>
+
+
+    <label class="item item-input">
+      <span class="input-label requiredField">
+        {{ 'AddSessionCommandItemTimesRequested' | translate }}*
+      </span>
+      <input ng-model="vm.formData.selectedCommand.timesRequested"
+             type="number">
+    </label>  
+
+    <label class="item item-input">
+      <span class="input-label requiredField">
+        {{ 'AddSessionCommandItemTimesComplied' | translate }}*
+      </span>
+      <input ng-model="vm.formData.selectedCommand.timesComplied"
+             type="number">
+    </label>  
+
+    <div class="row">
+        <div class="col">
+            <button ng-click="vm.modalCommandCancel()"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.modalCommandAdd(vm.formData.selectedCommand)"
+                    ng-disabled='
+                    !vm.formData.selectedCommand.frecuency ||
+                    !vm.formData.selectedCommand.duration  ||
+                    !vm.formData.selectedCommand.timesRequested ||
+                    !vm.formData.selectedCommand.timesComplied'
+                    class="button button-block button-assertive">
+              {{ 'CommonAdd' | translate }}
+            </button>
+        </div>
+    </div>
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

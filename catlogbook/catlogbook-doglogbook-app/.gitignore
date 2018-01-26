@@ -1,0 +1,10 @@
+node_modules/
+lib/
+hooks/
+plugins/
+www/lib
+lib/
+resources/
+platforms/
+www.zip
+.DS_Store

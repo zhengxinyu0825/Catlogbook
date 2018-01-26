@@ -1,0 +1,88 @@
+<ion-view class="view-greyhound-activity-modal" view-title="{{ 'AddSessionAssessmentDevelopmentRacingGreyhoundActivitiesDetailsTitle' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header extra-padding">
+  
+  <form name='command_modal_form' novalidate>
+  <div class="list">
+
+    <h3> {{ vm.formData.selectedRacingGreyhoundActivity.name }}</h3>
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionRacingGreyhoundActivityModalRepetitions' | translate }}
+      </span>
+      <input ng-model="vm.formData.selectedGreyhoundActivity.repetitions"
+             type="number">
+    </label>
+
+    <label  class="item item-input item-select item-stacked-label"> 
+      <div class="item-text-wrap">
+        {{ 'AddSessionRacingGreyhoundActivityModalDuration' | translate }}
+      </div>
+      <select ng-model="vm.formData.selectedGreyhoundActivity.duration"
+              ng-options="v as vm.minuteDisplay(v) for v in vm.durationMinutes">
+          <option value='' translate="CommonSelect"></option>
+      </select>      
+    </label>
+
+
+    <label class="item item-input">
+      <span class="input-label">
+        {{ 'AddSessionRacingGreyhoundActivityModalDistance' | translate }}
+      </span>
+      <input ng-model="vm.formData.selectedGreyhoundActivity.distance"
+             type="number">
+    </label>
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSessionRacingGreyhoundActivityModalDistanceUnit' | translate }}
+      </span>
+      <select ng-model="vm.formData.selectedGreyhoundActivity.distanceUnit"
+              ng-options="unit.id as unit.name for unit in vm.distanceUnits track by unit.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>  
+
+    <label  ng-show="vm.formData.sessionTypeId == 2" 
+            class="item item-input item-select"> 
+      <span class="input-label">
+          {{ 'AddSessionRacingGreyhoundActivityModalRate' | translate }}
+      </span>
+      <select ng-model="vm.formData.selectedGreyhoundActivity.rate"
+              ng-options="t.id as t.name for t in vm.activityRates track by t.id">
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label> 
+
+    <div class="row">
+        <div class="col">
+            <button ng-click="vm.modalGreyhoundActivityCancel()"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.addGreyhoundActivity(vm.formData.selectedGreyhoundActivity)"
+                    ng-disabled='
+                    !vm.formData.selectedGreyhoundActivity.repetitions ||
+                    !vm.formData.selectedGreyhoundActivity.distance  ||
+                    !vm.formData.selectedGreyhoundActivity.duration ||
+                    vm.formData.selectedGreyhoundActivity.distanceUnit == null'
+                    class="button button-block button-assertive">
+              {{ 'CommonAdd' | translate }}
+            </button>
+        </div>
+    </div>
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

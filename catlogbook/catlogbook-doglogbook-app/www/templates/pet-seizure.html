@@ -1,0 +1,116 @@
+<ion-view class="view-pet-seizure" view-title="{{ 'PetSeizureTitle' | translate }}">
+
+
+<ion-header-bar class='bar-positive'>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header padding">
+  
+  <form name='form_login' novalidate>
+  <div class="list">
+
+
+    <ion-toggle ng-hide="vm.selectedPet.petSeizure"
+                ng-model="vm.formData.everHadASeizure" 
+                class="item-text-wrap"
+                toggle-class="toggle-positive">
+          {{ 'PetSeizureEverHadASeizure' | translate }}
+    </ion-toggle>
+
+    <div class="row" ng-hide="vm.formData.everHadASeizure == true">
+      <div class="col">
+          <button ui-sref="app.home"
+                  class="button button-block button-outline">
+            {{ 'CommonSkip' | translate }}
+          </button>
+      </div>
+    </div>
+
+    <section ng-show="vm.formData.everHadASeizure == true">
+
+    <label   class="item item-stacked-label item-select item-text-wrap">
+      <div class="item-text-wrap">
+      {{ 'PetSeizureAgeFirstTimeSeizure' | translate }}
+      </div>      
+      <select ng-model="vm.formData.ageFirstTime" 
+              ng-options="ageFirstTime as ageFirstTime.name for ageFirstTime in vm.ageFirstTimeSeizures track by ageFirstTime.id"
+              required>
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+
+    <div class="item item-text-wrap">
+    {{ 'PetSeizureTests' | translate }}
+    </div>     
+
+    <div class="list card">
+      <ion-checkbox 
+          ng-repeat="seizureTest in vm.seizureTestTypes"
+          ng-model="vm.formData.seizureTests[seizureTest.id]"
+          ng-change="vm.testCheckboxChange(seizureTest.id, vm.formData.seizureTests[seizureTest.id])"
+          class="item-text-wrap">
+          {{ seizureTest.name }}
+      </ion-checkbox>
+    </div>
+
+
+    <label   class="item item-stacked-label item-select item-text-wrap">
+      <div class="item-text-wrap">
+      {{ 'PetSeizureDiagnoses' | translate }}
+      </div>      
+      <select ng-model="vm.formData.seizureDiagnosis" 
+              ng-options="diagnosisItem as diagnosisItem.name for diagnosisItem in vm.seizureDiagnosis track by diagnosisItem.id"
+              required>
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+
+
+    <ion-toggle ng-model="vm.formData.clusterSeizures" 
+                class="item-text-wrap"
+                toggle-class="toggle-positive">
+          {{ 'PetSeizureClusterSeizures' | translate }}
+    </ion-toggle>
+
+    <ion-toggle ng-model="vm.formData.statusEpilepticus" 
+                class="item-text-wrap"
+                toggle-class="toggle-positive">
+          {{ 'PetSeizureStatusEpilepticus' | translate }}
+    </ion-toggle>
+
+
+    <div class="row">
+        <div class="col">
+            <button ui-sref="app.home"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.save(vm.formData)"
+                    ng-disabled='form_login.$invalid'
+                    class="button button-block button-assertive">
+              {{ 'CommonSave' | translate }}
+            </button>
+        </div>
+    </div>
+
+    </section>
+
+
+
+  </div>
+</form>
+
+</ion-content>
+
+</ion-view>

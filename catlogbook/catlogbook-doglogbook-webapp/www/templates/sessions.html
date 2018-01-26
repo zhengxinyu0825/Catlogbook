@@ -1,0 +1,165 @@
+<h1 class="page-header">Trainings / Assessments</h1>
+
+
+<p ng-show="vm.results && vm.results.length == 0">
+  No Results
+</p>
+
+<div  ng-show="vm.results && vm.results.length > 0">
+
+<uib-accordion close-others="oneAtATime">
+  <div  ng-repeat="item in vm.results"
+        uib-accordion-group class="panel">
+
+      <uib-accordion-heading>
+        <b>
+          {{ vm.getTitleDetails(item) }}  
+        </b>
+        <span class="pull-right">
+          {{  item.dateCreated |  date:"d MMM" : 'UTC'  }}
+        </span>
+      </uib-accordion-heading>
+
+      <div class="form-horizontal"> 
+
+        <div class="form-group"> 
+          <label class="col-sm-2">Type</label> 
+          <div class="col-sm-10"> 
+            <span>{{ item.petSubType.name }}</span> 
+          </div> 
+        </div>  
+
+        <div class="form-group"> 
+          <label class="col-sm-2">Duration</label> 
+          <div class="col-sm-10"> 
+            <span>{{ vm.getDurationFormat(item.duration) }}</span> 
+          </div> 
+        </div>  
+
+        <div class="form-group"> 
+          <label class="col-sm-12 col-md-12 col-lg-12">Distracted By Animals</label> 
+          <div class="col-sm-10"> 
+            <p ng-show="item.distractedByAnimalItems && item.distractedByAnimalItems == 0">
+              No results
+            </p>
+
+            <ul>
+              <li ng-repeat="cmdItem in item.distractedByAnimalItems">
+                {{ cmdItem.species.name }}
+              </li>
+            </ul>
+          </div> 
+        </div> 
+
+        <div ng-show="item.transportationType" class="form-group"> 
+          <label class="col-sm-2">Transport Type</label> 
+          <div class="col-sm-10"> 
+            <span>{{ item.transportationType.name }}</span> 
+          </div> 
+        </div>  
+
+        <div class="form-group"> 
+          <label class="col-sm-12 col-md-12 col-lg-12">Verbal Commands</label> 
+          <div class="col-sm-10"> 
+            <p ng-show="item.verbalCommandsItems && item.verbalCommandsItems == 0">
+              No results
+            </p>
+
+            <ul>
+              <li ng-repeat="cmdItem in item.verbalCommandsItems">
+                {{ cmdItem.verbalCommand.name }}
+              </li>
+            </ul>
+          </div> 
+        </div>  
+
+        <div class="form-group"> 
+          <label class="col-sm-12 col-md-12 col-lg-12">Hand Gestural Commands</label> 
+          <div class="col-sm-10"> 
+            <p ng-show="item.handGesturalCommandsItems && item.handGesturalCommandsItems == 0">
+              No results
+            </p>
+
+            <ul>
+              <li ng-repeat="cmdItem in item.handGesturalCommandsItems">
+                {{ cmdItem.handGesturalCommand.name }}
+              </li>
+            </ul>
+          </div> 
+        </div> 
+
+        <div class="form-group"> 
+          <label class="col-sm-12 col-md-12 col-lg-12">Other Commands</label> 
+          <div class="col-sm-10"> 
+            <p ng-show="item.whistleLaserCommandsItems && item.whistleLaserCommandsItems == 0">
+              No results
+            </p>
+
+            <ul>
+              <li ng-repeat="cmdItem in item.whistleLaserCommandsItems">
+                {{ cmdItem.whistleLaserCommand.name }}
+              </li>
+            </ul>
+          </div> 
+        </div> 
+
+        <div class="form-group"> 
+          <label class="col-sm-12 col-md-12 col-lg-12">Training Devices/Methods</label> 
+          <div class="col-sm-10"> 
+            <p ng-show="item.petDeviceMethodItems && item.petDeviceMethodItems == 0">
+              No results
+            </p>
+
+            <ul>
+              <li ng-repeat="cmdItem in item.petDeviceMethodItems">
+                {{ cmdItem.petDeviceMethod.name }}
+              </li>
+            </ul>
+          </div> 
+        </div> 
+
+        <div class="form-group"> 
+          <label class="col-sm-12 col-md-12 col-lg-12">Rewards</label> 
+          <div class="col-sm-10"> 
+            <p ng-show="item.rewardItems && item.rewardItems == 0">
+              No results
+            </p>
+
+            <ul>
+              <li ng-repeat="cmdItem in item.rewardItems">
+                {{ vm.displayReward(cmdItem)  }}
+              </li>
+            </ul>
+          </div> 
+        </div> 
+
+        <div class="form-group"> 
+          <label class="col-sm-12 col-md-12 col-lg-12">Correction Devices</label> 
+          <div class="col-sm-10"> 
+            <p ng-show="item.correctionDeviceItems && item.correctionDeviceItems == 0">
+              No results
+            </p>
+
+            <ul>
+              <li ng-repeat="cmdItem in item.correctionDeviceItems">
+                {{ cmdItem.correctionDevice.name }}
+              </li>
+            </ul>
+          </div> 
+        </div> 
+
+        <div class="list-group pull-right">
+          <button ng-click="vm.remove(item.id)"
+                  class="btn btn-default">
+            Remove
+          </button>
+        </div>
+
+      </div> 
+
+  </div>
+
+</div>
+
+<hr>
+

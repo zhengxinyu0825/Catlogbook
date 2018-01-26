@@ -1,0 +1,80 @@
+<ion-view class="view-initialactivityrate" view-title="">
+
+<ion-header-bar class='bar-positive'>
+
+</ion-header-bar>
+
+<div class="bar bar-subheader">
+    <h4 translate="InitialActivityRateTitle"></h4>
+</div>
+
+<ion-content scroll="true"
+             class="padding has-subheader">
+
+    <p class="subtitle" translate="InitialActivityRateSubTitle"></p>
+
+    <div class="list">
+
+      <div class="card padding">
+        {{ 'InitialActivityRateDisclaimer' | translate }}
+      </div>
+
+      <div  ng-if="vm.activityEvents && vm.activityEvents.length > 0"
+            ng-repeat="reportEvent in vm.activityEvents"
+            class="itemSeparator">
+
+
+        <div class="item item-avatar item-text-wrap">
+             <img  ng-src='{{ reportEvent.event.icon }}'
+                    default-src="img/dog-icon.svg">
+              <h2>{{ reportEvent.event.name }}</h2>
+              <p>{{ reportEvent.report.name }}</p>
+            </a>
+        </div>  
+
+        <ion-toggle ng-model="vm.rateNotApplicables[reportEvent.id]"
+                    class="item-text-wrap "
+                    toggle-class="toggle-positive">
+            {{ 'AddActivityRatingNotApplicable' | translate }}
+        </ion-toggle>
+
+        <label  ng-hide="vm.rateNotApplicables[reportEvent.id] == true"
+                class="item item-input item-stacked-label">
+          <div  class="range range-positive heatmap-background">
+            <input  type="range" 
+                    ng-model="vm.heatmapValues[reportEvent.id]" 
+                    name="heatmapValue" 
+                    min="0" max="100"
+                    value="0">             
+          </div>
+          <span class="rageMin">
+            {{ vm.rateRangesMin }}
+          </span>
+          <span class="rageMax">
+            {{ vm.rateRangesMax }}
+          </span>
+        </label>
+
+      </div>  
+
+      <div class="row">
+          <div class="col">
+              <button class="button button-block button-outline"
+                      ui-sref="app.home">
+                {{ 'CommonCancel' | translate }}
+              </button>
+          </div>
+          <div class="col">
+              <button ng-click="vm.save()"
+                      class="button button-block button-assertive">
+                {{ 'CommonSave' | translate }}
+              </button>
+          </div>
+      </div>
+
+    </div>
+
+
+</ion-content>
+
+</ion-view>

@@ -1,0 +1,73 @@
+<ion-modal-view class="view-signup">
+
+
+<ion-header-bar class='bar-positive'>
+  <h1 class='title' translate="ReminderTitle"></h1>
+
+  <div class="buttons">
+    <button class="button button-clear ion-close-round" 
+            ng-click="vm.closeModal()">
+    </button>
+  </div>
+
+</ion-header-bar>
+
+<ion-content scroll="true" class="has-header extra-padding">
+  
+  <div class="list">
+
+    <label class="item item-input item-stacked-label">
+      <span class="input-label"
+            translate="ReminderDate"></span>
+      <i class="icon ion-calendar"></i>
+      <input ng-model="vm.reminder.date" type="month" required>
+    </label>
+
+     <label class="item item-input item-select">
+        <span class="input-label" 
+              translate="ReminderTreatment">
+        </span>
+        <select ng-model="vm.reminder.treatment" required>
+          <option>TBD 1</option>
+          <option>TBD 2</option>
+          <option>TBD 3</option>
+        </select>
+    </label>
+
+     <label class="item item-input item-select">
+        <span class="input-label" 
+              translate="ReminderFrecuency">
+        </span>
+        <select ng-model="vm.reminder.frecuency" required>
+          <option>TBD 1</option>
+          <option>TBD 2</option>
+          <option>TBD 3</option>
+        </select>
+    </label>
+
+    <ion-toggle ng-model="vm.reminder.active" 
+                toggle-class="toggle-positive" required>
+                {{ 'ReminderActive' | translate }}
+    </ion-toggle>
+
+    <div class="row">
+        <div class="col">
+            <button ng-click="vm.cancel()"
+                    class="button button-block button-outline">
+              {{ 'CommonCancel' | translate }}
+            </button>
+        </div>
+        <div class="col">
+            <button ng-click="vm.set()"
+                    class="button button-block button-assertive">
+              {{ 'CommonSet' | translate }}
+            </button>
+        </div>
+    </div>
+
+  </div>
+
+
+</ion-content>
+
+</ion-modal-view>

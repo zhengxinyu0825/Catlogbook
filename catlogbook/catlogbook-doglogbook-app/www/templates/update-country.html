@@ -1,0 +1,24 @@
+<div class="view-update-country">
+
+    <div class="list">
+
+    <h2 class="item item-text-wrap">
+        {{ 'AddFeedingCountrySelect' | translate }}
+    </h2>
+
+    <label   class="item item-input item-select"> 
+      <span class="input-label requiredField">
+          {{ 'AddFeedingCountry' | translate }} *
+      </span>
+      <select ng-model="vm.selectedCountry"
+              ng-change="vm.locationTypeChange()"
+              ng-options="country as country.name for country in vm.countries track by country.id"
+              required>
+          <option value='' translate="CommonSelect"></option>
+      </select>
+    </label>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,46 @@
+<div class="session-guideseeingeye-trainingdetails-section">
+
+    <!-- Assessment & Development Work -->
+    <ion-item class="item item-collapse rounded"
+              ng-click="vm.toggleGroup('AddSessionAdditionalDetails')"
+              ng-class="{active: vm.isGroupShown('AddSessionAdditionalDetails')}">
+        <i class="icon" ng-class="vm.isGroupShown('AddSessionAdditionalDetails') ? 'ion-minus' : 'ion-plus'"></i>
+      &nbsp;
+      {{ 'AddSessionAdditionalDetails' | translate }}
+    </ion-item>
+    <div ng-show="vm.isGroupShown('AddSessionAdditionalDetails')">
+
+        <!-- Additional training details (GuideSeeingEye ONLY) -->
+        <div ng-show="vm.isGroupShown('AddSessionAdditionalDetails')">
+          <div class="item-text-wrap">
+            {{ 'AddSessionGuideSeeingAditionalTrainingItems' | translate }}
+          </div>     
+
+          <div class="list card">
+            
+            <div ng-repeat="addTraining in vm.guideSeeingAditionalTrainings">
+              <ion-checkbox 
+                  ng-model="vm.formData.guideSeeingAditionalTrainings[addTraining.id]"
+                  class="item-text-wrap">
+                  {{ addTraining.name }}
+              </ion-checkbox>
+            </div>
+
+          </div>
+
+         <label   class="item item-input item-select"> 
+            <span class="input-label">
+                {{ 'AddSessionTrainingTransportationTypeId' | translate }}*
+            </span>
+            <select ng-model="vm.formData.trainingTransportationTypeId"
+                    ng-options="transport.id as transport.name for transport in vm.transportationTypes track by transport.id">
+                <option value='' translate="CommonSelect"></option>
+            </select>
+          </label>  
+        </div>
+        <!-- END Additional training details -->
+
+    </div>
+    <!-- END Assessment & Development Work -->
+
+</div>
